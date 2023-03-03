@@ -483,8 +483,8 @@
 
            (and clearable (some? value) (not disabled))
            [:div {:class [icon-class (c :cursor-pointer {:background-color "#F8F8F9"})] :disabled disabled :on-mouse-down on-clear-mouse-down}
-            [:img {:src "/assets/img/portal-cross.svg" :class (c {:max-width "none" :width "12px" :height "12px"})}]
-            #_[:i.fal.fa-times {:class (c {:font-size "1rem"} :font-extrabold)}]]
+            #_[:img {:src "/assets/img/portal-cross.svg" :class (c {:max-width "none" :width "12px" :height "12px"})}]
+            [:i.fal.fa-times {:class (c {:font-size "1rem"} :font-extrabold)}]]
 
            :else
            [:div {:class icon-class :disabled disabled}
