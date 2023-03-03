@@ -1,0 +1,23 @@
+{:dev-http {8080 "resources/public"}
+ :builds
+ {:components
+  {:target           :browser
+   :output-dir       "resources/public/js"
+   :asset-path       "/js"
+   :build-hooks      [(stylo.shadow/reload "resources/public/css/stylo.css")]
+   :compiler-options {:warnings {:fn-deprecated false}}
+   :dev              {:modules {:main {:entries    [ui-toolkit.components.demo]
+                                       :after-load ui-toolkit.components.demo/initialize
+                                       :init-fn    ui-toolkit.components.demo/initialize}}}
+   :devtools         {:preloads   [re-frisk.preload]
+                      :watch-dir  "resources/public"
+                      :watch-path "/css"}
+   :release          {:modules {:main {:entries [ui-toolkit.components.core]}}}}
+
+  :gitpages
+  {:target           :browser
+   :output-dir       "resources/public/js"
+   :asset-path       "/js"
+   :build-hooks      [(stylo.shadow/reload "resources/public/css/stylo.css")]
+   :release          {:modules {:main {:entries [ui-toolkit.components.demo]
+                                       :init-fn ui-toolkit.components.demo/initialize}}}}}}
