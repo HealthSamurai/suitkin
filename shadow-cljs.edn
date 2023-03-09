@@ -9,9 +9,7 @@
    :dev              {:modules {:main {:entries    [suitkin.demo]
                                        :after-load suitkin.demo/initialize
                                        :init-fn    suitkin.demo/initialize}}}
-   :devtools         {:preloads   [re-frisk.preload]
-                      :watch-dir  "resources/public"
-                      :watch-path "/css"}
+   :devtools         {:preloads   [re-frisk.preload]}
    :release          {:modules {:main {:entries [suitkin.core]}}}}
 
   :gitpages
