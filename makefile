@@ -14,9 +14,5 @@ release:
 	clj -M:shadow-cljs release components 
 
 gp:
-	make clear \
-        && make init \
-        && clj -M:shadow-cljs release gitpages \
-        && rm -rf docs \
-        && cp -r resources/public docs
+	make clear && make init && clj -M:shadow-cljs release gitpages && cp -r resources/public/js . && cp -r resources/public/css . && cp -r resources/public/images . && cp -r resources/public/assets .
 
