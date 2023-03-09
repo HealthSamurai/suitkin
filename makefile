@@ -5,7 +5,7 @@ init:
 	npm install
 
 dev:
-	clj -M:development:shadow-cljs watch components 
+	rm -rf .shadow-cljs && clj -M:development:shadow-cljs watch components 
 
 run-test:
 	clj -M:development -m kaocha.runner
