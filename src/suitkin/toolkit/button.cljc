@@ -149,7 +149,8 @@
                                     (case (:size props)
                                       "small" small-class
                                       nil)
-                                    (class-names (:class props))]
+                                    (class-names (:class props))
+                                    ]
                          :on-click (when-not (:loading props)
                                      (:on-click props))
                          :type (or (:btn-type props) "button")})]
@@ -208,12 +209,14 @@
                       [:px "25px"]
                       :cursor-pointer
                       :text-center
+                      
                       {:letter-spacing "0.4px"
                        :font-size "13px"
                        :font-weight "500"
                        :font-family "Inter"})
                    (case (:variant attrs)
-                     "gray" (c [:bg :portal-strokes-tinted] [:text :black] [:hover [:bg :portal-strokes]])
-                     (c [:bg :black] [:text :white] [:hover {:opacity "0.8"}]))]}
+                     "gray" (c {:background-color "var(--suitkin-secondary-color)"} [:text :black]
+                               [:hover {:opacity "0.8"}])
+                     (c {:background-color "var(--suitkin-primary-button-color, var(--suitkin-primary-color))"} [:text :white] [:hover {:opacity "0.8"}]))]}
           (dissoc attrs :variant))
    content])
