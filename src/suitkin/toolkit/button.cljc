@@ -215,8 +215,11 @@
                        :font-weight "500"
                        :font-family "Inter"})
                    (case (:variant attrs)
-                     "gray" (c {:background-color "var(--suitkin-secondary-color)"} [:text :black]
+                     "gray" (c {:background-color "var(--suitkin-secondary-color)"}
+                               {:color "var(--suitkin-body-color)"}
                                [:hover {:opacity "0.8"}])
-                     (c {:background-color "var(--suitkin-primary-button-color, var(--suitkin-primary-color))"} [:text :white] [:hover {:opacity "0.8"}]))]}
+                     (c {:background-color "var(--suitkin-primary-color)"}
+                        {:color "var(--suitkin-body-color)"}
+                        [:hover {:opacity "0.8"}]))]}
           (dissoc attrs :variant))
    content])

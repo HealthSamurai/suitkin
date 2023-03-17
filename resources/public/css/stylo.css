@@ -616,21 +616,19 @@ img, video {
 
 .suitkin_toolkit_button-218-29 {
   background-color: var(--suitkin-secondary-color);
-  color: rgba(0,0,0,var(--text-opacity));
-  --text-opacity: 1;
+  color: var(--suitkin-body-color);
 }
 
 .suitkin_toolkit_button-218-29:hover {
   opacity: 0.8;
 }
 
-.suitkin_toolkit_button-220-22 {
-  background-color: var(--suitkin-primary-button-color, var(--suitkin-primary-color));
-  color: rgba(255,255,255,var(--text-opacity));
-  --text-opacity: 1;
+.suitkin_toolkit_button-221-22 {
+  background-color: var(--suitkin-primary-color);
+  color: var(--suitkin-body-color);
 }
 
-.suitkin_toolkit_button-220-22:hover {
+.suitkin_toolkit_button-221-22:hover {
   opacity: 0.8;
 }
 
