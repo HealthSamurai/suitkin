@@ -20,19 +20,27 @@
                  s (.-style r)]
              (.setProperty s varname value))))
 
+(defn get-css-var
+  [varname]
+  #?(:cljs
+     (.getPropertyValue (js/getComputedStyle js/document.documentElement) varname)))
+
 (defn variable-changer
   [varname description default-variables]
-  (let [current-color #?(:cljs (reagent.core/atom "black") :clj  (atom {}))]
+  (let [current-color #?(:cljs (reagent.core/atom (get-css-var varname)) :clj  (atom {}))]
+
     (fn [& _]
-      [:div
-       [:div {:title description :class (c [:text :black] [:mr 2])} varname]
+      [:div {:class (c [:py 4])}
+       (get-css-var varname)
+       [:div {:title description :class (c [:text :black] [:mr 2])} varname
+        [:code {:class (c [:text :gray-600] [:pl 2])} @current-color]]
        [:div {:class (c [:text :gray-600] [:mr 2])} description]
        [:div {:class (c :flex [:space-x 1] :items-center [:pt 2])}
         [:input {:id    varname
                  :type "color"
                  :value @current-color
                  :class (c :border-r [:pr 3] {:background-color "inherit"})
-                 :on-change (fn [e] (prn "##") #?(:cljs (change-css-var varname (.. e -target -value))))}]
+                 :on-change (fn [e] #?(:cljs (change-css-var varname (.. e -target -value))))}]
         [:div {:class (c [:pl 2] :flex [:space-x 2])}
          (for [default-var default-variables] ^{:key default-var}
            [:div {:style    {:background-color default-var}
