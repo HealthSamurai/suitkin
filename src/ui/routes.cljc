@@ -4,11 +4,31 @@
    [clojure.string :as str]
    [re-frame.core :as rf]
    [suitkin.zf.window-location :as window-location]
-   [route-map.core :as route-map]))
+   [route-map.core :as route-map]
+   [suitkin.components.variables]
+   [suitkin.components.input]
+   [suitkin.components.button]
+   [suitkin.components.select]))
+
+(def routes-info
+  [{:path "variables"
+    :component :suitkin.components.variables/init
+    :display "Variables"}
+   {:path "input"
+    :component :suitkin.components.input/init
+    :display "Input"}
+   {:path "button"
+    :component :suitkin.components.button/init
+    :display "Button"}
+   {:path "select"
+    :component :suitkin.components.select/init
+    :display "Select"}])
 
 (def routes
-  {:.     {:. :suitkin.demo/init}
-   "demo" {:. :suitkin.demo/init}})
+  (into {:. {:. :suitkin.demo/init}}
+        (map (fn [info]
+               [(:path info) {:. (:component info)}])
+             routes-info)))
 
 (defn get-url-alias
   [url]

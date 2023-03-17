@@ -1,6 +1,7 @@
 (ns suitkin.zf.routing
-  (:require-macros [reagent.ratom :refer [reaction]])
-  (:require [reagent.core :as reagent]
+  #_(:require-macros )
+  (:require [reagent.ratom :refer [reaction]]
+            [reagent.core :as reagent]
             [re-frame.core :as rf]
             [clojure.string :as str]
             [clojure.set :as set]

@@ -1,13 +1,36 @@
 (ns ui.core
-  (:require #?(:cljs reagent.dom.client)
-   [cljsjs.react]
+  (:require
+   #?(:cljs [reagent.dom.client])
+   #?(:cljs [cljsjs.react])
    [ui.pages :as pages]
    [re-frame.core :as rf]
    [clojure.string :as str]
    #_[reagent.dom.client :as reagent]
    [suitkin.zf.routing]
    [ui.routes :as routes]
-   [suitkin.demo]))
+   [suitkin.demo]
+   [stylo.core :refer [c]]))
+
+
+(def main-wrapper-class
+  (c {:display "grid"
+      :grid-template-columns "20% 80%"}))
+
+(def aside-class
+  (c {:padding "40px 20px"}))
+
+(defn page-wrapper [fragment fragment-params]
+  [:main {:class main-wrapper-class}
+   [:aside {:class aside-class}
+    #_[:h2 {:class (c :text-2xl
+                    [:p "8px 6px"])}
+     "Navigation"]
+    [:ul
+     (for [route-info routes/routes-info]
+       [:li {:key (:path route-info)}
+        [:a {:href (str "#" (:path route-info))}
+         (:display route-info)]])]]
+   [fragment fragment-params]])
 
 
 (defn current-page []
@@ -21,7 +44,7 @@
                       :route page
                       :route-ns (when page (namespace page)))]
     (cond
-      (and page cmp) [cmp params]
+      (and page cmp) (page-wrapper cmp params)
       (and page (not cmp)) [:div.not-found (str "Component not found: " page)]
       (= route-error :not-found) [:div.not-found (str "Route not found")])))
 
