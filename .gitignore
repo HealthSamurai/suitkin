@@ -1,5 +1,9 @@
 node_modules/
 .cpcache/
+js
 resources/public/js
 .shadow-cljs/
-package-lock.json
+.clj-kondo*
+.cpcache
+.nrepl-port
+.DS_Store

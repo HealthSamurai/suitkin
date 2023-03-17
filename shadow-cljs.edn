@@ -6,18 +6,19 @@
    :asset-path       "/js"
    :build-hooks      [(stylo.shadow/reload "resources/public/css/stylo.css")]
    :compiler-options {:warnings {:fn-deprecated false}}
-   :dev              {:modules {:main {:entries    [suitkin.demo]
-                                       :after-load suitkin.demo/initialize
-                                       :init-fn    suitkin.demo/initialize}}}
+   :dev              {:modules {:main {#_#_:entries    [suitkin.demo]
+                                       :after-load ui.core/main
+                                       :init-fn    ui.core/main}}}
    :devtools         {:preloads   [re-frisk.preload]
                       :watch-dir  "resources/public"
                       :watch-path "/css"}
-   :release          {:modules {:main {:entries [suitkin.core]}}}}
+   :release          {:modules {:main {:init-fn    ui.core/main}}}}
 
   :gitpages
   {:target           :browser
    :output-dir       "resources/public/js"
    :asset-path       "/js"
    :build-hooks      [(stylo.shadow/reload "resources/public/css/stylo.css")]
-   :release          {:modules {:main {:entries [suitkin.demo]
-                                       :init-fn suitkin.demo/initialize}}}}}}
+   :release          {:modules {:main {:init-fn    ui.core/main}
+                                #_{:entries [suitkin.demo]
+                                   :init-fn suitkin.demo/initialize}}}}}}
