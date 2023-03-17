@@ -11,16 +11,20 @@
   (c :inline-flex
      :w-full
      :relative
+     :rounded
      [:items-center]
-     [:px "18px"]
-     [:py "3px"]
+     [:px "12px"]
+     [:py "4px"]
      [:overflow-hidden]
      [:space-x 2]
      [:leading-relaxed]
-     [:border :portal-fg-fill]
-     {:border "1px solid #DADCE0"}
-     :rounded
-     [:focus-within :outline-none :shadow-none {:outline "2px solid #3067CB"}]
+     ;;[:border :portal-fg-fill]
+     {:outline "1px solid #DADCE0"}
+     {:transition "outline 0.3s ease-out"}
+     [:bg :white]
+     {:letter-spacing "1px"}
+     [:focus-within {:outline "2px solid #105FE1"
+     :transition "outline 0.3s ease-out"}]
      [:focus :outline-none :shadow-none #_[:border :portal-primary-red]]
      ))
 
@@ -32,11 +36,15 @@
      [:hover [:text :gray-500] [:border :gray-400]]))
 
 (def input-class
-  (c [:py 1] [:leading-relaxed]
-     {:font-family "Inter" :font-size "16px" :font-weight "500"}
+  (c [:py 1]
+     [:leading-relaxed]
+     {:font-family "Inter"
+      :font-size "16px"
+      :font-weight "400"
+      :letter-spacing "0.1px"}
      :flex-auto
      [:w-min 0]
-     [:text :black]
+     ;; [:text :black]
      [:focus :outline-none]
      [:bg :transparent]
      [:disabled :cursor-not-allowed]))
