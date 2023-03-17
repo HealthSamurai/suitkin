@@ -1050,6 +1050,24 @@ img, video {
   padding: 8px 6px;
 }
 
+.suitkin_demo-27-41 {
+  color: rgba(0,0,0,var(--text-opacity));
+  --text-opacity: 1;
+  margin-right: 0.5rem;
+}
+
+.suitkin_demo-28-22 {
+  color: rgba(113,128,150,var(--text-opacity));
+  --text-opacity: 1;
+  margin-right: 0.5rem;
+}
+
+.suitkin_demo-28-41 {
+  color: rgba(0,0,0,var(--text-opacity));
+  --text-opacity: 1;
+  margin-right: 0.5rem;
+}
+
 .suitkin_demo-29-3 {
   text-l: nil;
   color: gray;
@@ -1059,6 +1077,31 @@ img, video {
 .suitkin_demo-29-17 {
   font-size: 1.875rem;
   font-weight: 500;
+}
+
+.suitkin_demo-29-22 {
+  color: rgba(113,128,150,var(--text-opacity));
+  --text-opacity: 1;
+  margin-right: 0.5rem;
+}
+
+.suitkin_demo-30-22 {
+  display: flex;
+  align-items: center;
+  padding-top: 0.5rem;
+}
+
+.suitkin_demo-30-22>*+* {
+  --space-x-reverse: 0;
+  margin-right: calc(0.25rem * var(--space-x-reverse));
+  margin-left: calc(0.25rem * calc(1 - var(--space-x-reverse)));
+}
+
+.suitkin_demo-33-25 {
+  border-right-width: 1px;
+  border-rigth-width: 1px;
+  padding-right: 0.75rem;
+  background-color: inherit;
 }
 
 .suitkin_demo-34-3 {
@@ -1072,6 +1115,59 @@ img, video {
   color: gray;
 }
 
+.suitkin_demo-34-25 {
+  border-right-width: 1px;
+  border-rigth-width: 1px;
+  padding-right: 0.75rem;
+  background-color: inherit;
+}
+
+.suitkin_demo-35-23 {
+  padding-left: 0.5rem;
+  display: flex;
+}
+
+.suitkin_demo-35-23>*+* {
+  --space-x-reverse: 0;
+  margin-right: calc(0.5rem * var(--space-x-reverse));
+  margin-left: calc(0.5rem * calc(1 - var(--space-x-reverse)));
+}
+
+.suitkin_demo-36-23 {
+  padding-left: 0.5rem;
+  display: flex;
+}
+
+.suitkin_demo-36-23>*+* {
+  --space-x-reverse: 0;
+  margin-right: calc(0.5rem * var(--space-x-reverse));
+  margin-left: calc(0.5rem * calc(1 - var(--space-x-reverse)));
+}
+
+.suitkin_demo-38-29 {
+  min-width: 20px;
+  min-height: 20px;
+  cursor: pointer;
+  border-radius: 0.25rem;
+}
+
+.suitkin_demo-38-29:hover {
+  outline: 2px solid black;
+  outline-offset: 1px;
+}
+
+.suitkin_demo-39-29 {
+  min-width: 20px;
+  min-height: 20px;
+  cursor: pointer;
+  border-radius: 0.25rem;
+}
+
+.suitkin_demo-39-29:hover {
+  outline: 2px solid black;
+  outline-offset: 1px;
+}
+
 .suitkin_demo-44-3 {
   background-color: rgba(255,255,255,var(--bg-opacity));
   --bg-opacity: 1;
@@ -1081,17 +1177,31 @@ img, video {
 }
 
 .suitkin_demo-51-3 {
-  margin: 2.5rem;
-  width: 360px;
-  margin-left: auto;
-  margin-right: auto;
-  font-family: Inter;
+  font-size: 1.875rem;
+  font-weight: 700;
+  padding: 40px 0 60px 0;
 }
 
-.suitkin_demo-51-3>*+* {
-  --space-y-reverse: 0;
-  margin-bottom: calc(1.25rem * var(--space-y-reverse));
-  margin-top: calc(1.25rem * calc(1 - var(--space-y-reverse)));
+.suitkin_demo-52-3 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  padding: 40px 0 60px 0;
+}
+
+.suitkin_demo-56-3 {
+  font-size: 1.5rem;
+  padding: 8px 6px;
+}
+
+.suitkin_demo-57-3 {
+  font-size: 1.5rem;
+  padding: 8px 6px;
+}
+
+.suitkin_demo-60-3 {
+  text-l: nil;
+  color: gray;
+  padding: 10px 6px;
 }
 
 .suitkin_demo-60-17 {
@@ -1099,6 +1209,12 @@ img, video {
   background-color: rgba(255,255,255,var(--bg-opacity));
   --bg-opacity: 1;
   padding: 0 0 400px 0;
+}
+
+.suitkin_demo-61-3 {
+  text-l: nil;
+  color: gray;
+  padding: 10px 6px;
 }
 
 .suitkin_demo-61-17 {
@@ -1117,9 +1233,598 @@ img, video {
   font-weight: 500;
 }
 
+.suitkin_demo-65-3 {
+  background-color: rgba(247,250,252,var(--bg-opacity));
+  --bg-opacity: 1;
+  border-radius: 0 0 8px 8px;
+  display: block;
+  padding: 14px 20px;
+  font-size: 12px;
+  font-family: JetBrains Mono;
+  color: gray;
+}
+
+.suitkin_demo-66-3 {
+  background-color: rgba(247,250,252,var(--bg-opacity));
+  --bg-opacity: 1;
+  border-radius: 0 0 8px 8px;
+  display: block;
+  padding: 14px 20px;
+  font-size: 12px;
+  font-family: JetBrains Mono;
+  color: gray;
+}
+
 .suitkin_demo-68-17 {
   font-size: 1.875rem;
   font-weight: 500;
+}
+
+.suitkin_demo-75-3 {
+  background-color: rgba(255,255,255,var(--bg-opacity));
+  --bg-opacity: 1;
+  border: 1px solid #EEE;
+  border-radius: 12px;
+  margin: 0 0 50px 0;
+}
+
+.suitkin_demo-76-3 {
+  background-color: rgba(255,255,255,var(--bg-opacity));
+  --bg-opacity: 1;
+  border: 1px solid #EEE;
+  border-radius: 12px;
+  margin: 0 0 50px 0;
+}
+
+.suitkin_demo-82-3 {
+  margin: 2.5rem;
+  width: 360px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: Inter;
+}
+
+.suitkin_demo-82-3>*+* {
+  --space-y-reverse: 0;
+  margin-bottom: calc(1.25rem * var(--space-y-reverse));
+  margin-top: calc(1.25rem * calc(1 - var(--space-y-reverse)));
+}
+
+.suitkin_demo-83-3 {
+  margin: 2.5rem;
+  width: 360px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: Inter;
+}
+
+.suitkin_demo-83-3>*+* {
+  --space-y-reverse: 0;
+  margin-bottom: calc(1.25rem * var(--space-y-reverse));
+  margin-top: calc(1.25rem * calc(1 - var(--space-y-reverse)));
+}
+
+.suitkin_demo-97-17 {
+  width: 100%;
+  background-color: rgba(255,255,255,var(--bg-opacity));
+  --bg-opacity: 1;
+  padding: 0 0 400px 0;
+}
+
+.suitkin_demo-98-17 {
+  width: 100%;
+  background-color: rgba(255,255,255,var(--bg-opacity));
+  --bg-opacity: 1;
+  padding: 0 0 400px 0;
+}
+
+.suitkin_demo-101-18 {
+  width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.suitkin_demo-102-18 {
+  width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.suitkin_demo-103-18 {
+  font-size: 1.875rem;
+  font-weight: 700;
+}
+
+.suitkin_toolkit_button-10-3 {
+  line-height: 1.625;
+  border-width: 1px;
+  padding-bottom: 0.5rem;
+  transition-duration: 200ms;
+  transition-property: all;
+  --bg-opacity: 1;
+  align-items: center;
+  white-space: nowrap;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  background-color: rgba(255,255,255,var(--bg-opacity));
+  padding-right: 1.0rem;
+  border-radius: 0.25rem;
+  display: inline-flex;
+  padding-left: 1.0rem;
+  padding-top: 0.5rem;
+}
+
+.suitkin_toolkit_button-10-3>*+* {
+  --space-x-reverse: 0;
+  margin-right: calc(0.25rem * var(--space-x-reverse));
+  margin-left: calc(0.25rem * calc(1 - var(--space-x-reverse)));
+}
+
+.suitkin_toolkit_button-10-3:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+}
+
+.suitkin_toolkit_button-10-3:not(:disabled):hover {
+  color: rgba(66,153,225,var(--text-opacity));
+  --text-opacity: 1;
+  border-width: 1px;
+  border-color: rgba(66,153,225,var(--border-opacity));
+  --border-opacity: 1;
+}
+
+.suitkin_toolkit_button-10-3:not(:disabled):active {
+  color: rgba(44,82,130,var(--text-opacity));
+  --text-opacity: 1;
+  border-width: 1px;
+  border-color: rgba(44,82,130,var(--border-opacity));
+  --border-opacity: 1;
+}
+
+.suitkin_toolkit_button-10-3:disabled {
+  color: rgba(160,174,192,var(--text-opacity));
+  --text-opacity: 1;
+  background-color: rgba(237,242,247,var(--bg-opacity));
+  --bg-opacity: 1;
+  border-width: 1px;
+  border-color: rgba(203,213,224,var(--border-opacity));
+  --border-opacity: 1;
+  cursor: not-allowed;
+}
+
+.suitkin_toolkit_button-28-3 {
+  background-color: rgba(66,153,225,var(--bg-opacity));
+  --bg-opacity: 1;
+  border-width: 1px;
+  border-color: transparent;
+  --border-opacity: 1;
+  color: rgba(255,255,255,var(--text-opacity));
+  --text-opacity: 1;
+}
+
+.suitkin_toolkit_button-28-3:not(:disabled):hover {
+  color: rgba(255,255,255,var(--text-opacity));
+  --text-opacity: 1;
+  background-color: rgba(99,179,237,var(--bg-opacity));
+  --bg-opacity: 1;
+  border-width: 1px;
+  border-color: transparent;
+  --border-opacity: 1;
+}
+
+.suitkin_toolkit_button-28-3:not(:disabled):active {
+  color: rgba(255,255,255,var(--text-opacity));
+  --text-opacity: 1;
+  background-color: rgba(49,130,206,var(--bg-opacity));
+  --bg-opacity: 1;
+  border-width: 1px;
+  border-color: transparent;
+  --border-opacity: 1;
+}
+
+.suitkin_toolkit_button-36-3 {
+  background-color: rgba(234,74,53,var(--bg-opacity));
+  --bg-opacity: 1;
+  border-width: 1px;
+  border-color: transparent;
+  --border-opacity: 1;
+  color: rgba(255,255,255,var(--text-opacity));
+  --text-opacity: 1;
+}
+
+.suitkin_toolkit_button-36-3:not(:disabled):hover {
+  color: rgba(255,255,255,var(--text-opacity));
+  --text-opacity: 1;
+  background-color: rgba(210,66,47,var(--bg-opacity));
+  --bg-opacity: 1;
+  border-width: 1px;
+  border-color: transparent;
+  --border-opacity: 1;
+}
+
+.suitkin_toolkit_button-36-3:not(:disabled):active {
+  color: rgba(255,255,255,var(--text-opacity));
+  --text-opacity: 1;
+  background-color: rgba(244,164,154,var(--bg-opacity));
+  --bg-opacity: 1;
+  border-width: 1px;
+  border-color: transparent;
+  --border-opacity: 1;
+}
+
+.suitkin_toolkit_button-44-3 {
+  --text-opacity: 1;
+  border-width: 1px;
+  padding-bottom: 0.625rem;
+  border-color: transparent;
+  --border-opacity: 1;
+  font-weight: 500;
+  font-size: .875rem;
+  background-color: rgb(var(--button__accent-color, var(--main-color, 120, 38, 245)));
+  padding-right: 1.5rem;
+  letter-spacing: 0.05em;
+  border-radius: 5px;
+  color: rgba(255,255,255,var(--text-opacity));
+  padding-left: 1.5rem;
+  padding-top: 0.625rem;
+}
+
+.suitkin_toolkit_button-44-3:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.suitkin_toolkit_button-44-3>*+* {
+  --space-x-reverse: 0;
+  margin-right: calc(0.0rem * var(--space-x-reverse));
+  margin-left: calc(0.0rem * calc(1 - var(--space-x-reverse)));
+}
+
+.suitkin_toolkit_button-44-3:disabled {
+  background-color: rgba(244,244,244,var(--bg-opacity));
+  --bg-opacity: 1;
+  color: rgba(197,197,197,var(--text-opacity));
+  --text-opacity: 1;
+  border-style: none;
+}
+
+.suitkin_toolkit_button-44-3:not(:disabled):hover {
+  color: rgba(255,255,255,var(--text-opacity));
+  --text-opacity: 1;
+  background-color: rgba(var(--button__accent-color, var(--main-color, 120, 38, 245)), 0.6);
+  border-width: 1px;
+  border-color: transparent;
+  --border-opacity: 1;
+}
+
+.suitkin_toolkit_button-62-3 {
+  border-width: 1px;
+  padding-bottom: 0.25rem;
+  border-color: transparent;
+  --border-opacity: 1;
+  font-weight: 500;
+  font-size: .75rem;
+  background-color: rgba(var(--button__accent-color, var(--main-color)), 0.15);
+  padding-right: 0.75rem;
+  letter-spacing: 0.05em;
+  border-radius: 5px;
+  color: rgba(var(--button__accent-color, var(--main-color)), 1);
+  padding-left: 0.75rem;
+  padding-top: 0.25rem;
+}
+
+.suitkin_toolkit_button-62-3:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.suitkin_toolkit_button-62-3>*+* {
+  --space-x-reverse: 0;
+  margin-right: calc(0.0rem * var(--space-x-reverse));
+  margin-left: calc(0.0rem * calc(1 - var(--space-x-reverse)));
+}
+
+.suitkin_toolkit_button-62-3:disabled {
+  background-color: rgba(244,244,244,var(--bg-opacity));
+  --bg-opacity: 1;
+  color: rgba(197,197,197,var(--text-opacity));
+  --text-opacity: 1;
+  border-style: none;
+}
+
+.suitkin_toolkit_button-62-3:not(:disabled):hover {
+  background-color: rgba(var(--button__accent-color, var(--main-color)), 1);
+  color: rgb(var(--button__text-color, 255, 255, 255));
+  border-width: 1px;
+  border-color: transparent;
+  --border-opacity: 1;
+}
+
+.suitkin_toolkit_button-81-3 {
+  --text-opacity: 1;
+  border-width: 2px;
+  padding-bottom: 0.25rem;
+  border-color: rgba(120, 38, 245, 1);
+  --bg-opacity: 1;
+  --border-opacity: 1;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.9rem;
+  background-color: transparent;
+  padding-right: 0.75rem;
+  letter-spacing: 0.05em;
+  border-radius: 8px;
+  color: rgba(120, 38, 245, 1);
+  padding-left: 0.75rem;
+  padding-top: 0.25rem;
+}
+
+.suitkin_toolkit_button-81-3:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.suitkin_toolkit_button-81-3:not(:disabled):hover {
+  color: rgba(255,255,255,var(--text-opacity));
+  --text-opacity: 1;
+  background-color: rgba(120, 38, 245, 1);
+  --bg-opacity: 1;
+  border-width: 2px;
+  border-color: rgba(120, 38, 245, 1);
+  --border-opacity: 1;
+}
+
+.suitkin_toolkit_button-81-3:not(:disabled):active {
+  color: rgba(255,255,255,var(--text-opacity));
+  --text-opacity: 1;
+  background-color: rgba(98, 31, 199, 1);
+  border-width: 2px;
+  border-color: rgba(120, 38, 245, 1);
+  --border-opacity: 1;
+}
+
+.suitkin_toolkit_button-96-3 {
+  background-color: rgba(245,101,101,var(--bg-opacity));
+  --bg-opacity: 1;
+  border-width: 1px;
+  border-color: transparent;
+  --border-opacity: 1;
+  color: rgba(255,255,255,var(--text-opacity));
+  --text-opacity: 1;
+}
+
+.suitkin_toolkit_button-96-3:not(:disabled):hover {
+  color: rgba(255,255,255,var(--text-opacity));
+  --text-opacity: 1;
+  background-color: rgba(252,129,129,var(--bg-opacity));
+  --bg-opacity: 1;
+  border-width: 1px;
+  border-color: transparent;
+  --border-opacity: 1;
+}
+
+.suitkin_toolkit_button-96-3:not(:disabled):active {
+  color: rgba(255,255,255,var(--text-opacity));
+  --text-opacity: 1;
+  background-color: rgba(229,62,62,var(--bg-opacity));
+  --bg-opacity: 1;
+  border-width: 1px;
+  border-color: transparent;
+  --border-opacity: 1;
+}
+
+.suitkin_toolkit_button-104-3 {
+  background-color: transparent;
+  --bg-opacity: 1;
+  border-width: 1px;
+  border-color: transparent;
+  --border-opacity: 1;
+  color: rgba(49,130,206,var(--text-opacity));
+  --text-opacity: 1;
+}
+
+.suitkin_toolkit_button-104-3:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.suitkin_toolkit_button-104-3:not(:disabled):hover {
+  color: rgba(66,153,225,var(--text-opacity));
+  --text-opacity: 1;
+  background-color: transparent;
+  --bg-opacity: 1;
+  border-width: 1px;
+  border-color: transparent;
+  --border-opacity: 1;
+}
+
+.suitkin_toolkit_button-104-3:not(:disabled):active {
+  color: rgba(44,82,130,var(--text-opacity));
+  --text-opacity: 1;
+  background-color: transparent;
+  --bg-opacity: 1;
+  border-width: 1px;
+  border-color: transparent;
+  --border-opacity: 1;
+}
+
+.suitkin_toolkit_button-104-3:disabled {
+  color: rgba(160,174,192,var(--text-opacity));
+  --text-opacity: 1;
+  background-color: transparent;
+  --bg-opacity: 1;
+  border-width: 1px;
+  border-color: transparent;
+  --border-opacity: 1;
+  cursor: not-allowed;
+}
+
+.suitkin_toolkit_button-114-3 {
+  border-width: 1px;
+  padding-bottom: 0.25rem;
+  border-color: transparent;
+  --bg-opacity: 1;
+  --border-opacity: 1;
+  background-color: transparent;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+  padding-top: 0.25rem;
+}
+
+.suitkin_toolkit_button-114-3:not(:disabled):hover {
+  color: rgba(120, 38, 245, 1);
+  --text-opacity: 1;
+  background-color: rgba(242, 233, 254, 1);
+  --bg-opacity: 1;
+  border-width: 1px;
+  border-color: transparent;
+  --border-opacity: 1;
+}
+
+.suitkin_toolkit_button-114-3:not(:disabled):active {
+  color: inherit;
+  --text-opacity: 1;
+  background-color: rgba(237,242,247,var(--bg-opacity));
+  --bg-opacity: 1;
+  border-width: 1px;
+  border-color: transparent;
+  --border-opacity: 1;
+}
+
+.suitkin_toolkit_button-114-3:disabled {
+  color: rgba(160,174,192,var(--text-opacity));
+  --text-opacity: 1;
+  background-color: transparent;
+  --bg-opacity: 1;
+  border-width: 1px;
+  border-color: transparent;
+  --border-opacity: 1;
+  cursor: not-allowed;
+}
+
+.suitkin_toolkit_button-124-3 {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  padding-top: 0.0625rem;
+  padding-bottom: 0.0625rem;
+  font-size: .75rem;
+}
+
+.suitkin_toolkit_button-127-3 {
+  position: relative;
+  border-radius: 0px;
+}
+
+.suitkin_toolkit_button-127-3:first-child {
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+}
+
+.suitkin_toolkit_button-127-3:last-child {
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+}
+
+.suitkin_toolkit_button-127-3:not(:first-child) {
+  margin-left: -1px;
+}
+
+.suitkin_toolkit_button-127-3:focus {
+  z-index: 2;
+}
+
+.suitkin_toolkit_button-127-3:hover {
+  z-index: 1;
+}
+
+.suitkin_toolkit_button-160-31 {
+  margin-right: 0.5rem;
+}
+
+.suitkin_toolkit_button-199-19 {
+  display: block;
+  flex-grow: 1;
+}
+
+.suitkin_toolkit_button-206-20 {
+  min-width: 160px;
+  padding-bottom: 13px;
+  font-family: Inter;
+  text-align: center;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 13px;
+  padding-right: 25px;
+  letter-spacing: 0.4px;
+  border-radius: 0.25rem;
+  padding-left: 25px;
+  padding-top: 13px;
+}
+
+.suitkin_toolkit_button-218-29 {
+  background-color: var(--suitkin-secondary-color);
+  color: var(--suitkin-body-color);
+}
+
+.suitkin_toolkit_button-218-29:hover {
+  opacity: 0.8;
+}
+
+.suitkin_toolkit_button-221-22 {
+  background-color: var(--suitkin-primary-color);
+  color: var(--suitkin-body-color);
+}
+
+.suitkin_toolkit_button-221-22:hover {
+  opacity: 0.8;
+}
+
+.suitkin_toolkit_dropdown-button-26-21 {
+  position: relative;
+  display: inline-block;
+  align-self: center;
+}
+
+.suitkin_toolkit_dropdown-button-32-25 {
+  min-width: 10.0rem;
+  line-height: 1.625;
+  top: 100%;
+  --bg-opacity: 1;
+  position: absolute;
+  margin-top: 0.5rem;
+  z-index: 100;
+  box-shadow: 0px -4px 105px rgba(0, 0, 0, 0.05), 0px -0.677245px 23.4531px rgba(0, 0, 0, 0.0298054), 0px -0.154328px 6.98261px rgba(0, 0, 0, 0.0201946);;
+  overflow: hidden;
+  background-color: rgba(255,255,255,var(--bg-opacity));
+  border-radius: 16px;
+  left: -1px;
+}
+
+.suitkin_toolkit_dropdown-button-37-25 {
+  display: flex;
+  flex-direction: column;
+}
+
+.suitkin_toolkit_dropdown-button-37-25>*+* {
+  --divide-y-reverse: 0;
+  border-top-width: calc(1px * calc(1 - var(--divide-y-reverse)));
+  border-bottom-width: calc(1px * var(--divide-y-reverse));
+}
+
+.suitkin_toolkit_dropdown-button-40-28 {
+  --text-opacity: 1;
+  padding-bottom: 1.25rem;
+  white-space: nowrap;
+  cursor: pointer;
+  padding-right: 1.5rem;
+  letter-spacing: 0.025em;
+  color: rgba(17,24,39,var(--text-opacity));
+  padding-left: 1.5rem;
+  padding-top: 1.25rem;
+}
+
+.suitkin_toolkit_dropdown-button-40-28:hover {
+  background-color: rgba(242, 233, 254, 1);
 }
 
 .suitkin_toolkit_input-11-3 {

@@ -11,8 +11,15 @@
         <link rel="stylesheet" href="assets/Inter/inter.css">
         <link rel="stylesheet" href="assets/fa6/css/all.min.css">
     </head>
-    <body>
+    <body style="margin:0;min-height:100vh;">
         <div id="root"></div>
         <script src="js/main.js"></script>
+        <script>
+         var r = document.querySelector(':root');
+         r.style.setProperty('--suitkin-body-color', 'black');
+         r.style.setProperty('--suitkin-body-bg', 'white');
+         r.style.setProperty('--suitkin-primary-color', '#9f7aea');
+         r.style.setProperty('--suitkin-secondary-color', 'gray');
+        </script>
     </body>
 </html>

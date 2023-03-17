@@ -5,10 +5,42 @@
             [suitkin.toolkit.button :as button]
             [suitkin.toolkit.textarea :as textarea]
             [suitkin.zf.form :as f]
+            [stylo.tailwind.color]
             [suitkin.toolkit.dropdown-button :as dropdown-button]
             [re-frame.core :as rf]
             [ui.pages :as pages :refer [reg-page]]
+            [clojure.string :as str]
+            #?(:cljs [reagent.core])
             [stylo.core :refer [c]]))
+
+
+(defn change-css-var
+  [varname value]
+  #?(:cljs (let [r (js/document.querySelector ":root")
+                 s (.-style r)]
+             (.setProperty s varname value))))
+
+(defn variable-changer
+  [varname description default-variables]
+  (let [current-color #?(:cljs (reagent.core/atom "black") :clj  (atom {}))]
+    (fn [& _]
+      [:div
+       [:div {:title description :class (c [:text :black] [:mr 2])} varname]
+       [:div {:class (c [:text :gray-600] [:mr 2])} description]
+       [:div {:class (c :flex [:space-x 1] :items-center [:pt 2])}
+        [:input {:id    varname
+                 :type "color"
+                 :value @current-color
+                 :class (c :border-r [:pr 3] {:background-color "inherit"})
+                 :on-change (fn [e] (prn "##") #?(:cljs (change-css-var varname (.. e -target -value))))}]
+        [:div {:class (c [:pl 2] :flex [:space-x 2])}
+         (for [default-var default-variables] ^{:key default-var}
+           [:div {:style    {:background-color default-var}
+                  :class    (c [:w-min "20px"] [:h-min "20px"] :cursor-pointer [:hover {:outline "2px solid black" :outline-offset "1px"}]
+                               :rounded)
+                  :on-click (fn [e] #?(:cljs
+                                       (do (reset! current-color default-var)
+                                           (change-css-var varname default-var))))}])]]])))
 
 (def settings-form
   {:zf/root   [::form :path]
@@ -55,12 +87,28 @@
      {:font-family "Inter"}))
 
 
+(defn select-colors
+  [styles number & [ks]]
+  (->> (filter (fn [[k _]] (or (contains? ks k) (clojure.string/ends-with? (str k) (str number)))) styles)
+       (map last)
+       (sort)))
+
 (defn main
   []
-  [:div {:class (c :w-full [:bg :white] [:p "0 0 400px 0"])}
+  [:div {:class (c :w-full [:bg :white] [:p "0 0 400px 0"])
+         :style {:background-color "var(--suitkin-body-bg)"
+                 :min-height       "100vh"
+                 :color            "var(--suitkin-body-color)"}}
    [:div {:class (c [:w "800px"] :mx-auto)}
+    [:h1 {:class (c :text-3xl :font-bold)} "Variables"]
+    [variable-changer "--suitkin-body-bg" "Specifies background color for body." (select-colors stylo.tailwind.color/colors 500 #{:black :white})]
+    [:hr]
+    [variable-changer "--suitkin-body-color" "Specifies text color for body." (select-colors stylo.tailwind.color/colors 500 #{:black :white})]
+    [:hr]
+    [variable-changer "--suitkin-primary-color" "Specifies background color for primary buttons." (select-colors stylo.tailwind.color/colors 500)]
+    [:hr]
+    [variable-changer "--suitkin-secondary-color" "Specifies background color for secondary buttons." (select-colors stylo.tailwind.color/colors 300)]
     [:h1 {:class main-header} "Inputs"]
-
     [:h2 {:class second-header} "zf-input"]
     [:div {:class component-wrapper}
      [:div {:class component}
@@ -111,6 +159,5 @@
  ::init
  (fn [{_db :db} [_ _params]]
    {:dispatch [::f/form-init settings-form]}))
-
 
 (pages/reg-page ::init main)
