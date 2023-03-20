@@ -24,7 +24,7 @@
 
 (def code-block-class
   (c [:bg :gray-100]
-     {:border-radius "0 0 8px 8px"}
+     {:border-radius "0 0 11px 11px"}
      :block
      [:p "14px 20px"]
      ;;[:m "10px 0px 10px"]

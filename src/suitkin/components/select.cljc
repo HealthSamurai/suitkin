@@ -20,10 +20,10 @@
                        :render-option :label
                        :opts          {:zf/root [::form :path]
                                        :zf/path [:foo]}}]
-    "[suitkin.toolkit.select/zf-select {:render-value  :label
-                                         :render-option :label
-                                         :opts          {:zf/root [::form :path]
-                                                        :zf/path [:foo]}}]"]])
+"[suitkin.toolkit.select/zf-select { :render-value  :label
+                                    :render-option :label
+                                    :opts {:zf/root [::form :path]
+                                    :zf/path [:foo]}}]"]])
 
 (def settings-form
   {:zf/root   [::form :path]
