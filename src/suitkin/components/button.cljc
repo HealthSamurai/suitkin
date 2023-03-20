@@ -12,16 +12,12 @@
 
 (defn main
   []
-  [:div {:class (c :w-full [:bg :white] [:p "0 0 400px 0"])
-         :style {:background-color "var(--suitkin-body-bg)"
-                 :min-height       "100vh"
-                 :color            "var(--suitkin-body-color)"}}
-   [:div {:class (c [:w "800px"] :mx-auto)}
-    [suitkin.core/header "Buttons" "button/view"]
+  [:<>
+   [suitkin.core/header "Buttons" "button/view"]
 
-    [suitkin.core/component
-     [button/view {} "My button"]
-     "[suitkin.toolkit.button/view {} \"My button\"]"]]])
+   [suitkin.core/component
+    [button/view {} "My button"]
+    "[suitkin.toolkit.button/view {} \"My button\"]"]])
 
 (rf/reg-event-fx
  ::init

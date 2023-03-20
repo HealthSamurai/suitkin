@@ -16,10 +16,11 @@
      [:p "10px 6px"]))
 
 (defn header
-  [title subtitle]
+  [title & [subtitle]]
   [:header
    [:h1 {:class main-header-class} title]
-   [:h2 {:class second-header-class} subtitle]])
+   (when subtitle
+     [:h2 {:class second-header-class} subtitle])])
 
 (def code-block-class
   (c [:bg :gray-100]

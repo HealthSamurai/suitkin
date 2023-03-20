@@ -12,22 +12,18 @@
 
 (defn main
   []
-  [:div {:class (c :w-full [:bg :white] [:p "0 0 400px 0"])
-         :style {:background-color "var(--suitkin-body-bg)"
-                 :min-height       "100vh"
-                 :color            "var(--suitkin-body-color)"}}
-   [:div {:class (c [:w "800px"] :mx-auto)}
-    [suitkin.core/header "Select" "zf-select"]
+  [:<>
+   [suitkin.core/header "Select" "zf-select"]
 
-    [suitkin.core/component
-     [select/zf-select {:render-value  :label
-                        :render-option :label
-                        :opts          {:zf/root [::form :path]
-                                        :zf/path [:foo]}}]
-     "[suitkin.toolkit.select/zf-select {:render-value  :label
+   [suitkin.core/component
+    [select/zf-select {:render-value  :label
+                       :render-option :label
+                       :opts          {:zf/root [::form :path]
+                                       :zf/path [:foo]}}]
+    "[suitkin.toolkit.select/zf-select {:render-value  :label
                                          :render-option :label
                                          :opts          {:zf/root [::form :path]
-                                                        :zf/path [:foo]}}]"]]])
+                                                        :zf/path [:foo]}}]"]])
 
 (def settings-form
   {:zf/root   [::form :path]

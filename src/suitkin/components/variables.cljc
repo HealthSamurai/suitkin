@@ -91,19 +91,16 @@
 
 (defn main
   []
-  [:div {:class (c :w-full [:bg :white] [:p "0 0 400px 0"])
-         :style {:background-color "var(--suitkin-body-bg)"
-                 :min-height       "100vh"
-                 :color            "var(--suitkin-body-color)"}}
-   [:div {:class (c [:w "800px"] :mx-auto)}
-    [:h1 {:class (c :text-3xl :font-bold)} "Variables"]
-    [variable-changer "--suitkin-body-bg" "Specifies background color for body." (select-colors stylo.tailwind.color/colors 500 #{:black :white})]
-    [:hr]
-    [variable-changer "--suitkin-body-color" "Specifies text color for body." (select-colors stylo.tailwind.color/colors 500 #{:black :white})]
-    [:hr]
-    [variable-changer "--suitkin-primary-color" "Specifies background color for primary buttons." (select-colors stylo.tailwind.color/colors 500)]
-    [:hr]
-    [variable-changer "--suitkin-secondary-color" "Specifies background color for secondary buttons." (select-colors stylo.tailwind.color/colors 300)]]])
+  [:<>
+   [suitkin.core/header "Variables"]
+
+   [variable-changer "--suitkin-body-bg" "Specifies background color for body." (select-colors stylo.tailwind.color/colors 500 #{:black :white})]
+   [:hr]
+   [variable-changer "--suitkin-body-color" "Specifies text color for body." (select-colors stylo.tailwind.color/colors 500 #{:black :white})]
+   [:hr]
+   [variable-changer "--suitkin-primary-color" "Specifies background color for primary buttons." (select-colors stylo.tailwind.color/colors 500)]
+   [:hr]
+   [variable-changer "--suitkin-secondary-color" "Specifies background color for secondary buttons." (select-colors stylo.tailwind.color/colors 300)]])
 
 (rf/reg-event-fx
  ::init

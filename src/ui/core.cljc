@@ -22,16 +22,17 @@
 (defn page-wrapper [fragment fragment-params]
   [:main {:class main-wrapper-class}
    [:aside {:class aside-class}
-    #_[:h2 {:class (c :text-2xl
-                    [:p "8px 6px"])}
-     "Navigation"]
     [:ul
      (for [route-info routes/routes-info]
        [:li {:key (:path route-info)}
         [:a {:href (str "#" (:path route-info))}
          (:display route-info)]])]]
-   [fragment fragment-params]])
-
+   [:div {:class (c :w-full [:bg :white] [:p "0 0 400px 0"])
+          :style {:background-color "var(--suitkin-body-bg)"
+                  :min-height       "100vh"
+                  :color            "var(--suitkin-body-color)"}}
+    [:div {:class (c [:w "800px"] :mx-auto)}
+     [fragment fragment-params]]]])
 
 (defn current-page []
   (let [{page :match params :params href :href}
