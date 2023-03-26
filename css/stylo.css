@@ -248,6 +248,8 @@ img, video {
   margin-left: auto;
   margin-right: auto;
   font-family: Inter;
+  display: flex;
+  justify-content: center;
 }
 
 .suitkin_core-43-3>*+* {
@@ -256,70 +258,20 @@ img, video {
   margin-top: calc(1.25rem * calc(1 - var(--space-y-reverse)));
 }
 
-.suitkin_demo-17-3 {
-  font-size: 1.875rem;
-  font-weight: 700;
-  padding: 40px 0 60px 0;
-}
-
-.suitkin_demo-22-3 {
-  font-size: 1.5rem;
-  padding: 8px 6px;
-}
-
-.suitkin_demo-26-3 {
-  text-l: nil;
-  color: gray;
-  padding: 10px 6px;
-}
-
-.suitkin_demo-31-3 {
-  background-color: rgba(247,250,252,var(--bg-opacity));
-  --bg-opacity: 1;
-  border-radius: 0 0 11px 11px;
-  display: block;
-  padding: 14px 20px;
-  font-size: 12px;
-  font-family: JetBrains Mono;
-  color: gray;
-}
-
-.suitkin_demo-41-3 {
-  background-color: rgba(255,255,255,var(--bg-opacity));
-  --bg-opacity: 1;
-  border: 1px solid #EEE;
-  border-radius: 12px;
-  margin: 0 0 50px 0;
-}
-
-.suitkin_demo-48-3 {
-  margin: 2.5rem;
-  width: 360px;
-  margin-left: auto;
-  margin-right: auto;
-  font-family: Inter;
-}
-
-.suitkin_demo-48-3>*+* {
-  --space-y-reverse: 0;
-  margin-bottom: calc(1.25rem * var(--space-y-reverse));
-  margin-top: calc(1.25rem * calc(1 - var(--space-y-reverse)));
-}
-
-.suitkin_demo-63-17 {
+.suitkin_demo-18-17 {
   width: 100%;
   background-color: rgba(255,255,255,var(--bg-opacity));
   --bg-opacity: 1;
   padding: 0 0 400px 0;
 }
 
-.suitkin_demo-67-18 {
+.suitkin_demo-22-18 {
   width: 800px;
   margin-left: auto;
   margin-right: auto;
 }
 
-.suitkin_demo-68-18 {
+.suitkin_demo-23-18 {
   font-size: 1.875rem;
   font-weight: 700;
 }
@@ -760,8 +712,8 @@ img, video {
 }
 
 .suitkin_toolkit_button-221-22 {
-  background-color: var(--suitkin-primary-color);
-  color: var(--suitkin-body-color);
+  background-color: black;
+  color: white;
 }
 
 .suitkin_toolkit_button-221-22:hover {
