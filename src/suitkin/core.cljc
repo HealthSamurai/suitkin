@@ -44,7 +44,9 @@
      [:space-y 5]
      [:w "360px"]
      :mx-auto
-     {:font-family "Inter"}))
+     {:font-family "Inter"
+      :display "flex"
+      :justify-content "center"}))
 
 (defn component
   [component component-code]

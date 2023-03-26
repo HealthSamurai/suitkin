@@ -218,8 +218,8 @@
                      "gray" (c {:background-color "var(--suitkin-secondary-color)"}
                                {:color "var(--suitkin-body-color)"}
                                [:hover {:opacity "0.8"}])
-                     (c {:background-color "var(--suitkin-primary-color)"}
-                        {:color "var(--suitkin-body-color)"}
+                     (c {:background-color "black"}
+                        {:color "white"}
                         [:hover {:opacity "0.8"}]))]}
           (dissoc attrs :variant))
    content])

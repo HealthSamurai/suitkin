@@ -8,7 +8,8 @@
             [ui.pages :as pages :refer [reg-page]]
             [clojure.string :as str]
             #?(:cljs [reagent.core])
-            [stylo.core :refer [c]]))
+            [stylo.core :refer [c]]
+            [suitkin.toolkit.dropdown-button :as dropdown-button]))
 
 (defn main
   []
@@ -17,7 +18,11 @@
 
    [suitkin.core/component
     [button/view {} "My button"]
-    "[suitkin.toolkit.button/view {} \"My button\"]"]])
+    "[suitkin.toolkit.button/view {} \"My button\"]"]
+    (for [button-props [{:type "primary-2"} {:type "sdc"} {:type "sdc-small"} {:type "sdc-outline"} {:type "danger"} {:type "link"} {:type "text"}]]
+      [suitkin.core/component
+       [button/button button-props "My button"]
+       (str "[suitkin.toolkit.button/button " button-props " \"My button\"]")])])
 
 (rf/reg-event-fx
  ::init
