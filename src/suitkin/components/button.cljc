@@ -20,6 +20,7 @@
     [button/view {} "My button"]
     "[suitkin.toolkit.button/view {} \"My button\"]"]
     (for [button-props [{:type "primary-2"} {:type "sdc"} {:type "sdc-small"} {:type "sdc-outline"} {:type "danger"} {:type "link"} {:type "text"}]]
+      ^{:key (:type button-props)}
       [suitkin.core/component
        [button/button button-props "My button"]
        (str "[suitkin.toolkit.button/button " button-props " \"My button\"]")])])
