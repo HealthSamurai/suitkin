@@ -24,9 +24,7 @@
      [:h2 {:class second-header-class} subtitle])])
 
 (def code-block-class
-  (c {:border-radius "0 0 11px 11px"
-      :border-top-width "1px"}
-     :block
+  (c :block
      [:p "14px 20px"]
      {:font-size "12px"
       :font-family "JetBrains Mono"}))
@@ -37,6 +35,15 @@
       :border-radius "12px"}
      [:m "0 0 50px 0"]))
 
+(def component-code-wrapper-class
+  (c [:p "14px 20px"]
+     {:display "flex"
+      :flex-direction "row-reverse"
+      :justify-content "space-between"
+      :gap "10px"
+      :border-radius "0 0 11px 11px"
+      :border-top-width "1px"}))
+
 (def component-class
   (c [:m 10]
      [:space-y 5]
@@ -45,6 +52,12 @@
      {:font-family "Inter"
       :display "flex"
       :justify-content "center"}))
+
+(def code-copy-btn-class
+  (c [:p 1.5]
+     {:display "grid"
+      :place-items "center"
+      :font-size "18px"}))
 
 (defn component
   [component component-code]
@@ -66,6 +79,13 @@
       [:div {:class component-wrapper-class}
        [:div {:class component-class}
         component]
-       [:pre [:code.language-clojure {:ref code-el-ref
-                                      :class code-block-class}
-              component-code]]])))
+       [:div {:class component-code-wrapper-class}
+        [:button {:class code-copy-btn-class
+                  :on-click (fn []
+                              (.writeText (.-clipboard js/navigator) component-code)
+                              (set-copy-clicked? true)
+                              (js/setTimeout #(set-copy-clicked? false) 1500))}
+         (if copy-clicked? [:i.fa-solid.fa-copy] [:i.fa-light.fa-copy])]
+        [:pre [:code.language-clojure {:ref code-el-ref
+                                       :class code-block-class}
+               component-code]]]])))
