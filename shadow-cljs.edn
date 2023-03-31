@@ -7,8 +7,7 @@
    :asset-path       "/assets/js"
    :build-hooks      [(stylo.shadow/reload "resources/public/assets/css/stylo.css")]
    :compiler-options {:warnings {:fn-deprecated false}}
-   :dev              {:modules {:main {:after-load ui.core/main
-                                       :init-fn    ui.core/main}}}
+   :dev              {:modules {:main {:init-fn    ui.core/main}}}
    :devtools         {:preloads   [re-frisk.preload]}
    :release          {:modules {:main {:init-fn    ui.core/main}}}}
 

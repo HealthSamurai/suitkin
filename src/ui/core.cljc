@@ -11,6 +11,7 @@
    [suitkin.demo]
    [stylo.core :refer [c]]))
 
+(reagent.core/set-default-compiler! (reagent.core/create-compiler {:function-components true}))
 
 (def main-wrapper-class
   (c {:display "grid"
@@ -57,11 +58,19 @@
        :route-map/start {}})))
 
 
+(def root-el #?(:cljs (-> "root" js/document.getElementById reagent.dom.client/create-root)))
+
+(defn render []
+  #?(:cljs (reagent.dom.client/render
+            root-el
+            [current-page])))
+
+(defn ^:dev/after-load re-render []
+  #?(:cljs (render)))
+
 (defn mount-root []
   (rf/clear-subscription-cache!)
-  #?(:cljs (reagent.dom.client/render
-            (-> "root" js/document.getElementById reagent.dom.client/create-root)
-            [current-page])))
+  (render))
 
 (defn ^:export main []
   (rf/dispatch-sync [::initialize])
