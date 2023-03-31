@@ -43,23 +43,179 @@
       :font-weight "400"
       :letter-spacing "0.1px"}
      :flex-auto
+     :w-full
      [:w-min 0]
      ;; [:text :black]
      [:focus :outline-none]
      [:bg :transparent]
      [:disabled :cursor-not-allowed]))
 
-(defn input
-  [props]
-  [:div {:class [(or (:base-class props) base-class)
-                 (when (:disabled props) disabled-class)
-                 (class-names (:class props))]}
-   (:prefix props)
+(def label-class
+  ;;TODO: Oleg finish
+  ;;this one without star
+  (c ))
+
+(def label-required-class
+  ;;TODO: Oleg finish
+  ;;this one with star
+  (c ))
+
+(def tooltip-icon-class
+  ;;TODO "works on hover with text class"
+  (c ))
+
+
+(def label-wrapper-class
+  (c [:py 1]
+     :flex-auto
+     [:w-min 0]
+     ;; [:text :black]
+     [:bg :transparent]
+     [:disabled :cursor-not-allowed]))
+
+(def description-wrapper-class
+  (c [:py 1]
+     :flex-auto
+     [:w-min 0]
+     ;; [:text :black]
+     [:bg :transparent]
+     [:disabled :cursor-not-allowed]))
+
+(comment
+
+  ;;We decide not to parametrize with icon
+  #_[:div.icon
+   [:div.popup [:div.arrow-left] [:div.text (:text i)]]
+   [:div {:class (str "navigation-" (:icon i) "-icon")}]])
+
+(def tooltip-class
+  (c :cursor-pointer
+     [:hover [[".tooltip" {:display :inline-block
+
+                           :font-family "Inter";
+                           :font-size "12px";
+                           :line-height "15px";
+                           :letter-spacing "0.001em";
+                           :color "#FFFFFF"
+                           :padding "10px"
+
+                           :margin-top "-54px"
+                           :border-radius "4px"
+                           :background "rgba(0, 0, 0, .8)"
+                           :position "absolute"}]]]))
+
+(def tooltip-text-class
+  (c [:hidden]))
+
+(def description-class
+  (c))
+
+(defn static-path
+  [img-name]
+  (str "../../assets/img/" img-name))
+
+
+(defn tooltip-icon
+  [tooltip-text]
+  [:div {:class [tooltip-class]}
+   [:div {:class [ tooltip-icon-class]} "?"] ;;TODO: hardcoded
+   [:div {:class ["tooltip" tooltip-text-class]} tooltip-text]])
+
+(defn input-label
+  [label-text required]
+  [:div {:class (c :inline-flex)} [:div {:class (c [:mr 2]) } label-text]
+   (when required [:div {:class (c [:text :red-600])} "*"])])
+
+(defn lable-area
+  [label label-required tooltip]
+  [:div (cond (and label tooltip)
+              [:div {:class (c :inline-flex)}
+               [input-label label false]
+               [tooltip-icon tooltip]]
+
+              (and label-required tooltip)
+              [:div {:class (c :inline-flex)}
+               [input-label label-required true]
+               [tooltip-icon tooltip]]
+
+              label-required
+              [input-label label-required true]
+              label
+              [input-label label false]
+              tooltip
+              [tooltip-icon tooltip])])
+
+(defn description-area
+  [description]
+  [:div {:class [description-wrapper-class]}
+   [:div {:class [description-class]} description]])
+
+(def total-input-class
+  (c [:flex-inline]))
+
+(defn icon
+  [img-name]
+  (when img-name
+    [:div [:img {:src #_"https://fastly.picsum.photos/id/72/200/300.jpg?hmac=8tyK7lgBqIQNIGPVnmsVP3SL5bYCsSDmdZtnIJNQv3o"
+                 (static-path img-name)
+                 :class (c [:ml "20px"]
+                           {:max-width "none"
+                            :width "12px"
+                            :height "12px"})}]]))
+
+
+(defn left-input-area
+  [text-left icon-left]
+  (cond icon-left [icon icon-left]
+        :else (when text-left [:div {:class (c {:border-right "1px solid"
+                                                :width "20%"
+                                                :white-space "nowrap" ;
+                                                :overflow "hidden"
+                                                :text-overflow "ellipsis"})
+                          :title text-left}
+                    text-left])))
+
+(defn right-input-area
+  [text-right icon-right]
+  (cond icon-right [icon icon-right]
+        :else (when text-right [:div {:class (c {:border-left "1px solid"
+                                                 :padding-left "2px"
+                                                 :width "20%"
+                                                 :white-space "nowrap" ;
+                                                 :overflow "hidden"
+                                                 :text-overflow "ellipsis"})
+                          :title text-right}
+                    text-right])))
+
+(defn input-with-text-area
+  [props text-left text-right icon-left icon-right]
+  ;;TODO: should left and right text be added to the input value?
+  [:div {:class (c :w-full
+                   {:display "flex"
+                    :flex-direction "row"})}
+   [left-input-area text-left icon-left]
    [:input (merge (dissoc props :class :input-class :prefix :suffix :base-class)
                   {:class [input-class (class-names (:input-class props))]})]
-   (when (:suffix props)
-     [:div {:class (c :absolute :h-full [:right 0] :flex :items-center :justify-center [:w "225px"] {:border-left "1px solid #DADCE0"})}
-      (:suffix props)])])
+   [right-input-area text-right icon-right]])
+
+(defn input
+  [{:keys [label label-required tooltip
+           icon-left icon-right
+           description text-left text-right] :as props}]
+  [:div {:class [description-wrapper-class]}
+   [:div {:class [label-wrapper-class]}
+    [lable-area label label-required tooltip]
+    [:div {:class [(or (:base-class props) base-class)
+                   (when (:disabled props) disabled-class)
+                   (class-names (:class props))]}
+     (:prefix props)
+     [input-with-text-area props text-left
+      text-right icon-left icon-right]
+     (when (:suffix props)
+       [:div {:class (c :absolute :h-full [:right 0] :flex :items-center :justify-center
+                        {:border-left "1px solid #DADCE0"})}
+        (:suffix props)])]]
+   [description-area description]])
 
 (defn zf-input
   [props]

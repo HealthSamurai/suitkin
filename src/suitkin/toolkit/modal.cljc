@@ -53,7 +53,7 @@
                         custom-scrollbar]
                 :on-click (fn [e] (.stopPropagation e))}
           [:div {:class (c :flex :justify-between :items-center [:px 6] [:pt 4] [:py 4] :border-b)}
-           [:span {:class (c :text-xl [:text :tgray-900] :font-semibold :tracking-wide)} title]
+           [:span {:class (c :text-xl [[:text :tgray-900]:text :tgray-900] :font-semibold :tracking-wide)} title]
 
            [:div {:class (c [:rounded :full] [:py 2] [:px 3] [:text :sdc-gray-fg]
                             :leading-none

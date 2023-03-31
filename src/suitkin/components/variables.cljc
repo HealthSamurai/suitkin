@@ -22,7 +22,6 @@
 (defn variable-changer
   [varname description default-variables]
   (let [current-color #?(:cljs (reagent.core/atom (get-css-var varname)) :clj  (atom {}))]
-
     (fn [& _]
       [:div {:class (c [:py 4])}
        (get-css-var varname)
