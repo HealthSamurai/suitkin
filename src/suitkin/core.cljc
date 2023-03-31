@@ -1,5 +1,6 @@
 (ns suitkin.core
-  (:require [stylo.core :refer [c]]))
+  (:require #?(:cljs [react :as react])
+            [stylo.core :refer [c]]))
 
 (def main-header-class
   (c :text-3xl
@@ -23,15 +24,12 @@
      [:h2 {:class second-header-class} subtitle])])
 
 (def code-block-class
-  (c [:bg :gray-100]
-     {:border-radius "0 0 11px 11px"}
+  (c {:border-radius "0 0 11px 11px"
+      :border-top-width "1px"}
      :block
      [:p "14px 20px"]
-     ;;[:m "10px 0px 10px"]
      {:font-size "12px"
-      :font-family "JetBrains Mono"
-      :color "gray"
-      :white-space "pre"}))
+      :font-family "JetBrains Mono"}))
 
 (def component-wrapper-class
   (c [:bg :white]
@@ -50,9 +48,24 @@
 
 (defn component
   [component component-code]
-  ;;[:h3 {:class third-header} ":placeholder"]
-  [:div {:class component-wrapper-class}
-   [:div {:class component-class}
-    component]
-   [:code {:class code-block-class}
-    component-code]])
+  (fn [component component-code]
+    (let [code-el-ref (react/useRef nil)
+
+          [copy-clicked? set-copy-clicked?]
+          (react/useState false)]
+      (react/useEffect (fn []
+                         (let [code-el (.-current code-el-ref)
+                               highlight-fn #(.highlightElement js/hljs code-el)]
+                           (when code-el
+                             (try (if (.includes (.listLanguages js/hljs) "clojure")
+                                    (highlight-fn)
+                                    (js/setTimeout highlight-fn 500))
+                                  (catch js/Error e (js/setTimeout highlight-fn 500))))
+                           js/undefined))
+                       (array component-code))
+      [:div {:class component-wrapper-class}
+       [:div {:class component-class}
+        component]
+       [:pre [:code.language-clojure {:ref code-el-ref
+                                      :class code-block-class}
+              component-code]]])))
