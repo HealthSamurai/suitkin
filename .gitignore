@@ -1,8 +1,9 @@
 node_modules/
 .cpcache/
 js
-resources/public/js
-resources/public/css
+resources/public/assets/js
+resources/public/assets/css/stylo.css
+_site
 .shadow-cljs/
 .clj-kondo*
 .cpcache

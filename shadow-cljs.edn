@@ -1,24 +1,20 @@
 {:dev-http {8080 "resources/public"}
+
  :builds
  {:components
   {:target           :browser
-   :output-dir       "resources/public/js"
-   :asset-path       "/js"
-   :build-hooks      [(stylo.shadow/reload "resources/public/css/stylo.css")]
+   :output-dir       "resources/public/assets/js"
+   :asset-path       "/assets/js"
+   :build-hooks      [(stylo.shadow/reload "resources/public/assets/css/stylo.css")]
    :compiler-options {:warnings {:fn-deprecated false}}
-   :dev              {:modules {:main {#_#_:entries    [suitkin.demo]
-                                       :after-load ui.core/main
+   :dev              {:modules {:main {:after-load ui.core/main
                                        :init-fn    ui.core/main}}}
-   :devtools         {:preloads   [re-frisk.preload]
-                      :watch-dir  "resources/public"
-                      :watch-path "/css"}
+   :devtools         {:preloads   [re-frisk.preload]}
    :release          {:modules {:main {:init-fn    ui.core/main}}}}
 
-  :gitpages
+  :gh-pages
   {:target           :browser
-   :output-dir       "resources/public/js"
-   :asset-path       "/js"
-   :build-hooks      [(stylo.shadow/reload "resources/public/css/stylo.css")]
-   :release          {:modules {:main {:init-fn    ui.core/main}
-                                #_{:entries [suitkin.demo]
-                                   :init-fn suitkin.demo/initialize}}}}}}
+   :output-dir       "_site/assets/js"
+   :asset-path       "/assets/js"
+   :build-hooks      [(stylo.shadow/reload "_site/assets/css/stylo.css")]
+   :release          {:modules {:main {:init-fn    ui.core/main}}}}}}
