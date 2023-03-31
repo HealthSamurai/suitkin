@@ -8,4 +8,5 @@ _site
 .clj-kondo*
 .cpcache
 .nrepl-port
+.lsp
 .DS_Store
