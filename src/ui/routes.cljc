@@ -11,18 +11,18 @@
    [suitkin.components.select]))
 
 (def routes-info
-  [{:path "variables"
-    :component :suitkin.components.variables/init
-    :display "Variables"}
-   {:path "input"
+  [ {:path "input"
     :component :suitkin.components.input/init
-    :display "Input"}
+    :display "Inputs"}
    {:path "button"
     :component :suitkin.components.button/init
-    :display "Button"}
+    :display "Buttons"}
    {:path "select"
     :component :suitkin.components.select/init
-    :display "Select"}])
+    :display "Selects"}
+   {:path "variables"
+    :component :suitkin.components.variables/init
+    :display "Variables"}])
 
 (def routes
   (into {:. {:. :suitkin.demo/init}}

@@ -13,7 +13,7 @@
 (defn main
   []
   [:<>
-   [suitkin.core/header "Select" "zf-select"]
+   [suitkin.core/header "Selects" "zf-select"]
 
    [suitkin.core/component
     [select/zf-select {:render-value  :label

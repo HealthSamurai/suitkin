@@ -14,21 +14,29 @@
 (reagent.core/set-default-compiler! (reagent.core/create-compiler {:function-components true}))
 
 (def main-wrapper-class
-  (c {:display "grid"
+  (c {:width "1200px"
+      :margin "0 auto"
+      :display "grid"
       :grid-template-columns "20% 80%"}))
 
 (def aside-class
-  (c {:padding "40px 20px"}))
+  (c {:padding "40px 20px"
+      :margin-top "50px"
+      }))
+
+(def nav-item-class
+  (c {:padding "7px"}))
 
 (defn page-wrapper [fragment fragment-params]
   [:main {:class main-wrapper-class}
    [:aside {:class aside-class}
     [:ul
      (for [route-info routes/routes-info]
-       [:li {:key (:path route-info)}
+       ;; TODO add nav-item-class
+       [:li {:key (:path route-info) :class nav-item-class}
         [:a {:href (str "#" (:path route-info))}
          (:display route-info)]])]]
-   [:div {:class (c :w-full [:bg :white] [:p "0 0 400px 0"])
+   [:div {:class (c [:bg :white] [:p "0 0 400px 0"])
           :style {:background-color "var(--suitkin-body-bg)"
                   :min-height       "100vh"
                   :color            "var(--suitkin-body-color)"}}
