@@ -12,9 +12,8 @@
      :w-full
      :relative
      :rounded
-     [:items-center]
-     [:px "12px"]
      [:py "4px"]
+     [:items-center]
      [:overflow-hidden]
      [:space-x 2]
      [:leading-relaxed]
@@ -29,14 +28,14 @@
      ))
 
 (def disabled-class
-  (c [:text :gray-500]
-     [:bg :gray-200]
-     [:border :gray-400]
-     :cursor-not-allowed
-     [:hover [:text :gray-500] [:border :gray-400]]))
+  (c {:color "#989A9E"
+      :background "#F9FAFA"
+      :border "#DADCE0"}
+     :cursor-not-allowed))
 
 (def input-class
-  (c [:py 1]
+  (c [:px "12px"]
+     [:py "4px"]
      [:leading-relaxed]
      {:font-family "Inter"
       :font-size "16px"
@@ -48,28 +47,44 @@
      ;; [:text :black]
      [:focus :outline-none]
      [:bg :transparent]
-     [:disabled :cursor-not-allowed]))
+     [:disabled :cursor-not-allowed]
+     [:pseudo "::placeholder" {:color "#989A9E"
+                               :font-weight "300"
+                               :font-size "15px"}]
+     ))
 
 (def label-class
-  ;;TODO: Oleg finish
-  ;;this one without star
-  (c ))
+  (c {:display "flex"
+      :font-family "Product Sans"
+      :font-size "12px"
+      :font-weight "500"
+      :letter-spacing "0.2px"
+      :color "#6D737C"
+      :margin-bottom "3px"
+      :padding "5px"
+      :cursor "default"}))
 
 (def label-required-class
-  ;;TODO: Oleg finish
-  ;;this one with star
-  (c ))
+  (c :flex
+     [:text :red-600]
+     [:pl 1]))
 
 (def tooltip-icon-class
-  ;;TODO "works on hover with text class"
-  (c ))
-
+  (c {:border "1.5px solid black"
+      :width "14px"
+      :height "14px"
+      :border-radius "50%"
+      :font-size "11px"
+      :font-weight "500"
+      :text-align "center"
+      :box-sizing "content-box"
+      :margin-bottom "6px"
+      :line-height "baseline"}))
 
 (def label-wrapper-class
   (c [:py 1]
      :flex-auto
      [:w-min 0]
-     ;; [:text :black]
      [:bg :transparent]
      [:disabled :cursor-not-allowed]))
 
@@ -77,9 +92,43 @@
   (c [:py 1]
      :flex-auto
      [:w-min 0]
-     ;; [:text :black]
      [:bg :transparent]
      [:disabled :cursor-not-allowed]))
+
+(def text-left-class
+  (c
+   {:display "flex"
+    :align-items "center"
+    :border-right "1px solid #DADCE0"
+    :white-space "nowrap"
+    :margin "-4px 0"
+    :padding "10px"
+    :letter-spacing "0.1px"
+    :font-size "14px"
+    :background "#F9FAFA"
+    }))
+
+(def text-right-class
+  (c
+   {:display "flex"
+    :align-items "center"
+    :border-left "1px solid #DADCE0"
+    :white-space "nowrap"
+    :margin "-4px 0"
+    :padding "10px"
+    :letter-spacing "0.1px"
+    :font-size "14px"
+    :background "#F9FAFA"
+    ;;:overflow "hidden"
+    ;;:width "20%"
+    ;;:text-overflow "ellipsis"
+    }))
+
+(def text-right-class-modified
+  (c
+   {:extend text-right-class
+    :background "red"}))
+
 
 (comment
 
@@ -94,12 +143,15 @@
 
                            :font-family "Inter";
                            :font-size "12px";
-                           :line-height "15px";
+                           :line-height "18px";
                            :letter-spacing "0.001em";
                            :color "#FFFFFF"
                            :padding "10px"
+                           :z-index "100"
+                           :max-width "400px"
 
-                           :margin-top "-54px"
+                           :margin-top "-66px"
+                           :margin-left "20px"
                            :border-radius "4px"
                            :background "rgba(0, 0, 0, .8)"
                            :position "absolute"}]]]))
@@ -108,7 +160,14 @@
   (c [:hidden]))
 
 (def description-class
-  (c))
+  (c {:display "flex"
+      :font-family "Product Sans"
+      :font-size "12px"
+      :font-weight "400"
+      :letter-spacing "0.2px"
+      :margin-left "5px"
+      :color "#6D737C"
+      :cursor "default"}))
 
 (defn static-path
   [img-name]
@@ -123,8 +182,8 @@
 
 (defn input-label
   [label-text required]
-  [:div {:class (c :inline-flex)} [:div {:class (c [:mr 2]) } label-text]
-   (when required [:div {:class (c [:text :red-600])} "*"])])
+  [:div {:class label-class} [:div label-text]
+   (when required [:div {:class label-required-class} "*"])])
 
 (defn lable-area
   [label label-required tooltip]
@@ -153,39 +212,36 @@
 (def total-input-class
   (c [:flex-inline]))
 
-(defn icon
+
+(defn icon-left
   [img-name]
   (when img-name
-    [:div [:img {:src #_"https://fastly.picsum.photos/id/72/200/300.jpg?hmac=8tyK7lgBqIQNIGPVnmsVP3SL5bYCsSDmdZtnIJNQv3o"
-                 (static-path img-name)
-                 :class (c [:ml "20px"]
-                           {:max-width "none"
-                            :width "12px"
-                            :height "12px"})}]]))
-
+    [:div {:class (c {:margin "7px 0 7px 12px"})}[:img {:src #_"https://fastly.picsum.photos/id/72/200/300.jpg?hmac=8tyK7lgBqIQNIGPVnmsVP3SL5bYCsSDmdZtnIJNQv3o"
+                                                        (static-path img-name)
+                                                        :class (c {:width "18px"
+                                                                   :height "18px"})}]]))
+(defn icon-right
+  [img-name]
+  (when img-name
+    [:div {:class (c {:margin "7px 12px 7px 0"})}[:img {:src #_"https://fastly.picsum.photos/id/72/200/300.jpg?hmac=8tyK7lgBqIQNIGPVnmsVP3SL5bYCsSDmdZtnIJNQv3o"
+                                                        (static-path img-name)
+                                                        :class (c {:width "18px"
+                                                                   :height "18px"})}]]))
 
 (defn left-input-area
-  [text-left icon-left]
-  (cond icon-left [icon icon-left]
-        :else (when text-left [:div {:class (c {:border-right "1px solid"
-                                                :width "20%"
-                                                :white-space "nowrap" ;
-                                                :overflow "hidden"
-                                                :text-overflow "ellipsis"})
+  [text-left icon-l]
+  (cond icon-l [icon-left icon-l]
+        :else (when text-left [:div {:class [text-left-class]
                           :title text-left}
                     text-left])))
 
 (defn right-input-area
-  [text-right icon-right]
-  (cond icon-right [icon icon-right]
-        :else (when text-right [:div {:class (c {:border-left "1px solid"
-                                                 :padding-left "2px"
-                                                 :width "20%"
-                                                 :white-space "nowrap" ;
-                                                 :overflow "hidden"
-                                                 :text-overflow "ellipsis"})
+  [text-right icon-r]
+  (cond icon-r [icon-right icon-r]
+        :else (when text-right [:div {:class [text-right-class]
                           :title text-right}
                     text-right])))
+
 
 (defn input-with-text-area
   [props text-left text-right icon-left icon-right]

@@ -24,8 +24,9 @@
     "[suitkin.toolkit.input/zf-input {:placeholder \"placeholder\"}]"]
 
    [suitkin.core/component
-    [input/zf-input {:disabled true}]
-    "[suitkin.toolkit.input/zf-input {:disabled true}]"]
+    [input/zf-input {:disabled true :placeholder "disabled"}]
+    "[suitkin.toolkit.input/zf-input {:disabled true
+                                 :placeholder \"disabled\"}]"]
 
    [suitkin.core/component
     [input/zf-input {:label "Custom Label"}]
@@ -41,7 +42,8 @@
 
    [suitkin.core/component
     [input/zf-input {:tooltip "Tooltip text" :label "Label"}]
-    "[suitkin.toolkit.input/zf-input {:tooltip \"Tooltip text\" :label \"Label\"}]"]
+    "[suitkin.toolkit.input/zf-input {:tooltip \"Tooltip text\"
+                                 :label \"Label\"}]"]
 
    [suitkin.core/component
     [input/zf-input {:description "Description text"}]
@@ -56,34 +58,38 @@
     "[suitkin.toolkit.input/zf-input {:text-right \".com\"}]"]
 
    [suitkin.core/component
-    [input/zf-input {:text-left "text left" :text-right "text right"}]
-    "[suitkin.toolkit.input/zf-input {:text-left \"text left\" :text-right \"text right\"}]"]
+    [input/zf-input {:text-left "text-left" :text-right "text-right"}]
+    "[suitkin.toolkit.input/zf-input {:text-left \"text left\"
+                                 :text-right \"text right\"}]"]
 
    [suitkin.core/component
-    [input/zf-input {:icon-left "smartbox-logo.svg"}]
-    "[suitkin.toolkit.input/zf-input {:icon-left \"smartbox-logo.svg\"}]"]
+    [input/zf-input {:icon-left "search.svg"}]
+    "[suitkin.toolkit.input/zf-input {:icon-left \"search.svg\"}]"]
 
    [suitkin.core/component
-    [input/zf-input {:icon-right "aidbox-logo.svg"}]
-    "[suitkin.toolkit.input/zf-input {:icon-right \"aidbox-logo.svg\"}]"]
-
-   [suitkin.core/component
-    [input/zf-input {:icon-right "credit_card.svg"}]
-    "[suitkin.toolkit.input/zf-input {:icon-right \"credit_card.svg\"}]"]
+    [input/zf-input {:icon-right "eye.svg"}]
+    "[suitkin.toolkit.input/zf-input {:icon-right \"eye.svg\"}]"]
 
    [suitkin.core/component
     [input/zf-input {:icon-right "credit_card.svg"
                      :text-right "will be skipped"}]
-    "[suitkin.toolkit.input/zf-input {:icon-right \"credit_card.svg\" :text-right \"will be skipped\"}]"]
+    "[suitkin.toolkit.input/zf-input {:icon-right \"credit_card.svg\"
+                                 :text-right \"will be skipped\"}]"]
 
    [suitkin.core/component
     [input/zf-input {:description "Description text"
-                     :tooltip "Tooltip text"
+                     :tooltip "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer malesuada hendrerit dui, non dapibus tellus vulputate a. Sed feugiat nulla eu nisi convallis pharetra. Aliquam in metus ut elit blandit euismod vel ut ipsum. Nulla facilisi. Sed euismod erat risus, a efficitur velit malesuada ut. Praesent vel urna odio. In dapibus, metus ut feugiat ultricies, sapien tortor semper dolor, sed efficitur ex ante quis velit. "
                      :text-left "https://"
                      :text-right ".com"
-                     :label "Label"}]
-    "[suitkin.toolkit.input/zf-input {:description \"Description text\" :tooltip \"Description text\"
-     :label \"Label\" :text-right \"https://\" \":text-left \".com\"}]"]
+                     :label "Label"
+                     :placeholder "placeholder"}]
+    "[suitkin.toolkit.input/zf-input {:description \"Description text\"
+                                 :tooltip \"Tooltip Lorem ipsum\"
+                                 :label \"Label\"
+                                 :text-left \"https://\"
+                                 :text-right \".com\"
+                                 :label \"Laber\"
+                                 :placeholder \"placeholder\"}]"]
 
    [suitkin.core/component
     [input/zf-input {:opts {:zf/root [::form :path] :zf/path [:input-with-error]}}]
