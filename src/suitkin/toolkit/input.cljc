@@ -12,11 +12,11 @@
      :w-full
      :relative
      :rounded
+     :items-center
+     :overflow-hidden
+     :leading-relaxed
      [:py "4px"]
-     [:items-center]
-     [:overflow-hidden]
      [:space-x 2]
-     [:leading-relaxed]
      ;;[:border :portal-fg-fill]
      {:outline "1px solid #DADCE0"}
      {:transition "outline 0.3s ease-out"}

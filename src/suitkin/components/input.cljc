@@ -59,8 +59,8 @@
 
    [suitkin.core/component
     [input/zf-input {:text-left "text-left" :text-right "text-right"}]
-    "[suitkin.toolkit.input/zf-input {:text-left \"text left\"
-                                 :text-right \"text right\"}]"]
+    "[suitkin.toolkit.input/zf-input {:text-left \"text-left\"
+                                 :text-right \"text-right\"}]"]
 
    [suitkin.core/component
     [input/zf-input {:icon-left "search.svg"}]
@@ -77,19 +77,20 @@
                                  :text-right \"will be skipped\"}]"]
 
    [suitkin.core/component
-    [input/zf-input {:description "Description text"
+    [input/zf-input {
+                     :label "Label"
                      :tooltip "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer malesuada hendrerit dui, non dapibus tellus vulputate a. Sed feugiat nulla eu nisi convallis pharetra. Aliquam in metus ut elit blandit euismod vel ut ipsum. Nulla facilisi. Sed euismod erat risus, a efficitur velit malesuada ut. Praesent vel urna odio. In dapibus, metus ut feugiat ultricies, sapien tortor semper dolor, sed efficitur ex ante quis velit. "
                      :text-left "https://"
                      :text-right ".com"
-                     :label "Label"
-                     :placeholder "placeholder"}]
-    "[suitkin.toolkit.input/zf-input {:description \"Description text\"
-                                 :tooltip \"Tooltip Lorem ipsum\"
-                                 :label \"Label\"
+                     :placeholder "placeholder"
+                     :description "Description text"
+                     }]
+    "[suitkin.toolkit.input/zf-input {:label \"Label\"
+                                 :tooltip \"Tooltip Lorem ipsum ...\"
                                  :text-left \"https://\"
                                  :text-right \".com\"
-                                 :label \"Laber\"
-                                 :placeholder \"placeholder\"}]"]
+                                 :placeholder \"placeholder\"
+                                 :description \"Description text\"}]"]
 
    [suitkin.core/component
     [input/zf-input {:opts {:zf/root [::form :path] :zf/path [:input-with-error]}}]
