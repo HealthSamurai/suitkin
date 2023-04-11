@@ -171,8 +171,7 @@
 
 (defn static-path
   [img-name]
-  (str "../../assets/img/" img-name))
-
+  (str "assets/img/" img-name))
 
 (defn tooltip-icon
   [tooltip-text]
