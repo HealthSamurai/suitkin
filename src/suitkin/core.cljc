@@ -62,30 +62,30 @@
 (defn component
   [component component-code]
   (fn [component component-code]
-    (let [code-el-ref (react/useRef nil)
+    #?(:cljs (let [code-el-ref (react/useRef nil)
 
-          [copy-clicked? set-copy-clicked?]
-          (react/useState false)]
-      (react/useEffect (fn []
-                         (let [code-el (.-current code-el-ref)
-                               highlight-fn #(.highlightElement js/hljs code-el)]
-                           (when code-el
-                             (try (if (.includes (.listLanguages js/hljs) "clojure")
-                                    (highlight-fn)
-                                    (js/setTimeout highlight-fn 500))
-                                  (catch js/Error e (js/setTimeout highlight-fn 500))))
-                           js/undefined))
-                       (array component-code))
-      [:div {:class component-wrapper-class}
-       [:div {:class component-class}
-        component]
-       [:div {:class component-code-wrapper-class}
-        [:button {:class code-copy-btn-class
-                  :on-click (fn []
-                              (.writeText (.-clipboard js/navigator) component-code)
-                              (set-copy-clicked? true)
-                              (js/setTimeout #(set-copy-clicked? false) 1500))}
-         (if copy-clicked? [:i.fa-solid.fa-copy] [:i.fa-light.fa-copy])]
-        [:pre [:code.language-clojure {:ref code-el-ref
-                                       :class code-block-class}
-               component-code]]]])))
+                   [copy-clicked? set-copy-clicked?]
+                   (react/useState false)]
+               (react/useEffect (fn []
+                                  (let [code-el (.-current code-el-ref)
+                                        highlight-fn #(.highlightElement js/hljs code-el)]
+                                    (when code-el
+                                      (try (if (.includes (.listLanguages js/hljs) "clojure")
+                                             (highlight-fn)
+                                             (js/setTimeout highlight-fn 500))
+                                           (catch js/Error e (js/setTimeout highlight-fn 500))))
+                                    js/undefined))
+                                (array component-code))
+               [:div {:class component-wrapper-class}
+                [:div {:class component-class}
+                 component]
+                [:div {:class component-code-wrapper-class}
+                 [:button {:class code-copy-btn-class
+                           :on-click (fn []
+                                       (.writeText (.-clipboard js/navigator) component-code)
+                                       (set-copy-clicked? true)
+                                       (js/setTimeout #(set-copy-clicked? false) 1500))}
+                  (if copy-clicked? [:i.fa-solid.fa-copy] [:i.fa-light.fa-copy])]
+                 [:pre [:code.language-clojure {:ref code-el-ref
+                                                :class code-block-class}
+                        component-code]]]]))))

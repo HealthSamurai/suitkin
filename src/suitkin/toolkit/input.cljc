@@ -37,7 +37,7 @@
   (c [:px "12px"]
      [:py "4px"]
      [:leading-relaxed]
-     {:font-family "Inter"
+     {:font-family "sans-serif"
       :font-size "16px"
       :font-weight "400"
       :letter-spacing "0.1px"}
@@ -55,7 +55,7 @@
 
 (def label-class
   (c {:display "flex"
-      :font-family "Product Sans"
+      :font-family "sans-serif"
       :font-size "12px"
       :font-weight "500"
       :letter-spacing "0.2px"
@@ -90,7 +90,6 @@
 
 (def description-wrapper-class
   (c [:py 1]
-     :flex-auto
      [:w-min 0]
      [:bg :transparent]
      [:disabled :cursor-not-allowed]))
@@ -140,8 +139,7 @@
 (def tooltip-class
   (c :cursor-pointer
      [:hover [[".tooltip" {:display :inline-block
-
-                           :font-family "Inter";
+                           :font-family "sans-serif";
                            :font-size "12px";
                            :line-height "18px";
                            :letter-spacing "0.001em";
@@ -161,7 +159,7 @@
 
 (def description-class
   (c {:display "flex"
-      :font-family "Product Sans"
+      :font-family "sans-serif"
       :font-size "12px"
       :font-weight "400"
       :letter-spacing "0.2px"
@@ -361,8 +359,7 @@
           :on-focus  #(zf/dispatch [:zf/focus o])
           :on-wheel
           (fn [e]
-            (.blur (.-currentTarget e)))})))]
-  )
+            (.blur (.-currentTarget e)))})))])
 
 
 (defn zf-date [props]

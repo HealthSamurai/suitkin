@@ -15,12 +15,12 @@
 
 (rf/reg-sub-raw
  :route-map/current-route
- (fn [db _] (reaction (:route-map/current-route @db))))
+ (fn [db _] #?(:cljs (reaction (:route-map/current-route @db)))))
 
 ;; Experimental. Probably worth using for 403 and 404 errors displaying.
 (rf/reg-sub-raw
  :route-map/error
- (fn [db _] (reaction (:route-map/error @db))))
+ (fn [db _] #?(:cljs (reaction (:route-map/error @db)))))
 
 (defn contexts-diff [route old-contexts new-contexts params old-params]
   (let [n-idx new-contexts
@@ -187,6 +187,10 @@
 (rf/reg-fx
  :route-map/redirect
  (fn [href] #?(:cljs (aset (.-location js/window) "hash" href))))
+
+(rf/reg-fx
+ :route-map/redirect-outside
+ (fn [href] #?(:cljs (aset (.-location js/window) "href" href))))
 
 (defn to-query-params [params]
   (->> params

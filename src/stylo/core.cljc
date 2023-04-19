@@ -1,30 +1,31 @@
 (ns stylo.core
   (:require
-    [garden.core]
-    [clojure.string :as str]
-    [stylo.rule :refer [rule join-rules]]
-    [stylo.tailwind.preflight]
-    [stylo.tailwind.accessibility]
-    [stylo.tailwind.background]
-    [stylo.tailwind.border]
-    [stylo.tailwind.color]
-    [stylo.tailwind.effect]
-    [stylo.tailwind.flex]
-    [stylo.tailwind.grid]
-    [stylo.tailwind.interactivity]
-    [stylo.tailwind.layout]
-    [stylo.tailwind.sizing]
-    [stylo.tailwind.spacing]
-    [stylo.tailwind.svg]
-    [stylo.tailwind.table]
-    [stylo.tailwind.transform]
-    [stylo.tailwind.transition]
-    [stylo.tailwind.typography]
-    [stylo.tailwind.variant]
-    [stylo.tailwind.media])
+   #?(:clj [garden.core])
+   #?(:clj [clojure.string :as str])
+   #?(:clj [stylo.rule :refer [rule join-rules]])
+   #?(:clj [stylo.tailwind.preflight])
+   #?(:clj [stylo.tailwind.accessibility])
+   #?(:clj [stylo.tailwind.background])
+   #?(:clj [stylo.tailwind.border])
+   #?(:clj [stylo.tailwind.color])
+   #?(:clj [stylo.tailwind.effect])
+   #?(:clj [stylo.tailwind.flex])
+   #?(:clj [stylo.tailwind.grid])
+   #?(:clj [stylo.tailwind.interactivity])
+   #?(:clj [stylo.tailwind.layout])
+   #?(:clj [stylo.tailwind.sizing])
+   #?(:clj [stylo.tailwind.spacing])
+   #?(:clj [stylo.tailwind.svg])
+   #?(:clj [stylo.tailwind.table])
+   #?(:clj [stylo.tailwind.transform])
+   #?(:clj [stylo.tailwind.transition])
+   #?(:clj [stylo.tailwind.typography])
+   #?(:clj [stylo.tailwind.variant])
+   #?(:clj [stylo.tailwind.media]))
   #?(:cljs (:require-macros [stylo.core])))
 
-(defonce styles (atom {}))
+#?(:clj
+   (defonce styles (atom {})))
 
 (def color stylo.tailwind.color/colors)
 
@@ -39,26 +40,28 @@
                 (with-meta (join-rules rules) {:location [(:name (:ns &env)) (:line &env) (:column &env)]}))
          (keyword class)))))
 
-(defn c' [& rules]
-  (when rules
-    (let [class (str "c" (hash rules))]
-      (swap! styles assoc
-             (keyword (str "." class))
-             (join-rules rules))
-      (keyword class))))
+#?(:clj
+   (defn c' [& rules]
+     (when rules
+       (let [class (str "c" (hash rules))]
+         (swap! styles assoc
+                (keyword (str "." class))
+                (join-rules rules))
+         (keyword class)))))
 
 #?(:clj
    (defmacro c? [& rules]
      (garden.core/css
        (into [(keyword (str ".c" (hash rules)))] (join-rules rules)))))
 
-(defn compile-styles [styles]
-  (garden.core/css
-    (concat
-      stylo.tailwind.preflight/preflight
-      (->> styles
-           (sort-by (comp :location meta val))
-           (map (fn [[k v]] (into [k] v)))))))
+#?(:clj
+   (defn compile-styles [styles]
+     (garden.core/css
+      (concat
+       stylo.tailwind.preflight/preflight
+       (->> styles
+            (sort-by (comp :location meta val))
+            (map (fn [[k v]] (into [k] v))))))))
 
 #?(:clj
    (defmacro mount-style
