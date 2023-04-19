@@ -47,10 +47,10 @@
 (def component-class
   (c [:m 10]
      [:space-y 5]
-     [:w "360px"]
+     [:w "340px"]
      :mx-auto
      {:font-family "Inter"
-      :display "flex"
+      ;; :display "flex"
       :justify-content "center"}))
 
 (def code-copy-btn-class
