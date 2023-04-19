@@ -360,21 +360,22 @@
     (cond-> (assoc-in* db (value-path opts) val)
       val-sch (validate-value opts val-sch val))))
 
-(zf/defx set-value
-  [{db :db} {v :value :as opts}]
-  (let [db' (-> db
-                (assoc-in* (state-path opts [:dirty?]) true)
-                (*set-value opts v)
-                (cond-> (:auto-commit opts true)
-                  (set-state opts [:zf/pre-commit-value] (value db opts))))]
-    {:db db'
-     :dispatch-n [(when-let [event (:on-change (schema db' opts))]
-                    (into (if (vector? event) event [event]) [opts v]))
-                  (when-let [event (:on-change (get-in* db' (:zf/root opts)))]
-                    ;; TODO why we do (value 'db)
-                    (into (if (vector? event) event [event]) [(value db' (dissoc opts :zf/path)) opts v]))
-                  (when (:auto-commit opts true)
-                    [:zf/commit-value opts opts])]}))
+(rf/reg-event-fx
+ :zf.form/set-value
+ (fn [{db :db} [_ {v :value :as opts}]]
+   (let [db' (-> db
+                 (assoc-in* (state-path opts [:dirty?]) true)
+                 (*set-value opts v)
+                 (cond-> (:auto-commit opts true)
+                   (set-state opts [:zf/pre-commit-value] (value db opts))))]
+     {:db db'
+      :dispatch-n [(when-let [event (:on-change (schema db' opts))]
+                     (into (if (vector? event) event [event]) [opts v]))
+                   (when-let [event (:on-change (get-in* db' (:zf/root opts)))]
+                     ;; TODO why we do (value 'db)
+                     (into (if (vector? event) event [event]) [(value db' (dissoc opts :zf/path)) opts v]))
+                   (when (:auto-commit opts true)
+                     [:zf/commit-value opts opts])]})))
 
 (defn calculate-errors [errs schema val]
   (let [errs (->> schema
