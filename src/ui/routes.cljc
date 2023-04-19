@@ -8,7 +8,8 @@
    [suitkin.components.variables]
    [suitkin.components.input]
    [suitkin.components.button]
-   [suitkin.components.select]))
+   [suitkin.components.select]
+   [suitkin.components.colors]))
 
 (def routes-info
   [ {:path "input"
@@ -20,6 +21,9 @@
    {:path "select"
     :component :suitkin.components.select/init
     :display "Selects"}
+   {:path "colors"
+    :component :suitkin.components.colors/init
+    :display "Colors"}
    {:path "variables"
     :component :suitkin.components.variables/init
     :display "Variables"}])
