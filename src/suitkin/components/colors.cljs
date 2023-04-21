@@ -188,9 +188,26 @@
 
 (defn main
   []
-  [suitkin.core/header "Colors" "stylo/tailwind/color"]
+  [:div
+   [suitkin.core/header "Colors"]
 
-  [(defn show-colors []
+   [:div {:class (c :flex-1)} 
+
+    [:div {:class (c {:height "50px"
+                      :background "#EA4A35"})}]
+
+    [:div {:class (c {:height "50px"
+                      :background "#001538"})}]
+
+    [:div {:class (c {:height "50px"
+                      :background "#ECF0F6"})}]
+
+    [:div {:class (c {:height "50px"
+                      :background "#FDEDEB"})}]
+    ]]
+  )
+
+  #_[(defn show-colors []
      (doseq [[key color] suitkin.components.colors/colors]
        (let [div (.createElement js/document "div")]
          (aset div "style" (str "background-color: " color "; width: 50px; height: 50px; display: inline-block;"))
@@ -208,7 +225,7 @@
                                   (.removeChild js/document tooltip)))))
          (.appendChild js/document.body div))))]
 
-  )
+  
 
 
 (rf/reg-event-fx

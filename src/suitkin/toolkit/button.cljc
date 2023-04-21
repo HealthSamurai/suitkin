@@ -8,11 +8,12 @@
 
 (def base-class
   (c [:px 4] [:py 2]
-     :inline-flex
+     :flex
      :items-center
      :cursor-pointer
      [:leading-relaxed]
      :border
+     :mx-auto
      :rounded
      :whitespace-no-wrap
      [:bg :white]
@@ -204,12 +205,13 @@
   [attrs content]
   [(if (contains? attrs :href) :a :button)
    (merge {:class [(c :rounded
+                      :flex
+                      :justify-center
                       [:w-min "160px"]
                       [:py "13px"]
                       [:px "25px"]
                       :cursor-pointer
-                      :text-center
-                      
+                      :mx-auto
                       {:letter-spacing "0.4px"
                        :font-size "13px"
                        :font-weight "500"

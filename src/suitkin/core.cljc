@@ -31,8 +31,11 @@
 
 (def component-wrapper-class
   (c [:bg :white]
+     :flex-1
      {:border "1px solid #EEE"
-      :border-radius "12px"}
+      :border-radius "12px"
+      :justify-content "center"
+     } 
      [:m "0 0 50px 0"]))
 
 (def component-code-wrapper-class
@@ -48,10 +51,12 @@
   (c [:m 10]
      [:space-y 5]
      [:w "340px"]
+     :flex-1
+     :justify-center
      :mx-auto
      {:font-family "Inter"
-      ;; :display "flex"
-      :justify-content "center"}))
+      }))
+
 
 (def code-copy-btn-class
   (c [:p 1.5]
