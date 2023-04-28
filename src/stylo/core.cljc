@@ -27,9 +27,6 @@
 #?(:clj
    (defonce styles (atom {})))
 
-(def color stylo.tailwind.color/colors)
-
-
 #?(:clj
    (defmacro c [& rules]
      (when rules
