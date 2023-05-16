@@ -9,7 +9,7 @@
    [suitkin.components.input]
    [suitkin.components.button]
    [suitkin.components.select]
-   [suitkin.components.colors]))
+   #?(:cljs [suitkin.components.colors])))
 
 (def routes-info
   [ {:path "input"
