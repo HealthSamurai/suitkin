@@ -90,7 +90,7 @@
                                        (.writeText (.-clipboard js/navigator) component-code)
                                        (set-copy-clicked? true)
                                        (js/setTimeout #(set-copy-clicked? false) 1500))}
-                  (if copy-clicked? [:i.fa-solid.fa-copy] [:i.fa-light.fa-copy])]
+                  (if copy-clicked? [:i.fa-solid.fa-copy {:class (c {:opacity "0.5"})}] [:i.fa-solid.fa-copy])]
                  [:pre [:code.language-clojure {:ref code-el-ref
                                                 :class code-block-class}
                         component-code]]]]))))

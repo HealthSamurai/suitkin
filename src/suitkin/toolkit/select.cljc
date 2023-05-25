@@ -479,16 +479,20 @@
          (cond
            loading
            [:div {:class icon-class :disabled disabled}
-            [:i.far.fa-spinner-third.fa-spin {:class (c {:font-size "1rem"})}]]
+            #_[:i.far.fa-spinner-third.fa-spin {:class (c {:font-size "1rem"})}]
+            [:img {:class (c [:h-min "20px"] [:w-min "16px"] {:animation "rotation 1s infinite linear"})
+                   :src "assets/img/spinner.svg"}]]
 
            (and clearable (some? value) (not disabled))
            [:div {:class [icon-class (c :cursor-pointer {:background-color "#F8F8F9"})] :disabled disabled :on-mouse-down on-clear-mouse-down}
             #_[:img {:src "/assets/img/portal-cross.svg" :class (c {:max-width "none" :width "12px" :height "12px"})}]
-            [:i.fal.fa-times {:class (c {:font-size "1rem"} :font-extrabold)}]]
+            [:img {:class (c [:h-min "20px"] [:w-min "16px"]) :src "assets/img/cross-light.svg"}]
+            #_[:i.fal.fa-times {:class (c {:font-size "1rem"} :font-extrabold)}]]
 
            :else
            [:div {:class icon-class :disabled disabled}
-            [:i.far.fa-chevron-down {:class (c {:font-size "1rem"} :font-extrabold)}]])
+            [:img {:class (c [:h-min "20px"] [:w-min "18px"] [:mt "2px"]) :src "assets/img/chevron-light.svg"}]
+            #_[:i.far.fa-chevron-down {:class (c {:font-size "1rem"} :font-extrabold)}]])
 
          (when opened
            [:div {:class [dropdown-class (class-names (:dropdown-class props))]}
