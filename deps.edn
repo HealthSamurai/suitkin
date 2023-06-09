@@ -14,7 +14,9 @@
                  cider/piggieback     {:mvn/version "0.5.3"}
                  refactor-nrepl/refactor-nrepl {:mvn/version "3.6.0"}
                  lambdaisland/kaocha  {:mvn/version "1.80.1274"}
-                 healthsamurai/matcho {:mvn/version "0.3.10"}}}
+                 healthsamurai/matcho {:mvn/version "0.3.10"}
+                 com.health-samurai/retest {:git/url "https://github.com/HealthSamurai/retest.git"
+                                            :sha "41c87c307f445165e5185793793a60859dee5dae"}}}
 
   :shadow-cljs
   {:extra-paths ["resources"]
