@@ -205,8 +205,7 @@
    [:div {:class [description-class]} description]])
 
 (def total-input-class
-  (c :flex-inline))
-
+  (c :inline-flex))
 
 (defn icon-left
   [img-name]
