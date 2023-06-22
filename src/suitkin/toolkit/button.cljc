@@ -215,7 +215,7 @@
                       {:letter-spacing "0.4px"
                        :font-size "13px"
                        :font-weight "500"
-                       :font-family "Inter"})
+                       :font-family "sans-serif"})
                    (case (:variant attrs)
                      "gray" (c {:background-color "var(--suitkin-secondary-color)"}
                                {:color "var(--suitkin-body-color)"}

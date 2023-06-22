@@ -124,9 +124,7 @@
     }))
 
 (def text-right-class-modified
-  (c
-   {:extend text-right-class
-    :background "red"}))
+  (c {:background "red"}))
 
 
 (comment
@@ -207,7 +205,7 @@
    [:div {:class [description-class]} description]])
 
 (def total-input-class
-  (c [:flex-inline]))
+  (c :flex-inline))
 
 
 (defn icon-left
