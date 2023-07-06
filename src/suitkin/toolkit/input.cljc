@@ -275,7 +275,7 @@
         placeholder (when-let [path (:zf/placeholder opts)]
                       (zf/subscribe [:zf/value (assoc opts :zf/path path)]))
         on-key-down (:on-key-down props)
-        on-change   #(zf/dispatch
+        on-change   #(zf/dispatch-sync
                       [:zf.form/set-value
                        (assoc opts
                               :value #?(:cljs (.. % -target -value)
