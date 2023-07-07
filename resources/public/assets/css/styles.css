@@ -1,3 +1,20 @@
+:root {
+  --basic-gray-0: #F7F7F8;
+  --basic-gray-1: #EDEEF1;
+  --basic-gray-2: #DBDDE3;
+  --basic-gray-3: #BFC1C7;
+  --basic-gray-4: #83868E;
+  --basic-gray-5: #616471;
+  --basic-gray-6: #434959;
+  --basic-gray-7: #212636;
+  --basic-red-5: #DF351F;
+  --basic-red-6: #D4250E;
+  --basic-red-7: #C91B04;
+  --basic-red-8: #B61500;
+  --white: #FFFFFF;
+}
+
+
 @keyframes rotation {
   to {
     transform: rotate(360deg);
