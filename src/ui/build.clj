@@ -12,5 +12,5 @@
 (defn export
   {:shadow.build/stage :flush}
   [build-state]
-  (export/save-assets assets "_site")
+  (future (export/save-assets assets "_site"))
   build-state)

@@ -14,4 +14,4 @@ release:
 	clj -M:shadow-cljs release components
 
 gh-pages:
-	make init && cp -r resources/public _site && clojure -M:shadow-cljs:development release gh-pages
+	rm -rf _site && make init && cp -r resources/public _site && clojure -M:shadow-cljs:development:gh-pages release gh-pages

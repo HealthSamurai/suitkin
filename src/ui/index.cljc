@@ -7,10 +7,17 @@
    #?(:cljs [portfolio.data :as data])
    #?(:cljs [portfolio.ui :as ui])))
 
+(goog-define GH-PAGES false)
+
 #?(:cljs (defonce app
            (ui/start!
                {:config
                 {:css-paths
-                 ["/assets/css/stylo.css"
-                  "/assets/css/styles.css"
-                  "/assets/Inter/inter.css"]}})))
+                 (if GH-PAGES
+                   ["/suitkin/assets/css/stylo.css"
+                    "/suitkin/assets/css/styles.css"
+                    "/suitkin/assets/Inter/inter.css"]
+                   ["/assets/css/stylo.css"
+                    "/assets/css/styles.css"
+                    "/assets/Inter/inter.css"])
+                 :canvas-path "portfolio/canvas.html"}})))
