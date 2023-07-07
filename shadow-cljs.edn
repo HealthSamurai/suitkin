@@ -15,5 +15,6 @@
   {:target           :browser
    :output-dir       "_site/assets/js"
    :asset-path       "/assets/js"
+   :closure-defines  {"portfolio.core/enabled" false}
    :build-hooks      [(stylo.shadow/reload "_site/assets/css/stylo.css")]
    :release          {:modules {:main {:init-fn    ui.core/main}}}}}}
