@@ -1,11 +1,16 @@
 (ns ui.navigation
   (:require
+   #?(:cljs [portfolio.data :as data])
    [suitkin.toolkit.navigation]
    [portfolio.reagent-18 :refer-macros [defscene]]
    [stylo.core :refer [c]]))
 
+(data/register-collection! :navigation {:title "Navigation"})
+
 (defscene navigation
-  :params {:title "Navigation"}
+  :collection :navigation
+  :title "Menu items"
+  :params {:title "Items"}
   [params portfolio-opts]
   [:div {:style {:height "500px"}}
    [suitkin.toolkit.navigation/component

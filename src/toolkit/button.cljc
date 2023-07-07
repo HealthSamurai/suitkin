@@ -81,7 +81,7 @@
                          ["tertiary" nil]    tertiary-default
                          ["tertiary" "default"]    tertiary-default
                          ["tertiary" "dangerous"]  tertiary-dangerous
-                         nil)
+                         primary-default)
                        (case (:size properties)
                          "narrow" button-size-narrow
                          button-size-default)]}

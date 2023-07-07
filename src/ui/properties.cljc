@@ -17,7 +17,9 @@
                    :value (or  (get @state property) "default")
                    :on-change #(swap! state assoc property (let [v (.. % -target -value)]
                                                              (if (= v "default") nil v)))}
-          (for [i (cons "default" (:items options))] ^{:key (hash i)}
+          (for [i (if (:clear? options)
+                    (cons "default" (:items options))
+                    (:items options))] ^{:key (hash i)}
             [:option {:value i} i])]
          :boolean
          [:input {:type "checkbox" :value (get @state property)
