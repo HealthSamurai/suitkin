@@ -1,4 +1,4 @@
-{:dev-http {8080 "resources/public"}
+{:dev-http {8080 ["resources/public" "classpath:public"]}
 
  :builds
  {:components
