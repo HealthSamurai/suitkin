@@ -4,6 +4,9 @@
          org.flatland/ordered         {:mvn/version "1.15.10"}
          route-map/route-map          {:mvn/version "0.0.7-RC1"}
          garden/garden                {:mvn/version "1.3.10"}
+         optimus/optimus              {:mvn/version "2023-02-08"}
+         no.cjohansen/portfolio       {:git/url "https://github.com/cjohansen/portfolio"
+                                       :sha "7b0b6809bb5ac17a359a1ee06628713657a108f6"}
          #_#_com.health-samurai/macrocss {:mvn/version "0.3.13"}}
 
  :aliases
@@ -15,7 +18,6 @@
                  refactor-nrepl/refactor-nrepl {:mvn/version "3.6.0"}
                  lambdaisland/kaocha  {:mvn/version "1.80.1274"}
                  healthsamurai/matcho {:mvn/version "0.3.10"}
-                 no.cjohansen/portfolio {:mvn/version "2023.05.12"}
                  com.health-samurai/retest {:git/url "https://github.com/HealthSamurai/retest.git"
                                             :sha "41c87c307f445165e5185793793a60859dee5dae"}}}
 
