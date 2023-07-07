@@ -2,6 +2,7 @@
   (:require
    [ui.pages]
    #?(:cljs [ui.buttons])
+   #?(:cljs [ui.navigation])
    #?(:cljs [portfolio.reagent-18 :refer-macros [defscene]])
    #?(:cljs [portfolio.data :as data])
    #?(:cljs [portfolio.ui :as ui])))
