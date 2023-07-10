@@ -62,8 +62,7 @@
      (for [item (:items node)] ^{:key (:title item)}
        [:li {:class menu-item-class}
         (if (:items item)
-          [:details {:class (c :w-full) :ref (fn [el] (when el #?(:cljs (new js/Accordion el))))
-                     :open true}
+          [:details {:class (c :w-full) :ref (fn [el] (when el #?(:cljs (new js/Accordion el))))}
            [:summary {:class (c :flex :justify-between) :style {:padding-left (str padding "px")}}
             [menu-item item]
             [:img.chevron {:src (u/img-src "/assets/img/icons/chevron.svg")}]]
