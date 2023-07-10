@@ -154,3 +154,8 @@
        (set! (.-borderRadius placeholder-style) "4px")
        placeholder-element)
      :clj char-string))
+
+(goog-define GH-PAGES false)
+(defn img-src
+  [src]
+  (if GH-PAGES (str "/suitkin" src) src))

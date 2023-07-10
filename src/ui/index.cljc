@@ -12,7 +12,8 @@
 #?(:cljs (defonce app
            (ui/start!
                {:config
-                {:css-paths
+                {:viewport/defaults {:viewport/padding [0 0 0 0]}
+                 :css-paths
                  (if GH-PAGES
                    ["/suitkin/assets/css/stylo.css"
                     "/suitkin/assets/css/styles.css"

@@ -1,5 +1,6 @@
 (ns toolkit.button
   (:require
+   [suitkin.utils :as u]
    [stylo.core :refer [c]]))
 
 
@@ -64,7 +65,7 @@
 
 (defn icon
   [src]
-  [:img.button-icon {:widht "16px" :height "16px" :class (c [:mr "8px"]) :src src}])
+  [:img.button-icon {:widht "16px" :height "16px" :class (c [:mr "8px"]) :src (u/img-src src)}])
 
 (defn component
   [properties body]
