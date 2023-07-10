@@ -21,3 +21,5 @@ details > summary {
 summary::-webkit-details-marker {
   display: none;
 }
+
+body {margin: 0!important}

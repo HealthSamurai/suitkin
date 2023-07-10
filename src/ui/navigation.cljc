@@ -11,7 +11,7 @@
   :collection :navigation
   :title "Sidebar"
   []
-  [:div {:class (c {:height "844px"})}
+  [:div {:class (c {:height "100%"})}
    [suitkin.toolkit.navigation/sidebar
     {:logo  "/assets/img/icons/aidbox-logo-gray.svg"
      :brand "AIDBOX"

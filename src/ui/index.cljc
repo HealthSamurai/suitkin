@@ -12,7 +12,9 @@
 #?(:cljs (defonce app
            (ui/start!
                {:config
-                {:viewport/defaults {:viewport/padding [0 0 0 0]}
+                {:viewport/defaults {:viewport/padding [0 0 0 0]
+                                     :viewport/height  "800px"
+                                     }
                  :css-paths
                  (if GH-PAGES
                    ["/suitkin/assets/css/stylo.css"

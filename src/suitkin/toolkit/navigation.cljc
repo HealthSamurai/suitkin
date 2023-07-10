@@ -4,7 +4,7 @@
 
 (def sidebar-class
   (c [:w "240px"]
-     [:h "100%"]
+     [:h "100vh"]
      {:color "var(--basic-gray-7)"
       :font-size "14px"
       :display "flex"
