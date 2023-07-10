@@ -7,8 +7,8 @@
      [:h "100%"]
      {:color "var(--basic-gray-7)"
       :font-size "14px"
-      :display     "grid"
-      :align-content "space-between"
+      :display "flex"
+      :flex-flow "column"
       :letter-spacing "0.33px"
       :word-spacing   "-1px"
       :line-height "20px"
@@ -77,11 +77,10 @@
 (defn sidebar
   [properties]
   [:aside {:class sidebar-class}
-   [:div {:class (c {:overflow-y "hidden"})}
-    [:div {:class sidebar-aidbox-logo-class}
-     [:img {:src (u/img-src (:logo properties))}]
-     [:span (:brand properties)]]
-    [:div {:class (c :flex [:m "4px"] {:overflow-y "auto" :height "100%"})}
-     [menu-items (:menu properties)]]]
+   [:div {:class sidebar-aidbox-logo-class}
+    [:img {:src (u/img-src (:logo properties))}]
+    [:span (:brand properties)]]
+   [:div {:class (c :flex [:mx "4px"] [:mt "4px"] {:overflow-y "auto" :height "100%"})}
+    [menu-items (:menu properties)]]
    [:div {:class sidebar-submenu}
     [menu-items (:submenu properties)]]])
