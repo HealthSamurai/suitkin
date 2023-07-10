@@ -2,6 +2,7 @@ node_modules/
 .cpcache/
 js
 resources/public/assets/js
+!resources/public/assets/js/core.js
 resources/public/assets/css/stylo.css
 _site
 .shadow-cljs/
