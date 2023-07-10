@@ -23,6 +23,7 @@
   (c :font-extrabold
      :flex
      :items-center
+     :h-auto
      [:space-x "4px"]
      [:py "14px"]
      [:px "16px"]
@@ -36,9 +37,7 @@
        {:background-color "var(--basic-gray-1)"}]
       [:a {:padding "8px 16px 8px 16px" :border-radius "4px"}
        [:&:hover {:background-color "var(--basic-gray-0)"}]
-       [:&:active {:background-color "var(--basic-gray-1)"}]]
-      ["details[open] > summary"
-       {:background-color "var(--basic-gray-0)"}]]))
+       [:&:active {:background-color "var(--basic-gray-1)"}]]]))
 
 (def menu-item-class
   (c :flex
@@ -62,7 +61,8 @@
      (for [item (:items node)] ^{:key (:title item)}
        [:li {:class menu-item-class}
         (if (:items item)
-          [:details {:class (c :w-full) :ref (fn [el] (when el #?(:cljs (new js/Accordion el))))}
+          [:details {:class (c :w-full) :ref (fn [el] (when el #?(:cljs (new js/Accordion el))))
+                     :open true}
            [:summary {:class (c :flex :justify-between) :style {:padding-left (str padding "px")}}
             [menu-item item]
             [:img.chevron {:src (u/img-src "/assets/img/icons/chevron.svg")}]]
@@ -77,11 +77,11 @@
 (defn sidebar
   [properties]
   [:aside {:class sidebar-class}
-   [:div {:class (c {:overflow-y "auto"})}
+   [:div {:class (c {:display "contents"})}
     [:div {:class sidebar-aidbox-logo-class}
      [:img {:src (u/img-src (:logo properties))}]
      [:span (:brand properties)]]
-    [:div {:class (c [:m "4px"] )}
+    [:div {:class (c [:m "4px"] {:overflow-y "auto"})}
      [menu-items (:menu properties)]]]
    [:div {:class sidebar-submenu}
     [menu-items (:submenu properties)]]])

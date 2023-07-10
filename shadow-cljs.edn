@@ -17,7 +17,8 @@
   {:target           :browser
    :output-dir       "_site/assets/js"
    :asset-path       "/assets/js"
-   :closure-defines  {ui.index/GH-PAGES true}
+   :closure-defines  {ui.index/GH-PAGES true
+                      suitkin.utils/GH-PAGES true}
    :build-hooks      [(stylo.shadow/reload "_site/assets/css/stylo.css")
                       (ui.build/export)]
    :release          {:modules {:main {:init-fn    ui.core/main}}}}}}
