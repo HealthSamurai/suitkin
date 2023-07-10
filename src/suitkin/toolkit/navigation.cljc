@@ -30,7 +30,8 @@
      {:font-size "16px" :letter-spacing "0.48px" :color "#353B50"}))
 
 (def sidebar-items
-  (c [[:summary {:padding "8px 16px 8px 16px" :border-radius "4px"}
+  (c :w-full
+     [[:summary {:padding "8px 16px 8px 16px" :border-radius "4px"}
        [:&:hover {:background-color "var(--basic-gray-0)"}]
        [:&:active {:background-color "var(--basic-gray-1)"}]]
       ["a.item-active"
@@ -77,11 +78,11 @@
 (defn sidebar
   [properties]
   [:aside {:class sidebar-class}
-   [:div {:class (c {:display "contents"})}
+   [:div {:class (c {:overflow-y "hidden"})}
     [:div {:class sidebar-aidbox-logo-class}
      [:img {:src (u/img-src (:logo properties))}]
      [:span (:brand properties)]]
-    [:div {:class (c [:m "4px"] {:overflow-y "auto"})}
+    [:div {:class (c :flex [:m "4px"] {:overflow-y "auto" :height "100%"})}
      [menu-items (:menu properties)]]]
    [:div {:class sidebar-submenu}
     [menu-items (:submenu properties)]]])
