@@ -46,7 +46,7 @@
                 {:title "Resources"    :img "/assets/img/icons/database-resource.svg"}
                 {:title "Operations"    :img "/assets/img/icons/database-operations.svg"}]}
        {:title "Access control"
-        :img   "/assets/img/icons/lock.svg"
+        :img   "/assets/img/icons/keys.svg"
         :items [{:title "Auth Clients" :img "/assets/img/icons/shield-check.svg"}
                 {:title "Users"    :img "/assets/img/icons/users.svg"}
                 {:title "Access Control"    :img "/assets/img/icons/database.svg"}
@@ -62,6 +62,6 @@
                 {:title "Workflow Engine"    :img "/assets/img/icons/workflow.svg"}
                 {:title "Task"    :img "/assets/img/icons/repeat.svg"}]}
        {:title "Integrations"
-        :img   "/assets/img/icons/integration.svg"
+        :img   "/assets/img/icons/puzzle.svg"
         :items [{:title "Mappings" :img "/assets/img/icons/mappings.svg"}
                 {:title "HL7 v2"   :img "/assets/img/icons/integration.svg"}]}]}}]])
