@@ -17,6 +17,7 @@
 (def sidebar-submenu
   (c
    [:p "4px"]
+   [:mb "16px"]
    {:border-top "1px solid var(--basic-gray-2,red)"}))
 
 (def sidebar-aidbox-logo-class
@@ -31,12 +32,12 @@
 
 (def sidebar-items
   (c :w-full
-     [[:summary {:padding "8px 16px 8px 16px" :border-radius "4px"}
+     [[:summary {:padding "6px 16px 6px 16px" :border-radius "4px"}
        [:&:hover {:background-color "var(--basic-gray-0)"}]
        [:&:active {:background-color "var(--basic-gray-1)"}]]
       ["a.item-active"
        {:background-color "var(--basic-gray-1)"}]
-      [:a {:padding "8px 16px 8px 16px" :border-radius "4px"}
+      [:a {:padding "6px 16px 6px 16px" :border-radius "4px"}
        [:&:hover {:background-color "var(--basic-gray-0)"}]
        [:&:active {:background-color "var(--basic-gray-1)"}]]]))
 
