@@ -3,6 +3,7 @@
    #?(:cljs [portfolio.data :as data])
    [suitkin.toolkit.navigation]
    [portfolio.reagent-18 :refer-macros [defscene]]
+   [suitkin.utils :as u]
    [stylo.core :refer [c]]))
 
 (data/register-collection! :navigation {:title "Navigation"})
@@ -14,7 +15,7 @@
   [:div {:class (c {:height "100%"})}
    [suitkin.toolkit.navigation/sidebar
     {:logo  "/assets/img/icons/aidbox-logo-gray.svg"
-     :brand "AIDBOX"
+     :brand [:img {:src (u/img-src "/assets/img/icons/aidbox-name.svg")}]
      :submenu
      {:items
       [{:title "Documentation"
