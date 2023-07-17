@@ -135,8 +135,9 @@
 
 (defn button
   [props & children]
-  (into [:button (merge (dissoc props :class :type :loading :size :on-click :btn-type)
-                        {:class    [base-class
+  (into [:button (merge (dissoc props :class :type :loading :size :on-click :btn-type :remove-default-styling?)
+                        {:class    [(when-not (:remove-default-styling? props)
+                                      base-class)
                                     (case (:type props)
                                       "primary" primary-class
                                       "primary-2" primary-2-class
