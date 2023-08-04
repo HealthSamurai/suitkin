@@ -12,13 +12,11 @@ Follow the steps below to set up the HealthSamurai/Suitkin dependency in your pr
 
 1. Adding Dependency
 
-Include the following dependency in your project.clj or build.clj file:
+Include the following dependency:
 
 ``` edn
-health-samurai/suitkin {
-    :git/url "https://github.com/HealthSamurai/suitkin"
-    :sha "57eb93352f01bdbb6419e75d3c58cbae719ceb72"
-}
+health-samurai/suitkin {:git/url "https://github.com/HealthSamurai/suitkin"
+                        :sha "57eb93352f01bdbb6419e75d3c58cbae719ceb72"}
 ```
 2. Downloading Static File
 
