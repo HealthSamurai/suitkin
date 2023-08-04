@@ -35,17 +35,15 @@
   (c :w-full
      [[:details
        {:width "100%"}]
-      [:a
-       {:width "100%" :border-radius "4px"}
-       [:&:hover {:color "inherit"}]]
-      [:summary
-       [:&:hover {:background-color "var(--basic-gray-0)"}]
-       [:&:active {:background-color "var(--basic-gray-1)"}]]
       ["a.item-active"
        {:background-color "var(--basic-gray-1)"}]
-      [:a
-       [:&:hover {:background-color "var(--basic-gray-0)"}]
-       [:&:active {:background-color "var(--basic-gray-1)"}]]]))
+      ["a:hover"
+       {:color "inherit"}]
+      ["a:not(.item-active):hover"
+       {:background-color "var(--basic-gray-0)" :color "inherit"}]
+      #_["a:active"
+       {:background-color "var(--basic-gray-1)!important"}]
+      [:a {:width "100%" :border-radius "4px" :cursor "pointer"}]]))
 
 (def menu-item
   (c :flex :truncate :justify-between

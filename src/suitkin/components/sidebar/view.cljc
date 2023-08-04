@@ -12,8 +12,12 @@
 
 (defn menu-item
   [item & [padding]]
-  [:div {:class s/menu-item :style {:padding-left (str padding "px")}}
-   [:a (select-keys item [:on-click :href :title])
+  [:a {:class [s/menu-item (when (:active item) "item-active")]
+       :style {:padding-left (str padding "px")}
+       :on-click (:on-click item)
+       :target   (:target item)
+       :href (:href item)}
+   [:div
     [:img {:src (u/public-src (:img item)) :class (c [:pr "8px"])}]
     [:span (:title item)]]
    (when (:items item)
@@ -26,13 +30,10 @@
      (for [item (:items node)]
        [:li {:class s/content-item :key (:title item)}
         (if (:items item)
-          [:details {:ref details-animation :open (m/open-menu-item? item)}
+          [:details {:ref details-animation}
            [:summary [menu-item item padding]]
            [:div.content [menu-items item (+ padding 24)]]]
-          [:a {:class [(when (:active item) "item-active")]
-               :href  (:href item)
-               :target (when (:new-tab? item) "_blank")}
-           [menu-item item padding]])])]))
+          [menu-item item padding])])]))
 
 (defn component
   [properties]
