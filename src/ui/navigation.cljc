@@ -1,7 +1,7 @@
 (ns ui.navigation
   (:require
    #?(:cljs [portfolio.data :as data])
-   [suitkin.toolkit.navigation]
+   [suitkin.core]
    [portfolio.reagent-18 :refer-macros [defscene]]
    [suitkin.utils :as u]
    [stylo.core :refer [c]]))
@@ -13,56 +13,56 @@
   :title "Sidebar"
   []
   [:div {:class (c {:height "100%"})}
-   [suitkin.toolkit.navigation/sidebar
-    {:logo  "/assets/img/icons/aidbox-logo-gray.svg"
-     :brand [:img {:src (u/img-src "/assets/img/icons/aidbox-name.svg")}]
+   [suitkin.core/sidebar
+    {:logo  "/suitkin/img/icon/aidbox-logo-gray.svg"
+     :brand [:img {:src (u/public-src "/suitkin/img/icon/aidbox-name.svg")}]
      :submenu
      {:items
       [{:title "Documentation"
         :href  "https://docs.aidbox.app/"
-        :img   "/assets/img/icons/doc-book.svg"
+        :img   "/suitkin/img/icon/doc-book.svg"
         :new-tab? true}
        {:title "Support"
-        :img   "/assets/img/icons/headphones.svg"}
+        :img   "/suitkin/img/icon/headphones.svg"}
        {:title "Logout"
-        :img   "/assets/img/icons/logout.svg"}]}
+        :img   "/suitkin/img/icon/logout.svg"}]}
      :menu
      {:items
       [{:title "Notebooks"
-        :img   "/assets/img/icons/icon-notebook.svg"}
+        :img   "/suitkin/img/icon/notebook.svg"}
        {:title "FHIR Database"
-        :img   "/assets/img/icons/database.svg"
-        :items [{:title "REST Console" :img "/assets/img/icons/terminal.svg"}
-                {:title "DB Console"   :img "/assets/img/icons/database-code.svg"}
-                {:title "DB Tables"    :img "/assets/img/icons/table.svg"}
-                {:title "DB Queries"   :img "/assets/img/icons/database-query.svg"}
-                {:title "Attrs Stats"  :img "/assets/img/icons/stats.svg"}]}
+        :img   "/suitkin/img/icon/database.svg"
+        :items [{:title "REST Console" :img "/suitkin/img/icon/terminal.svg"}
+                {:title "DB Console"   :img "/suitkin/img/icon/database-code.svg"}
+                {:title "DB Tables"    :img "/suitkin/img/icon/table.svg"}
+                {:title "DB Queries"   :img "/suitkin/img/icon/database-query.svg"}
+                {:title "Attrs Stats"  :img "/suitkin/img/icon/stats.svg"}]}
        {:title "APIs"
-        :img   "/assets/img/icons/cloud-cog.svg"
-        :items [{:title "GraphQL" :img "/assets/img/icons/graphsql.svg"}
-                {:title "Apps"    :img "/assets/img/icons/apps.svg"}]}
+        :img   "/suitkin/img/icon/cloud-cog.svg"
+        :items [{:title "GraphQL" :img "/suitkin/img/icon/graphsql.svg"}
+                {:title "Apps"    :img "/suitkin/img/icon/apps.svg"}]}
        {:title "FHIR Profiling"
-        :img   "/assets/img/icons/profiling.svg"
-        :items [{:title "Profiles" :img "/assets/img/icons/profile.svg"}
-                {:title "Resources"    :img "/assets/img/icons/database-resource.svg"}
-                {:title "Operations"    :img "/assets/img/icons/database-operations.svg"}]}
+        :img   "/suitkin/img/icon/profiling.svg"
+        :items [{:title "Profiles" :img "/suitkin/img/icon/profile.svg"}
+                {:title "Resources"    :img "/suitkin/img/icon/database-resource.svg"}
+                {:title "Operations"    :img "/suitkin/img/icon/database-operations.svg"}]}
        {:title "Access control"
-        :img   "/assets/img/icons/keys.svg"
-        :items [{:title "Auth Clients" :img "/assets/img/icons/shield-check.svg"}
-                {:title "Users"    :img "/assets/img/icons/users.svg"}
-                {:title "Access Control"    :img "/assets/img/icons/database.svg"}
-                {:title "Auth Sandbox"    :img "/assets/img/icons/auth-sandbox.svg"}]}
+        :img   "/suitkin/img/icon/keys.svg"
+        :items [{:title "Auth Clients" :img "/suitkin/img/icon/shield-check.svg"}
+                {:title "Users"    :img "/suitkin/img/icon/users.svg"}
+                {:title "Access Control"    :img "/suitkin/img/icon/database.svg"}
+                {:title "Auth Sandbox"    :img "/suitkin/img/icon/auth-sandbox.svg"}]}
        {:title "Terminology"
-        :img   "/assets/img/icons/terminology.svg"
-        :items [{:title "Code Systems" :img "/assets/img/icons/tag.svg"}
-                {:title "Value Sets"    :img "/assets/img/icons/tag.svg"}
-                {:title "Concepts"    :img "/assets/img/icons/tag.svg"}]}
+        :img   "/suitkin/img/icon/terminology.svg"
+        :items [{:title "Code Systems" :img "/suitkin/img/icon/tag.svg"}
+                {:title "Value Sets"    :img "/suitkin/img/icon/tag.svg"}
+                {:title "Concepts"    :img "/suitkin/img/icon/tag.svg"}]}
        {:title "Modules"
-        :img   "/assets/img/icons/box.svg"
-        :items [{:title "Aidbox Forms" :img "/assets/img/icons/form.svg"}
-                {:title "Workflow Engine"    :img "/assets/img/icons/workflow.svg"}
-                {:title "Task"    :img "/assets/img/icons/repeat.svg"}]}
+        :img   "/suitkin/img/icon/box.svg"
+        :items [{:title "Aidbox Forms" :img "/suitkin/img/icon/form.svg"}
+                {:title "Workflow Engine"    :img "/suitkin/img/icon/workflow.svg"}
+                {:title "Task"    :img "/suitkin/img/icon/repeat.svg"}]}
        {:title "Integrations"
-        :img   "/assets/img/icons/puzzle.svg"
-        :items [{:title "Mappings" :img "/assets/img/icons/mappings.svg"}
-                {:title "HL7 v2"   :img "/assets/img/icons/integration.svg"}]}]}}]])
+        :img   "/suitkin/img/icon/puzzle.svg"
+        :items [{:title "Mappings" :img "/suitkin/img/icon/mappings.svg"}
+                {:title "HL7 v2"   :img "/suitkin/img/icon/integration.svg"}]}]}}]])

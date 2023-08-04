@@ -1,11 +1,9 @@
 (ns ui.index
-  (:require
-   [ui.pages]
-   #?(:cljs [ui.buttons])
-   #?(:cljs [ui.navigation])
-   #?(:cljs [portfolio.reagent-18 :refer-macros [defscene]])
-   #?(:cljs [portfolio.data :as data])
-   #?(:cljs [portfolio.ui :as ui])))
+#?(:cljs
+   (:require
+    [ui.buttons]
+    [ui.navigation]
+    [portfolio.ui :as ui])))
 
 (goog-define GH-PAGES false)
 
@@ -17,10 +15,10 @@
                                      }
                  :css-paths
                  (if GH-PAGES
-                   ["/suitkin/assets/css/stylo.css"
-                    "/suitkin/assets/css/styles.css"
-                    "/suitkin/assets/Inter/inter.css"]
-                   ["/assets/css/stylo.css"
-                    "/assets/css/styles.css"
-                    "/assets/Inter/inter.css"])
+                   ["/suitkin/suitkin/css/stylo.css"
+                    "/suitkin/suitkin/css/styles.css"
+                    "/suitkin/suitkin/font/Inter/inter.css"]
+                   ["/suitkin/css/stylo.css"
+                    "/suitkin/css/styles.css"
+                    "/suitkin/font/Inter/inter.css"])
                  :canvas-path "portfolio/canvas.html"}})))

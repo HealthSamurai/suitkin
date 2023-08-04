@@ -1,32 +1,91 @@
 (ns suitkin.components.button
-  (:require #?(:cljs reagent.dom.client)
-            [suitkin.core]
-            [suitkin.toolkit.button :as button]
-            [suitkin.zf.form :as f]
-            [stylo.tailwind.color]
-            [re-frame.core :as rf]
-            [ui.pages :as pages :refer [reg-page]]
-            [clojure.string :as str]
-            #?(:cljs [reagent.core])
-            [stylo.core :refer [c]]
-            [suitkin.toolkit.dropdown-button :as dropdown-button]))
+  (:require
+   [suitkin.utils :as u]
+   [stylo.core :refer [c]]))
 
-(defn main
-  []
-  [:<>
-   [suitkin.core/header "Buttons" "button/view"]
 
-   [suitkin.core/component
-    [button/view {} "My button"]
-    "[suitkin.toolkit.button/view {} \"My button\"]"]
-    (for [button-props [{:type "primary-2"} {:type "sdc"} {:type "sdc-small"} {:type "sdc-outline"} {:type "danger"} {:type "link"} {:type "text"}]]
-      ^{:key (:type button-props)}
-      [suitkin.core/component
-       [button/button button-props "My button"]
-       (str "[suitkin.toolkit.button/button " button-props " \"My button\"]")])])
+(def primary-default
+  (c {:background-color "var(--basic-gray-4)" :color "var(--white)"}
+     [:hover {:background-color "var(--basic-gray-5)"}]
+     [:active {:background-color "var(--basic-gray-6)"}]
+     [:disabled {:background-color "var(--basic-gray-2)" :color "var(--basic-gray-4)" :cursor "not-allowed"}
+      [[:.button-icon {:filter "invert(55%) sepia(9%) saturate(277%) hue-rotate(186deg) brightness(95%) contrast(86%)"}]]]
+     [[:.button-icon {:filter "invert(100%) sepia(17%) saturate(2%) hue-rotate(233deg) brightness(108%) contrast(101%)"}]]))
 
-(rf/reg-event-fx
- ::init
- (fn [{_db :db} [_ _params]]))
+(def secondary-default
+  (c {:background-color "var(--basic-gray-0)" :color "var(--basic-gray-7)" :border "1px solid var(--basic-gray-4)"}
+     [:hover {:background-color "var(--basic-gray-1)"}]
+     [:active {:background-color "var(--basic-gray-2)"}]
+     [:disabled {:background-color "rgba(219, 221, 227, 0.15)" :color "var(--basic-gray-3)" :border "1px solid var(--basic-gray-3)"}
+      [[:.button-icon {:filter "invert(96%) sepia(2%) saturate(881%) hue-rotate(190deg) brightness(84%) contrast(83%)"}]]]
+     [[:.button-icon {:filter "invert(12%) sepia(21%) saturate(974%) hue-rotate(187deg) brightness(93%) contrast(91%)"}]]))
 
-(pages/reg-page ::init main)
+(def tertiary-default
+  (c {:background-color "inherit" :color "var(--basic-gray-7)"}
+     [:hover {:background-color "var(--basic-gray-1)"}]
+     [:active {:background-color "var(--basic-gray-2)"}]
+     [:disabled {:background-color "inherit" :color "var(--basic-gray-3)"}
+      [[:.button-icon {:filter "invert(96%) sepia(2%) saturate(881%) hue-rotate(190deg) brightness(84%) contrast(83%)"}]]]
+     [[:.button-icon {:filter "invert(12%) sepia(21%) saturate(974%) hue-rotate(187deg) brightness(93%) contrast(91%)"}]]))
+
+(def primary-dangerous
+  (c {:background-color "var(--basic-red-5)" :color "var(--white)"}
+     [:hover {:background-color "var(--basic-red-7)"}]
+     [:active {:background-color "var(--basic-red-8)"}]
+     [:disabled {:background-color "var(--basic-gray-2)" :color "var(--basic-gray-4)"}
+      [[:.button-icon {:filter "invert(55%) sepia(9%) saturate(277%) hue-rotate(186deg) brightness(95%) contrast(86%)"}]]]
+     [[:.button-icon {:filter "invert(100%) sepia(17%) saturate(2%) hue-rotate(233deg) brightness(108%) contrast(101%)"}]]))
+
+(def secondary-dangerous
+  (c {:background-color "rgba(254, 231, 228, 0.15)" :color "var(--basic-red-6)" :border "1px solid var(--basic-red-5)"}
+     [:hover {:background-color "rgba(254, 231, 228, 0.40)"}]
+     [:active {:background-color "rgba(254, 231, 228, 0.80)"}]
+     [:disabled {:background-color "rgba(219, 221, 227, 0.15)" :color "var(--basic-gray-3)" :border "1px solid var(--basic-gray-3)"}
+      [[:.button-icon {:filter "invert(96%) sepia(2%) saturate(881%) hue-rotate(190deg) brightness(84%) contrast(83%)"}]]]
+     [[:.button-icon {:filter "invert(16%) sepia(78%) saturate(3482%) hue-rotate(357deg) brightness(106%) contrast(94%)"}]]))
+
+(def tertiary-dangerous
+  (c {:background-color "inherit" :color "var(--basic-red-6)"}
+     [:hover {:background-color "rgba(254, 231, 228, 0.40)"}]
+     [:active {:background-color "rgba(254, 231, 228, 0.80)"}]
+     [:disabled {:background-color "inherit" :color "var(--basic-gray-3)"}
+      [[:.button-icon {:filter "invert(96%) sepia(2%) saturate(881%) hue-rotate(190deg) brightness(84%) contrast(83%)"}]]]
+     [[:.button-icon {:filter "invert(16%) sepia(78%) saturate(3482%) hue-rotate(357deg) brightness(106%) contrast(94%)"}]]))
+
+(def button-size-narrow  (c [:px "16px"] [:py "6px"]))
+(def button-size-default (c [:px "20px"] [:py "10px"]))
+
+(def base-button-class
+  (c [:rounded 4]
+     :inline-flex
+     :items-center
+     [:disabled {:cursor "not-allowed"}]
+     [:focus :outline-none]
+     {:font-size "14px" :font-family "Inter" :font-weight "400" :line-height "20px"}))
+
+(defn icon
+  [src]
+  [:img.button-icon {:widht "16px" :height "16px" :class (c [:mr "8px"]) :src (u/public-src src)}])
+
+(defn component
+  [properties body]
+  [:button {:disabled (:disabled properties)
+            :on-click (:on-click properties)
+            :class    [base-button-class
+                       (case [(:use properties) (:theme properties)]
+                         ["primary" "default"]     primary-default
+                         ["primary" nil]     primary-default
+                         ["primary" "dangerous"]   primary-dangerous
+                         ["secondary" nil]   secondary-default
+                         ["secondary" "default"]   secondary-default
+                         ["secondary" "dangerous"] secondary-dangerous
+                         ["tertiary" nil]    tertiary-default
+                         ["tertiary" "default"]    tertiary-default
+                         ["tertiary" "dangerous"]  tertiary-dangerous
+                         primary-default)
+                       (case (:size properties)
+                         "narrow" button-size-narrow
+                         button-size-default)]}
+   (when (:icon properties)
+     [icon (:icon properties)])
+   body])

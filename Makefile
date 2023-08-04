@@ -1,5 +1,5 @@
 clear:
-	rm -rf .shadow-cljs node_modules package-lock.json resources/public/js
+	rm -rf .shadow-cljs .cpcache _site node_modules package-lock.json resources/public/js
 
 init:
 	npm install

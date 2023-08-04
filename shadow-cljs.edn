@@ -7,11 +7,11 @@
   {:target           :browser
    :output-dir       "resources/public/assets/js"
    :asset-path       "/assets/js"
-   :build-hooks      [(stylo.shadow/reload "resources/public/assets/css/stylo.css")]
+   :build-hooks      [(stylo.shadow/reload "resources/public/suitkin/css/stylo.css")]
    :compiler-options {:warnings {:fn-deprecated false}}
-   :dev              {:modules {:main {:init-fn    ui.core/main}}}
-   :devtools         {:preloads   [re-frisk.preload]}
-   :release          {:modules {:main {:init-fn    ui.core/main}}}}
+   :dev              {:modules {:main {:entries [ui.index]}}}
+   :release          {:modules {:main {:entries [ui.index]}}}
+   :devtools         {:preloads [re-frisk.preload]}}
 
   :gh-pages
   {:target           :browser
@@ -21,4 +21,4 @@
                       suitkin.utils/GH-PAGES true}
    :build-hooks      [(stylo.shadow/reload "_site/assets/css/stylo.css")
                       (ui.build/export)]
-   :release          {:modules {:main {:init-fn    ui.core/main}}}}}}
+   :release          {:modules {:main {:entries [ui.index]}}}}}}
