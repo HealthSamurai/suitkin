@@ -18,7 +18,7 @@
    :output-dir       "_site/assets/js"
    :asset-path       "/assets/js"
    :closure-defines  {ui.index/GH-PAGES true
-                      suitkin.utils/GH-PAGES true}
+                      suitkin.utils/CLASSPATH "/suitkin"}
    :build-hooks      [(stylo.shadow/reload "_site/assets/css/stylo.css")
                       (ui.build/export)]
    :release          {:modules {:main {:entries [ui.index]}}}}}}

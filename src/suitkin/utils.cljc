@@ -1,8 +1,8 @@
 (ns suitkin.utils)
 
-#?(:cljs (goog-define GH-PAGES false)
-   :clj  (def GH-PAGES false))
+#?(:cljs (goog-define CLASSPATH "")
+   :clj  (def CLASSPATH ""))
 
 (defn public-src
   [src]
-  (if GH-PAGES (str "/suitkin" src) src))
+  (str CLASSPATH src))
