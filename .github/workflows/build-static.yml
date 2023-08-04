@@ -14,4 +14,4 @@ jobs:
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
-          files: resource/public/suitkin
+          files: resources/public/suitkin
