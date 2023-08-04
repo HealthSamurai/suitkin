@@ -1,4 +1,4 @@
-(ns suitkin.zf
+(ns zf
   (:require
    [reagent.core :as r]
    [re-frame.core :as rf]
@@ -6,7 +6,7 @@
    [clojure.string :as str]
    [re-frame.interop]
    [re-frame.db])
-  #?(:cljs (:require-macros [suitkin.zf :refer [reg-event-fx reg-sub defv defs defx]])))
+  #?(:cljs (:require-macros [zf :refer [reg-event-fx reg-sub defv defs defx]])))
 
 (def inject-cofx rf/inject-cofx)
 
@@ -88,13 +88,13 @@
            event-k (if (keyword? fx-id)
                      fx-id
                      (keyword (str *ns*) (name fx-id)))
-           event-f (symbol (str (name event-s) "-fx"))
+           event-f (symbol (str (name event-s) "-fx"))]
 
            ;; [interceptors fn-def]
            ;; (if (keyword? (first fn-def))
            ;;   [[(list `rf/path (first fn-def))] (rest fn-def)]
            ;;   [nil fn-def])
-           ]
+           
        `(do (defn ~event-f ~@fn-def)
             (defn ~event-s [& params#] (dispatch (into [~event-k] params#)))
             (rf/reg-event-fx ~event-k (fn [fx# [_# & opts#]] (apply ~event-f fx# opts#)))))))

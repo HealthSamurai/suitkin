@@ -1,9 +1,10 @@
 (ns ui.index
-#?(:cljs
-   (:require
-    [ui.buttons]
-    [ui.navigation]
-    [portfolio.ui :as ui])))
+ #?(:cljs
+    (:require
+     [ui.buttons]
+     [ui.navigation]
+     [ui.search]
+     [portfolio.ui :as ui])))
 
 (goog-define GH-PAGES false)
 
@@ -11,8 +12,8 @@
            (ui/start!
                {:config
                 {:viewport/defaults {:viewport/padding [0 0 0 0]
-                                     :viewport/height  "800px"
-                                     }
+                                     :viewport/height  "800px"}
+                                     
                  :css-paths
                  (if GH-PAGES
                    ["/suitkin/suitkin/css/stylo.css"
