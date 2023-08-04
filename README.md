@@ -10,7 +10,7 @@ Suitkin provides a range of customizable and composable components, such as butt
 
 Follow the steps below to set up the HealthSamurai/Suitkin dependency in your project.
 
-### Step 1: Adding Dependency
+1. Adding Dependency
 
 Include the following dependency in your project.clj or build.clj file:
 
@@ -20,18 +20,13 @@ health-samurai/suitkin {
     :sha "57eb93352f01bdbb6419e75d3c58cbae719ceb72"
 }
 ```
-
-### Step 2: Downloading Static File
+2. Downloading Static File
 
 Visit the [releases page](https://github.com/HealthSamurai/suitkin/releases) of the HealthSamurai/Suitkin repository and download the [suitkin.zip static file](https://github.com/HealthSamurai/suitkin/releases/download/0.0.4/suitkin.zip) from there.
 
-### Step 3: Unzipping the Static Files
+3. Unzipping the Static Files
 
 After downloading the static file, extract the contents of the zip file into your project's public folder.
-
-## Development
-
-`make init && make dev`
 
 ## Usage
 
@@ -46,6 +41,11 @@ To use Suitkin components in your project, you need to require Suitkin component
   [:div
    [button/button {:label "Click me!"}]])
 ```
+
+## Development
+
+`make init && make dev`
+
 
 ## Mascote
 ![](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvBRJa8s3w--l6YRqgjWXmfJCn1zaM5Z74Gw&usqp=CAU)
