@@ -6,6 +6,7 @@
   (c [:w "240px"]
      [:h "100vh"]
      {:color "var(--basic-gray-7)"
+      :background-color "white"
       :font-size "14px"
       :display "flex"
       :flex-flow "column"

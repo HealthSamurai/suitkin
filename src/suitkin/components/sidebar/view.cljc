@@ -13,7 +13,7 @@
 (defn menu-item
   [item & [padding]]
   [:div {:class s/menu-item :style {:padding-left (str padding "px")}}
-   [:div
+   [:a (select-keys item [:on-click :href :title])
     [:img {:src (u/public-src (:img item)) :class (c [:pr "8px"])}]
     [:span (:title item)]]
    (when (:items item)
