@@ -20,7 +20,7 @@ health-samurai/suitkin {:git/url "https://github.com/HealthSamurai/suitkin"
 ```
 2. Downloading Static File
 
-Visit the [releases page](https://github.com/HealthSamurai/suitkin/releases) of the HealthSamurai/Suitkin repository and download the [suitkin.zip static file](https://github.com/HealthSamurai/suitkin/releases/download/0.0.4/suitkin.zip) from there.
+Visit the [releases page](https://github.com/HealthSamurai/suitkin/releases) and download [suitkin.zip](https://github.com/HealthSamurai/suitkin/releases/download/0.0.4/suitkin.zip).
 
 3. Unzipping the Static Files
 
