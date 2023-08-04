@@ -1,5 +1,4 @@
-(ns suitkin.utils
-  (:require [clojure.walk]))
+(ns suitkin.utils)
 
 #?(:cljs (goog-define GH-PAGES false)
    :clj  (def GH-PAGES false))
