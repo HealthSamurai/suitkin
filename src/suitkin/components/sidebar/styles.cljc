@@ -36,7 +36,8 @@
      [[:details
        {:width "100%"}]
       [:a
-       {:width "100%"}]
+       {:width "100%" :border-radius "4px"}
+       [:&:hover {:color "inherit"}]]
       [:summary
        [:&:hover {:background-color "var(--basic-gray-0)"}]
        [:&:active {:background-color "var(--basic-gray-1)"}]]
