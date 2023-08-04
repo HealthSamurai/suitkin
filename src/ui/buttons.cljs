@@ -11,7 +11,7 @@
 (defscene button-primary-default
   :title "Component"
   :collection :buttons
-  :params (ra/atom {:use "primary" :theme "default" :icon "/suitkin/image/icons/plus.svg" :title "Execute"})
+  :params (ra/atom {:use "primary" :theme "default" :icon "/suitkin/img/icon/plus.svg" :title "Execute"})
   [p portfolio-opts]
   [:div
    [suitkin.core/button @p (:title @p)]

@@ -14,7 +14,7 @@
   []
   [:div {:class (c {:height "100%"})}
    [suitkin.core/sidebar
-    {:logo  "/suitkin/img/icon/aidbox-logo-gray.svg"
+    {:logo  [:img {:src (u/public-src "/suitkin/img/icon/aidbox-logo-gray.svg")}]
      :brand [:img {:src (u/public-src "/suitkin/img/icon/aidbox-name.svg")}]
      :submenu
      {:items

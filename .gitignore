@@ -1,5 +1,4 @@
 node_modules/
-package-lock.json
 .shadow-cljs/
 .cpcache
 resources/public/assets/js
