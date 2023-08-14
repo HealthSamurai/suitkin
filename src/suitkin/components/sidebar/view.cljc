@@ -5,39 +5,42 @@
    [stylo.core :refer [c]]
    [suitkin.utils                     :as u]))
 
-(defn details-animation
-  [element]
+(defn details-constructor
+  [element item]
   (when element
-    #?(:cljs (new js/Accordion element))))
+    #?(:cljs
+       (do (new js/Accordion element)
+           (when (m/open-menu-item? item)
+             (set! (.-open element) true)
+             )))))
 
 (defn menu-item
-  [item & [padding]]
-  [:a {:class [s/menu-item (when (:active item) "item-active")]
-       :style {:padding-left (str padding "px")}
-       :on-click (:on-click item)
-       :target   (:target item)
-       :href (:href item)}
-   [:div
-    [:img {:src (u/public-src (:img item)) :class (c [:pr "8px"])}]
-    [:span (:title item)]]
+  [item]
+  [:a (merge {:class [s/menu-item (when (:active item) "item-active")]} (dissoc item :items :img))
+   [:img {:src (u/public-src (:img item))}]
+   [:span {:class (c :w-full :truncate {:color "var(--basic-gray-7)"})} (:title item)]
    (when (:items item)
-     [:img.chevron {:src (u/public-src "/suitkin/img/icon/chevron.svg")}])])
+     [:img.chevron {:src (u/public-src "/suitkin/img/icon/ic-chevron-right-16.svg")}])])
 
 (defn menu-items
-  [node & [padding]]
-  (let [padding (or padding 16)]
-    [:ul {:class s/content-items}
-     (for [item (:items node)]
-       [:li {:class s/content-item :key (:title item)}
-        (if (:items item)
-          [:details {:ref details-animation}
-           [:summary [menu-item item padding]]
-           [:div.content [menu-items item (+ padding 24)]]]
-          [menu-item item padding])])]))
+  [node]
+  [:ul {:class s/content-items}
+   (for [item (:items node)]
+     [:li {:class s/content-item :key (:title item)}
+      (cond
+        (:items item)
+        [:details {:ref #(details-constructor % item)}
+         [:summary [menu-item item]]
+         [:div.content [menu-items item]]]
+        (:divider item)
+        [:hr {:class s/divider}]
+        (:space item)
+        [:hr {:class (c [:pb "4px"])}]
+        :else [menu-item item])])])
 
 (defn component
   [properties]
   [:aside {:class s/root}
-   [:div {:class s/header} (:logo properties) (:brand properties)]
+   [:div {:class s/header}  (:logo properties)]
    [:div {:class s/content} [menu-items (:menu properties)]]
    [:div {:class s/submenu} [menu-items (:submenu properties)]]])

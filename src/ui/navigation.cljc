@@ -14,55 +14,64 @@
   []
   [:div {:class (c {:height "100%"})}
    [suitkin.core/sidebar
-    {:logo  [:img {:src (u/public-src "/suitkin/img/icon/aidbox-logo-gray.svg")}]
-     :brand [:img {:src (u/public-src "/suitkin/img/icon/aidbox-name.svg")}]
+    {:logo [:img {:height "24px" :src (u/public-src "/suitkin/img/aidbox-logo.svg")}]
      :submenu
      {:items
       [{:title "Documentation"
         :href  "https://docs.aidbox.app/"
-        :img   "/suitkin/img/icon/doc-book.svg"
-        :new-tab? true}
+        :img   "/suitkin/img/icon/ic-doc-book-16.svg"
+        :target "_blank"}
        {:title "Support"
-        :img   "/suitkin/img/icon/headphones.svg"}
+        :img   "/suitkin/img/icon/ic-headphones-16.svg"}
        {:title "Logout"
-        :img   "/suitkin/img/icon/logout.svg"}]}
+        :img   "/suitkin/img/icon/ic-logout-16.svg"}]}
      :menu
      {:items
       [{:title "Notebooks"
-        :img   "/suitkin/img/icon/notebook.svg"}
-       {:title "FHIR Database"
-        :img   "/suitkin/img/icon/database.svg"
-        :items [{:title "REST Console" :img "/suitkin/img/icon/terminal.svg"}
-                {:title "DB Console"   :img "/suitkin/img/icon/database-code.svg"}
-                {:title "DB Tables"    :img "/suitkin/img/icon/table.svg"}
-                {:title "DB Queries"   :img "/suitkin/img/icon/database-query.svg"}
-                {:title "Attrs Stats"  :img "/suitkin/img/icon/stats.svg"}]}
+        :img   "/suitkin/img/icon/ic-notebook-play-16.svg"}
+       {:title "Resources"
+        :img   "/suitkin/img/icon/ic-workflow-16.svg"}
        {:title "APIs"
-        :img   "/suitkin/img/icon/cloud-cog.svg"
-        :items [{:title "GraphQL" :img "/suitkin/img/icon/graphsql.svg"}
-                {:title "Apps"    :img "/suitkin/img/icon/apps.svg"}]}
-       {:title "FHIR Profiling"
-        :img   "/suitkin/img/icon/profiling.svg"
-        :items [{:title "Profiles" :img "/suitkin/img/icon/profile.svg"}
-                {:title "Resources"    :img "/suitkin/img/icon/database-resource.svg"}
-                {:title "Operations"    :img "/suitkin/img/icon/database-operations.svg"}]}
-       {:title "Access control"
-        :img   "/suitkin/img/icon/keys.svg"
-        :items [{:title "Auth Clients" :img "/suitkin/img/icon/shield-check.svg"}
-                {:title "Users"    :img "/suitkin/img/icon/users.svg"}
-                {:title "Access Control"    :img "/suitkin/img/icon/database.svg"}
-                {:title "Auth Sandbox"    :img "/suitkin/img/icon/auth-sandbox.svg"}]}
+        :img   "/suitkin/img/icon/ic-cloud-cog-16.svg"
+        :items [{:title "Operations"    :img "/suitkin/img/icon/ic-operations2-16.svg"}
+                {:title "REST Console" :img "/suitkin/img/icon/ic-terminal-16.svg" :active true}
+                {:title "GraphQL" :img "/suitkin/img/icon/ic-graphql-16.svg"}]}
+       {:title "Auth"
+        :img   "/suitkin/img/icon/ic-lock-16.svg"
+        :items [{:title "Clients" :img "/suitkin/img/icon/ic-bot-16.svg"}
+                {:title "Users" :img "/suitkin/img/icon/ic-users-16.svg"}
+                {:title "Access Control" :img "/suitkin/img/icon/ic-shield-shield-check-16.svg"}
+                {:title "Sandbox" :img "/suitkin/img/icon/ic-auth-sandbox-16.svg"}]}
+       {:title "Profiles"
+        :img   "/suitkin/img/icon/ic-worflow-2-16.svg"}
        {:title "Terminology"
-        :img   "/suitkin/img/icon/terminology.svg"
-        :items [{:title "Code Systems" :img "/suitkin/img/icon/tag.svg"}
-                {:title "Value Sets"    :img "/suitkin/img/icon/tag.svg"}
-                {:title "Concepts"    :img "/suitkin/img/icon/tag.svg"}]}
-       {:title "Modules"
-        :img   "/suitkin/img/icon/box.svg"
-        :items [{:title "Aidbox Forms" :img "/suitkin/img/icon/form.svg"}
-                {:title "Workflow Engine"    :img "/suitkin/img/icon/workflow.svg"}
-                {:title "Task"    :img "/suitkin/img/icon/repeat.svg"}]}
-       {:title "Integrations"
-        :img   "/suitkin/img/icon/puzzle.svg"
-        :items [{:title "Mappings" :img "/suitkin/img/icon/mappings.svg"}
-                {:title "HL7 v2"   :img "/suitkin/img/icon/integration.svg"}]}]}}]])
+        :img   "/suitkin/img/icon/ic-terminology-16.svg"
+        :items [{:title "Code Systems" :img "/suitkin/img/icon/ic-books-16.svg"}
+                {:title "Concepts" :img "/suitkin/img/icon/ic-whole-word-16.svg"}
+                {:title "Value Sets" :img "/suitkin/img/icon/ic-value-set-16.svg"}]}
+       {:title "Database"
+        :img   "/suitkin/img/icon/ic-database-16.svg"
+        :items [{:title "SQL" :img "/suitkin/img/icon/ic-database-code-16.svg"}
+                {:title "Tables" :img "/suitkin/img/icon/ic-table-16.svg"}
+                {:title "Running Queries" :img "/suitkin/img/icon/ic-database-query-16.svg"}
+                {:title "Attrs Stats" :img "/suitkin/img/icon/ic-stats-16.svg"}]}
+       {:title "Analytics"
+        :img   "/suitkin/img/icon/ic-analytics-16.svg"
+        :items [{:title "SQL" :img "/suitkin/img/icon/ic-database-code-16.svg"}]}
+       {:title "Workflow Engine"
+        :img   "/suitkin/img/icon/ic-workflow2-16.svg"
+        :items [{:title "Workflows" :img "/suitkin/img/icon/ic-workflow2-16.svg"}
+                {:title "Tasks" :img "/suitkin/img/icon/ic-checkbox-16.svg"}]}
+       {:divider true}
+       {:title "Aidbox Forms"
+        :img   "/suitkin/img/icon/ic-form-16.svg"}
+       {:title "Apps"
+        :img   "/suitkin/img/icon/ic-apps-16.svg"}
+       {:title "HL7 v2"
+        :img   "/suitkin/img/icon/ic-integration-16.svg"
+        :items [{:title "Messages"
+                 :img "/suitkin/img/icon/ic-database-messages-16.svg"}
+                {:title "Mappings"
+                 :img "/suitkin/img/icon/ic-mappings-16.svg"}]}
+       {:space true}
+       ]}}]])
