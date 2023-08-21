@@ -9,10 +9,10 @@
   [element item]
   (when element
     #?(:cljs
-       (do (new js/Accordion element)
+       (do (when (:items item)
+             (new js/Accordion element))
            (when (:open item)
-             (set! (.-open element) true)
-             )))))
+             (set! (.-open element) true))))))
 
 (defn menu-item
   [item]

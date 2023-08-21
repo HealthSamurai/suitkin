@@ -6,6 +6,7 @@ class Accordion {
     this.summary = el.querySelector('summary');
     // Store the <div class="content"> element
     this.content = el.querySelector('.content');
+    this.childCount = el.querySelectorAll('.content > ul > li').length;
 
     // Store the animation object (so we can cancel it if needed)
     this.animation = null;
@@ -14,7 +15,8 @@ class Accordion {
     // Store if the element is expanding
     this.isExpanding = false;
     // Detect user clicks on the summary element
-    this.summary.addEventListener('click', (e) => this.onClick(e));
+    this.summary.onclick = (e) => this.onClick(e);
+    //this.summary.addEventListener('click', (e) => this.onClick(e));
   }
 
   onClick(e) {
@@ -29,6 +31,10 @@ class Accordion {
     } else if (this.isExpanding || this.el.open) {
       this.shrink();
     }
+  }
+
+  duration(mul) {
+    return this.childCount * mul
   }
 
   shrink() {
@@ -51,7 +57,7 @@ class Accordion {
       // Set the keyframes from the startHeight to endHeight
       height: [startHeight, endHeight]
     }, {
-      duration: 240,
+      duration: this.duration(50),
       easing: 'linear'
     });
 
@@ -89,7 +95,7 @@ class Accordion {
       // Set the keyframes from the startHeight to endHeight
       height: [startHeight, endHeight]
     }, {
-      duration: 240,
+      duration: this.duration(50),
       easing: 'linear'
     });
     // When the animation is complete, call onAnimationFinish()
