@@ -9,8 +9,8 @@
   [element item]
   (when element
     #?(:cljs
-       (do (when (:items item)
-             (new js/Accordion element))
+       (do #_(when (:items item)
+               (new js/Accordion element))
            (when (:open item)
              (set! (.-open element) true))))))
 
