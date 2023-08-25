@@ -3,6 +3,7 @@
     (:require
      [ui.buttons]
      [ui.navigation]
+     [ui.segment-control]
      [ui.search]
      [portfolio.ui :as ui])))
 
