@@ -4,6 +4,7 @@
      [ui.buttons]
      [ui.navigation]
      [ui.segment-control]
+     [ui.input]
      [ui.search]
      [portfolio.ui :as ui])))
 
