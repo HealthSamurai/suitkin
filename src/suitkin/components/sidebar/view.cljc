@@ -17,7 +17,8 @@
 (defn menu-item
   [item]
   [:a (merge {:class [s/menu-item (when (:active item) "item-active")]} (dissoc item :items :img :open))
-   [:img {:src (u/public-src (:img item)) :width "16px"}]
+   (when (:img item)
+     [:img {:src (u/public-src (:img item)) :width "16px"}])
    [:span {:class (c :w-full :truncate {:color "var(--basic-gray-7)"})} (:title item)]
    (when (:items item)
      [:img.chevron {:src (u/public-src "/suitkin/img/icon/ic-chevron-right-16.svg")}])])
