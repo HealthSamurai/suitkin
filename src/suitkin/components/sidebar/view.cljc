@@ -40,7 +40,8 @@
 
 (defn component
   [properties]
-  [:aside {:class s/root}
+  [:aside {:class [s/root (:class properties)]}
    [:div {:class s/header}  (:logo properties)]
    [:div {:class s/content} [menu-items (:menu properties)]]
-   [:div {:class s/submenu} [menu-items (:submenu properties)]]])
+   (when (:submenu properties)
+     [:div {:class s/submenu} [menu-items (:submenu properties)]])])
