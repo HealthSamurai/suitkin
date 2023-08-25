@@ -38,13 +38,14 @@
         :top "50%"
         :transform "translate(0, -50%)"
         :left "11px"}]
-      ["input:has(+ .right)::-webkit-search-cancel-button"
-       {:margin-right "37px"}]
+      ["input:has(+ .right):focus::-webkit-search-cancel-button"
+       {:margin-right "26px"
+        :padding-right "10px"
+        :border-right "1px solid var(--basic-gray-3)"
+        }]
       [".right"
        {:position "absolute"
         :display  "flex"
-        :height   "50%"
-        :border-left "1px solid var(--basic-gray-3)"
         :align-items "center"
         :right    "11px"
         :padding-left "10px"
