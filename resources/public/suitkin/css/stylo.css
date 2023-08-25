@@ -340,6 +340,10 @@ img, video {
   color: inherit;
 }
 
+.suitkin_components_sidebar_styles-34-3 li li li a {
+  padding-left: 64px;
+}
+
 .suitkin_components_sidebar_styles-34-3 li a {
   padding-left: 16px;
 }
@@ -572,6 +576,21 @@ img, video {
   padding-bottom: 6px;
 }
 
+.suitkin_components_sidebar_styles-56-3 {
+  display: flex;
+  user-select: none;
+  cursor: pointer;
+}
+
+.suitkin_components_sidebar_styles-56-3 .chevron {
+  transition: .15s transform ease;
+  filter: invert(44%) sepia(8%) saturate(656%) hue-rotate(191deg) brightness(85%) contrast(88%);
+}
+
+.suitkin_components_sidebar_styles-56-3 details[open] .chevron {
+  transform: rotate(90deg);
+}
+
 .suitkin_components_sidebar_styles-63-3 {
   display: flex;
   margin-left: 4px;
@@ -652,10 +671,33 @@ img, video {
   transform: rotate(90deg);
 }
 
+.suitkin_components_sidebar_styles-46-3 {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  padding: 6px 16px 6px 0px;
+  border-radius: 4px;
+}
+
+.suitkin_components_sidebar_styles-46-3>*+* {
+  --space-x-reverse: 0;
+  margin-right: calc(8px * var(--space-x-reverse));
+  margin-left: calc(8px * calc(1 - var(--space-x-reverse)));
+}
+
 .ui_properties-16-27 {
   border-width: 1px;
   padding: 0.25rem;
   border-radius: 0.25rem;
+}
+
+.suitkin_components_sidebar_styles-53-3 {
+  margin-top: 8px;
+  margin-bottom: 8px;
+  margin-left: 6px;
+  margin-right: 6px;
+  color: var(--basic-gray-2);
+  width: 100%;
 }
 
 .c1809800290 {
@@ -920,6 +962,15 @@ img, video {
 
 .c717984533 .button-icon {
   filter: invert(100%) sepia(17%) saturate(2%) hue-rotate(233deg) brightness(108%) contrast(101%);
+}
+
+.suitkin_components_sidebar_styles-64-3 {
+  display: flex;
+  margin-left: 4px;
+  margin-right: 3px;
+  margin-top: 4px;
+  overflow-y: auto;
+  height: 100%;
 }
 
 .c1901300983 {

@@ -39,6 +39,7 @@
       ["a:not(.item-active):hover" {:background-color "var(--basic-gray-0)" :color "inherit"}]
       ["li a" {:padding-left "16px"}]
       ["li li a" {:padding-left "40px"}]
+      ["li li li a" {:padding-left "64px"}]
       [:a {:width "100%" :border-radius "4px" :cursor "pointer"}]]))
 
 (def menu-item
