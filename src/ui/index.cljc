@@ -5,7 +5,7 @@
      [ui.navigation]
      [ui.segment-control]
      [ui.input]
-     [ui.search]
+     [ui.dropdown]
      [portfolio.ui :as ui])))
 
 (goog-define GH-PAGES false)
