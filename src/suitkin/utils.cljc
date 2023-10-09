@@ -3,7 +3,7 @@
 #?(:cljs (goog-define CLASSPATH "")
    :clj  (def CLASSPATH ""))
 
-(defonce public-prefix nil)
+(defonce ^:export public-prefix nil)
 
 (defn public-src
   [src]
