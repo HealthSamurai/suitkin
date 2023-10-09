@@ -3,8 +3,7 @@
 #?(:cljs (goog-define CLASSPATH "")
    :clj  (def CLASSPATH ""))
 
-(defonce ^:export public-prefix nil)
-
 (defn public-src
   [src]
-  (str public-prefix CLASSPATH src))
+  (str #?(:cljs js/suitkin_public_prefix
+          :clj  "") CLASSPATH src))
