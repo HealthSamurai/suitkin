@@ -9,10 +9,14 @@
   [element item]
   (when element
     #?(:cljs
-       (do #_(when (:items item)
-               (new js/Accordion element))
-           (when (:open item)
-             (set! (.-open element) true))))))
+       (do
+         (set! (.-ontoggle ^js/Object element)
+               (fn [^js/Object event]
+                 (if (= "open" (.-newState event))
+                   (m/on-open-menu item)
+                   (m/on-close-menu item))))
+         (when (or (:open item) (m/open-before? item))
+           (set! (.-open element) true))))))
 
 (defn menu-item
   [item]
@@ -35,7 +39,7 @@
         (:items item)
         [:details {:ref #(details-constructor % item)}
          [:summary
-          (when (:open item)
+          (when (or (:open item) (m/open-before? item))
             [:data {:hidden true :data-key :open} (:open item)])
           [menu-item item]]
          [:div.content [menu-items item]]]
