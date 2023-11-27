@@ -63,6 +63,6 @@
 (def content
   (c :flex
      [:ml "4px"]
-     [:mr "3px"]
+     [:mr "4px"]
      [:mt "4px"]
      {:overflow-y "auto" :height "100%"}))

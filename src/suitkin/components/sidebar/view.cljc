@@ -23,7 +23,7 @@
   [:a (merge {:class [s/menu-item (when (:active item) "item-active")]}
              (dissoc item :items :img :open))
    (when (:img item)
-     [:img {:src (u/public-src (:img item)) :width "16px"}])
+     [:img {:src (u/public-src (:img item)) :width "18"}])
    (when (:active item)
      [:data {:hidden true :data-key :active} (:active item)])
    [:span {:data-key :label :class (c :w-full :truncate {:color "var(--basic-gray-7)"})} (:title item)]
