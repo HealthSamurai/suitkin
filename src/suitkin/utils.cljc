@@ -1,5 +1,7 @@
 (ns suitkin.utils
-  #?(:cljs (:require [reagent.core])))
+  #?(:cljs (:require [reagent.core])
+     :clj  (:import  [java.net.URLDecoder]
+                     [java.nio.charset.StandardCharsets])))
 
 #?(:cljs (goog-define CLASSPATH "")
    :clj  (def CLASSPATH ""))
@@ -37,4 +39,9 @@
 (defn target-value
   [event]
   #?(:cljs (.. event -target -value)
-     :cljs (-> event :target :value)))
+     :clj  (-> event :target :value)))
+
+(defn encode-uri
+  [value]
+  #?(:cljs (js/encodeURI value)
+     :clj  (java.net.URLDecoder/encode value java.nio.charset.StandardCharsets/UTF_8)))
