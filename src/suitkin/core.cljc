@@ -4,10 +4,13 @@
    [suitkin.components.input.view]
    [suitkin.components.sidebar.view]
    [suitkin.components.dropdown.view]
-   [suitkin.components.segment-control.view]))
+   [suitkin.components.segment-control.view]
+   [suitkin.components.typography]))
 
-(def button          #'suitkin.components.button/component)
-(def sidebar         #'suitkin.components.sidebar.view/component)
-(def input           #'suitkin.components.input.view/component)
+(def button #'suitkin.components.button/component)
+(def sidebar #'suitkin.components.sidebar.view/component)
+(def input #'suitkin.components.input.view/component)
 (def segment-control #'suitkin.components.segment-control.view/component)
-(def dropdown        #'suitkin.components.dropdown.view/component)
+(def dropdown #'suitkin.components.dropdown.view/component)
+(def h1 #'suitkin.components.typography/h1)
+(def label #'suitkin.components.typography/label)

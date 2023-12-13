@@ -21,3 +21,9 @@
       :border-radius "4px"}
      [:hover {:background "var(--basic-gray-0)"
               :cursor     "pointer"}]))
+
+(def menu-item-empty
+  (c {:padding "6px 15px"
+      :border-radius "4px"
+      :color "var(--basic-gray-4)"
+      :cursor "not-allowed"}))

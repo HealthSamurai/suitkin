@@ -9,7 +9,7 @@
       :font-weight   "500"
       :min-width     "238px"
       :display       "block"
-      :border-radius "3px"}
+      :border-radius "4px"}
      [:placeholder
       {:color "var(--basic-gray-3)"}]
      [[:&:focus

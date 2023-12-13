@@ -1,4 +1,5 @@
-(ns suitkin.utils)
+(ns suitkin.utils
+  #?(:cljs (:require [reagent.core])))
 
 #?(:cljs (goog-define CLASSPATH "")
    :clj  (def CLASSPATH ""))
@@ -27,3 +28,13 @@
   [keyname]
   #?(:cljs (js/localStorage.removeItem keyname)
      :clj  nil))
+
+(defn ratom
+  [value]
+  #?(:cljs (reagent.core/atom value)
+     :clj  (atom value)))
+
+(defn target-value
+  [event]
+  #?(:cljs (.. event -target -value)
+     :cljs (-> event :target :value)))

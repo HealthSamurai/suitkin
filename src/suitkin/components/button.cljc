@@ -85,7 +85,8 @@
                          primary-default)
                        (case (:size properties)
                          "narrow" button-size-narrow
-                         button-size-default)]
+                         button-size-default)
+                       (:class properties)]
             :title (:title properties)}
    (when (:icon properties)
      [icon (:icon properties)])

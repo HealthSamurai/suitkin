@@ -20,6 +20,8 @@
     properties
     [:input
      (merge
-       {:type  "search"
-        :class [s/root (if (= "narrow" (:s/size properties)) s/narrow s/default)]}
+       {:type      (:type properties)
+        :on-click  (:on-click properties)
+        :on-change (:on-change properties)
+        :class     [s/root (if (= "narrow" (:s/size properties)) s/narrow s/default) (:class properties)]}
        (dissoc properties :s/size :s/right :s/left))]))
