@@ -1,7 +1,7 @@
 (ns suitkin.utils
   #?(:cljs (:require [reagent.core])
-     :clj  (:import  [java.net.URLDecoder]
-                     [java.nio.charset.StandardCharsets])))
+     :clj  (:import java.net.URLEncoder
+                    java.nio.charset.StandardCharsets)))
 
 #?(:cljs (goog-define CLASSPATH "")
    :clj  (def CLASSPATH ""))
@@ -44,4 +44,4 @@
 (defn encode-uri
   [value]
   #?(:cljs (js/encodeURI value)
-     :clj  (java.net.URLDecoder/encode value java.nio.charset.StandardCharsets/UTF_8)))
+     :clj  (java.net.URLEncoder/encode value java.nio.charset.StandardCharsets/UTF_8)))
