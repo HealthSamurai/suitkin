@@ -5,11 +5,13 @@
    [suitkin.components.sidebar.view]
    [suitkin.components.dropdown.view]
    [suitkin.components.segment-control.view]
+   [suitkin.components.monaco.view]
    [suitkin.components.typography]))
 
 (def button #'suitkin.components.button/component)
 (def sidebar #'suitkin.components.sidebar.view/component)
 (def input #'suitkin.components.input.view/component)
+(def monaco #'suitkin.components.monaco.view/component)
 (def segment-control #'suitkin.components.segment-control.view/component)
 (def dropdown #'suitkin.components.dropdown.view/component)
 (def h1 #'suitkin.components.typography/h1)
