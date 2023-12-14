@@ -9,29 +9,44 @@
   [properties]
   (let [open? (u/ratom (:open? properties false))]
     (fn [properties]
-      [:div {:class s/root}
+      [:div {:class [s/root (:class properties)]}
        [input/component
-        (-> (:search properties)
-            (assoc :type "search")
-            (assoc :s/right [:img {:src (u/public-src "/suitkin/img/icon/ic-chevron-down-16.svg")}])
-            (update :on-click
-                    (fn [callback]
-                      (fn [event]
-                        (reset! open? true)
-                        (when callback (callback event)))))
-            (update :on-blur
-                    (fn [callback]
-                      (fn [event]
-                        (reset! open? false)
-                        (when callback (callback event))))))]
+        (merge  
+         (when (and (:value properties)
+                    (not (get-in properties [:search :on-change])))
+           {:readOnly true
+            :style {:cursor "pointer"}
+            :value (get-in properties [:value :title])})
+         (-> (:search properties)
+             (assoc :type "search")
+             (assoc :s/right [:img {:src (u/public-src "/suitkin/img/icon/ic-chevron-down-16.svg")}])
+             (update :on-click
+                     (fn [callback]
+                       (fn [event]
+                         (reset! open? true)
+                         (when callback (callback event)))))
+             (update :on-blur
+                     (fn [callback]
+                       (fn [event]
+                         (reset! open? false)
+                         (when callback (callback event)))))))]
        (when @open?
-         [:div {:class s/menu-items}
-          (if-let [items (seq (get-in properties [:menu :items]))]
-            (for [item items] ^{:key (:value item)}
-              [:div {:class s/menu-item
-                     :on-mouse-down (fn [event]
-                                      (when-let [callback (get-in properties [:menu :on-select])]
-                                        (callback event item)))}
-               (:title item)])
-            [:div {:class s/menu-item-empty}
-             (get-in properties [:menu :not-found] "No items found")])])])))
+         (let [menu (:menu properties)]
+           [:div {:class s/menu-items}
+            (if-let [items (seq (:items menu))]
+              (for [item items] ^{:key (:value item)}
+                [:div {:class [s/menu-item (when (or (and (sequential? (:value properties))
+                                                          (some #(= (:value %) (:value item))
+                                                                (:value properties)))
+                                                     (and (map? (:value properties))
+                                                          (= (:value item) (get-in properties [:value :value]))))
+                                             s/menu-item-selected)]
+                       :on-mouse-down (fn [event]
+                                        #?(:cljs (.preventDefault event))
+                                        (when-let [callback (:on-select menu)]
+                                          (callback event item))
+                                        (when-not (:multiselect? menu)
+                                          (reset! open? false)))}
+                 (:title item)])
+              [:div {:class s/menu-item-empty}
+               (get-in properties [:menu :not-found] "No items found")])]))])))
