@@ -1,6 +1,16 @@
 (ns suitkin.components.monaco.view
   #?(:cljs (:require ["@monaco-editor/react" :default Editor])))
 
+(defn set-json-defaults
+  [monaco-instance urls]
+  #?(:cljs
+     (.setDiagnosticsOptions (.-jsonDefaults (.-json (.-languages ^js/Object monaco-instance)))
+                             (clj->js {:validate true
+                                       :enableSchemaRequest true
+                                       :schemas (mapv (fn [url] {:uri url :fileMatch ["*"]})
+                                                      urls)}))
+     :clj nil))
+
 (defn component
   [properties]
   (fn [properties]
@@ -26,7 +36,8 @@
                   :lineNumbersMinChars  0}
        :beforeMount
        (fn [insance]
-         ;;(reset! monaco-instance insance)
+         (when (:schemas properties)
+           (set-json-defaults insance (:schemas properties)))
          #?(:cljs 
             (.defineTheme (.-editor ^js/Object insance)
                           "suitkin-theme"
