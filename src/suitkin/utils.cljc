@@ -46,7 +46,21 @@
   #?(:cljs (js/encodeURI value)
      :clj  (java.net.URLEncoder/encode value java.nio.charset.StandardCharsets/UTF_8)))
 
+(defn decode-uri
+  [value]
+  #?(:cljs (js/decodeURI value)
+     :clj  nil))
+
 (defn edn->json-pretty
   [edn]
   #?(:cljs (js/JSON.stringify (clj->js edn) nil 2)
      :clj  nil))
+
+(defn json-string->edn
+  [json-string]
+  #?(:cljs (try (js->clj (js/JSON.parse json-string)
+                         :keywordize-keys true)
+                (catch js/Error e
+                  (prn "error" ::json-string->edn)
+                  {}))
+     :clj nil))

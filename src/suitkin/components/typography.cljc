@@ -36,12 +36,12 @@
 (defn kv-list
   [properties entries]
   [:div
-   (for [[title value] entries] ^{:key title}
-     (when (not-empty value)
-       [:div {:class (c [:mb 0.5] :flex :flex-wrap [:col-gap 1.5])}
-        [:span {:class [(c {:color "var(--basic-gray-6, #616471)" :font-weight "500"})
-                        (:title-class properties)] } (str title ": ")]
-        value]))])
+   (for [[title value] entries
+         :when (not-empty value)] ^{:key title}
+     [:div {:class (c [:mb 0.5] :flex :flex-wrap [:col-gap 1.5])}
+      [:span {:class [(c {:color "var(--basic-gray-6, #616471)" :font-weight "500"})
+                      (:title-class properties)] } (str title ": ")]
+      [:div value]])])
 
 (defn expandeable-text
   [properties & content]
