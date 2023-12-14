@@ -7,7 +7,6 @@
       :font-family   "Inter"
       :line-height   "20px"
       :font-weight   "500"
-      :min-width     "238px"
       :width         "100%"
       :display       "block"
       :border-radius "4px"}
@@ -30,7 +29,7 @@
 
 (def icon-wrapper
   (c {:position "relative"
-      :width    "max-content"}
+      :width    "100%"}
      [[".left + input"
        {:padding-left "35px"}]
       [".left"
