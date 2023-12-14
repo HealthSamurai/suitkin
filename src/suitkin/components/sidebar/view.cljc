@@ -20,13 +20,17 @@
 
 (defn menu-item
   [item]
-  [:a (merge {:class [s/menu-item (when (:active item) "item-active")]}
-             (dissoc item :items :img :open))
+  [:a (merge {:class [s/menu-item
+                      (when (:active item) "item-active")
+                      (when-not (:title item)
+                        (c :flex :justify-center))]}
+             (dissoc item :items :img :open :title))
    (when (:img item)
      [:img {:src (u/public-src (:img item)) :width "18"}])
    (when (:active item)
      [:data {:hidden true :data-key :active} (:active item)])
-   [:span {:data-key :label :class (c :w-full :truncate {:color "var(--basic-gray-7)"})} (:title item)]
+   (when (:title item)
+     [:span {:data-key :label :class (c :w-full :truncate {:color "var(--basic-gray-7)"})} (:title item)])
    (when (:items item)
      [:img.chevron {:src (u/public-src "/suitkin/img/icon/ic-chevron-right-16.svg")}])])
 
@@ -52,7 +56,7 @@
 (defn component
   [properties]
   [:aside {:data-object ::component :class [s/root (:class properties)]}
-   [:div {:class s/header}  (:logo properties)]
+   [:div {:class [s/header (:class-header properties)]}  (:logo properties)]
    [:div {:data-object :menu :class s/content} [menu-items (:menu properties)]]
    (when (:submenu properties)
      [:div {:class s/submenu :data-object :submenu} [menu-items (:submenu properties)]])])

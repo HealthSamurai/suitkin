@@ -47,7 +47,10 @@
      :w-full
      :items-center
      [:space-x "8px"]
-     {:padding "6px 16px 6px 0px" :border-radius "4px"}))
+     {:padding "6px 16px 6px 0px"
+      :border-radius "4px"}
+     [:hover
+      {:text-decoration "none"}]))
 
 (def divider
   (c [:my "8px"] [:mx "6px"] {:color "var(--basic-gray-2)"} :w-full))
