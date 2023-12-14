@@ -8,6 +8,7 @@
       :line-height   "20px"
       :font-weight   "500"
       :min-width     "238px"
+      :width         "100%"
       :display       "block"
       :border-radius "4px"}
      [:placeholder

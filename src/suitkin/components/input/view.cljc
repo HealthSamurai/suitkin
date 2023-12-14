@@ -7,7 +7,7 @@
   (let [left-section  (:s/left properties)
         right-section (:s/right properties)]
     (if (or left-section right-section)
-      [:fieldset {:class s/icon-wrapper}
+      [:fieldset {:class [s/icon-wrapper (:class-wrapper properties)]}
        (when left-section [:span.left left-section])
        element
        (when right-section [:span.right right-section])]
@@ -24,4 +24,4 @@
         :on-click  (:on-click properties)
         :on-change (:on-change properties)
         :class     [s/root (if (= "narrow" (:s/size properties)) s/narrow s/default) (:class properties)]}
-       (dissoc properties :s/size :s/right :s/left))]))
+       (dissoc properties :s/size :s/right :s/left :class-wrapper :class))]))
