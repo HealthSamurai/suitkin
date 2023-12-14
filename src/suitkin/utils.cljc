@@ -45,3 +45,8 @@
   [value]
   #?(:cljs (js/encodeURI value)
      :clj  (java.net.URLEncoder/encode value java.nio.charset.StandardCharsets/UTF_8)))
+
+(defn edn->json-pretty
+  [edn]
+  #?(:cljs (js/JSON.stringify (clj->js edn) nil 2)
+     :clj  nil))
