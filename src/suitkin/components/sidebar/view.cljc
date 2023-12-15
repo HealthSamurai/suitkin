@@ -23,8 +23,9 @@
   [:a (merge {:class [s/menu-item
                       (when (:active item) "item-active")
                       (when-not (:title item)
-                        (c :flex :justify-center))]}
-             (dissoc item :items :img :open :title))
+                        (c :flex :justify-center))
+                      (:class item)]}
+             (dissoc item :items :img :open :title :class))
    (when (:img item)
      [:img {:src (u/public-src (:img item)) :width "18"}])
    (when (:active item)
