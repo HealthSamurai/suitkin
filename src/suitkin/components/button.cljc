@@ -67,9 +67,11 @@
   [src]
   [:img.button-icon {:widht "16px" :height "16px" :class (c [:mr "8px"]) :src (u/public-src src)}])
 
+;; TODO: merge properties
 (defn component
   [properties body]
-  [:button {:disabled (:disabled properties)
+  [:button {:id       (:id properties)
+            :disabled (:disabled properties)
             :on-click (:on-click properties)
             :class    [base-button-class
                        (case [(:use properties) (:theme properties)]

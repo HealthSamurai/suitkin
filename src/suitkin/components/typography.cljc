@@ -5,24 +5,28 @@
 
 (defn h1
   [options & content]
-  [:h1 {:class [(c {:font-family "Inter"
-                    :font-size   "28px"
-                    :font-weight "700"
-                    :color       "#212636"})
-                (:class options)]}
+  [:h1 (merge {:class [(c {:font-family "Inter"
+                           :font-size   "28px"
+                           :font-weight "700"
+                           :color       "#212636"})
+                       (:class options)]}
+              (dissoc options :class))
    content])
 
 (defn label
-  [options & content]
-  [:label {:class [(c {:font-family "Inter"
-                        :margin-left "1px"
-                        :font-size   "14px"
-                        :font-weight "400"
-                        :line-height "20px"
-                        :margin-bottom "6px"
-                        :color       "#010205"})
-                   (:class options)]}
-   content])
+  [& content]
+  (let [options? (map? (first content))
+        options  (when options? (first content))
+        elements (if options? (next content) content)]
+    [:label {:class [(c {:font-family "Inter"
+                         :margin-left "1px"
+                         :font-size   "14px"
+                         :font-weight "400"
+                         :line-height "20px"
+                         :margin-bottom "6px"
+                         :color         "#010205"})
+                     (:class options)]}
+     elements]))
 
 (defn span
   [properties & content]
@@ -41,7 +45,7 @@
      [:div {:class (c [:mb 0.5] :flex :flex-wrap [:col-gap 1.5])}
       [:span {:class [(c {:color "var(--basic-gray-6, #616471)" :font-weight "500"})
                       (:title-class properties)] } (str title ": ")]
-      [:div value]])])
+      [:div {:data-key title} value]])])
 
 (defn expandeable-text
   [properties & content]

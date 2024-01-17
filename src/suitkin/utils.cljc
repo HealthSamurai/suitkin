@@ -1,7 +1,9 @@
 (ns suitkin.utils
   #?(:cljs (:require [reagent.core])
-     :clj  (:import java.net.URLEncoder
-                    java.nio.charset.StandardCharsets)))
+     :clj  (:require [clojure.string]
+                     [cheshire.core]))
+  #?(:clj  (:import java.net.URLEncoder
+                    java.net.URLDecoder)))
 
 #?(:cljs (goog-define CLASSPATH "")
    :clj  (def CLASSPATH ""))
@@ -39,17 +41,20 @@
 (defn target-value
   [event]
   #?(:cljs (.. event -target -value)
-     :clj  (-> event :target :value)))
+     :clj  (-> @event :target :value)))
 
 (defn encode-uri
   [value]
-  #?(:cljs (js/encodeURI value)
-     :clj  (java.net.URLEncoder/encode value java.nio.charset.StandardCharsets/UTF_8)))
+  (when (string? value)
+    #?(:cljs (js/encodeURI value)
+       :clj  (clojure.string/replace (java.net.URLEncoder/encode value "UTF-8")
+                                     "+" "%20"))))
 
 (defn decode-uri
   [value]
-  #?(:cljs (js/decodeURI value)
-     :clj  nil))
+  (when value
+    #?(:cljs (js/decodeURI value)
+       :clj  (java.net.URLDecoder/decode value))))
 
 (defn edn->json-pretty
   [edn]
@@ -63,4 +68,4 @@
                 (catch js/Error e
                   (prn "error" ::json-string->edn)
                   {}))
-     :clj nil))
+     :clj (cheshire.core/parse-string json-string keyword )))

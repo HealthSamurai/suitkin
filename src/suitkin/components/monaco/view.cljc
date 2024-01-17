@@ -1,5 +1,6 @@
 (ns suitkin.components.monaco.view
-  #?(:cljs (:require ["@monaco-editor/react" :default Editor])))
+  #?(:cljs (:require ["@monaco-editor/react" :default Editor])
+     :clj  (:require [suitkin.utils])))
 
 (defn set-json-defaults
   [monaco-instance urls]
@@ -14,7 +15,12 @@
 (defn component
   [properties]
   (fn [properties]
-    [:> #?(:cljs Editor)
+    [:> #?(:cljs Editor
+           :clj [:input {:id (:id properties)
+                         :value (:value properties)
+                         :on-change (fn [event]
+                                      ((:onChange properties)
+                                       (suitkin.utils/target-value event)))}])
      (-> 
       {:theme    (:theme properties "suitkin-theme")
        :language "json"
