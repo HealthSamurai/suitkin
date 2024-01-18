@@ -77,3 +77,17 @@
                          (u/public-src "/suitkin/img/icon/ic-chevron-up-16.svg")
                          (u/public-src "/suitkin/img/icon/ic-chevron-down-16.svg"))}]]]]
         [:span {:class (:class properties)} content]))))
+
+(defn assistive-text
+  [& content]
+  (let [options? (map? (first content))
+        options  (when options? (first content))
+        elements (if options? (next content) content)]
+    [:span (merge {:class [(c {:font-family "Inter"
+                               :font-size   "14px"
+                               :font-weight "400"
+                               :line-height "20px"
+                               :color "#DF351F"})
+                           (:class options)]}
+                  (dissoc options :class))
+     elements]))

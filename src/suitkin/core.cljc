@@ -19,3 +19,4 @@
 (def span #'suitkin.components.typography/span)
 (def expandeable-text #'suitkin.components.typography/expandeable-text)
 (def kv-list #'suitkin.components.typography/kv-list)
+(def assistive-text #'suitkin.components.typography/assistive-text)
