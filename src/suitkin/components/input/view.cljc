@@ -23,5 +23,7 @@
        {:type      (:type properties)
         :on-click  (:on-click properties)
         :on-change (:on-change properties)
-        :class     [s/root (if (= "narrow" (:s/size properties)) s/narrow s/default) (:class properties)]}
-       (dissoc properties :s/size :s/right :s/left :class-wrapper :class))]))
+        :class     [s/root (if (= "narrow" (:s/size properties)) s/narrow s/default)
+                    (:class properties)
+                    (when (:s/invalid? properties) s/invalid)]}
+       (dissoc properties :s/size :s/right :s/left :s/invalid? :class-wrapper :class))]))

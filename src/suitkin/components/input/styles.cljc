@@ -1,6 +1,9 @@
 (ns suitkin.components.input.styles
   (:require [stylo.core :refer [c]]))
 
+(def invalid
+  (c {:outline "2px solid var(--basic-red-5) !important"}))
+
 (def root
   (c {:outline       "1px solid var(--basic-gray-3)"
       :font-size     "14px"
