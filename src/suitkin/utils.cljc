@@ -59,7 +59,7 @@
 (defn edn->json-pretty
   [edn]
   #?(:cljs (js/JSON.stringify (clj->js edn) nil 2)
-     :clj  nil))
+     :clj  (cheshire.core/generate-string edn {:pretty true})))
 
 (defn json-string->edn
   [json-string]
