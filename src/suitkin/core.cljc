@@ -6,7 +6,8 @@
    [suitkin.components.dropdown.view]
    [suitkin.components.segment-control.view]
    [suitkin.components.monaco.view]
-   [suitkin.components.typography]))
+   [suitkin.components.typography]
+   [suitkin.components.alert.view]))
 
 (def button #'suitkin.components.button/component)
 (def sidebar #'suitkin.components.sidebar.view/component)
@@ -20,3 +21,4 @@
 (def expandeable-text #'suitkin.components.typography/expandeable-text)
 (def kv-list #'suitkin.components.typography/kv-list)
 (def assistive-text #'suitkin.components.typography/assistive-text)
+(def alert #'suitkin.components.alert.view/component)

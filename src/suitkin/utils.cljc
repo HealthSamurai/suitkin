@@ -63,9 +63,10 @@
 
 (defn json-string->edn
   [json-string]
-  #?(:cljs (try (js->clj (js/JSON.parse json-string)
-                         :keywordize-keys true)
-                (catch js/Error e
-                  (prn "error" ::json-string->edn)
-                  {}))
-     :clj (cheshire.core/parse-string json-string keyword )))
+  (when (seq json-string)
+    #?(:cljs (try (js->clj (js/JSON.parse json-string)
+                           :keywordize-keys true)
+                  (catch js/Error e
+                    (prn "error" ::json-string->edn)
+                    {}))
+       :clj (cheshire.core/parse-string json-string keyword ))))
