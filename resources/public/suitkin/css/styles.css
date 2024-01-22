@@ -1,23 +1,23 @@
 :root {
-  --basic-gray-0: #F7F7F8;
-  --basic-gray-1: #EDEEF1;
-  --basic-gray-2: #DBDDE3;
-  --basic-gray-3: #BFC1C7;
-  --basic-gray-4: #83868E;
+  --basic-gray-0: #f7f7f8;
+  --basic-gray-1: #edeef1;
+  --basic-gray-2: #dbdde3;
+  --basic-gray-3: #bfc1c7;
+  --basic-gray-4: #83868e;
   --basic-gray-5: #616471;
   --basic-gray-6: #434959;
   --basic-gray-7: #212636;
 
-  --basic-red-5: #DF351F;
-  --basic-red-6: #D4250E;
-  --basic-red-7: #C91B04;
-  --basic-red-8: #B61500;
+  --basic-red-5: #df351f;
+  --basic-red-6: #d4250e;
+  --basic-red-7: #c91b04;
+  --basic-red-8: #b61500;
 
-  --basic-blue-3: #78BBFE;
+  --basic-blue-3: #78bbfe;
 
-  --bg-disabled: #F8F7F7;
+  --bg-disabled: #f8f7f7;
   --text-default: #010205
-  --white: #FFFFFF;
+  --white: #ffffff;
 }
 
 details > summary {
@@ -44,3 +44,22 @@ input[type="search"]:focus::-webkit-search-cancel-button {
 }
 
 body {margin: 0!important}
+
+.skeleton {
+  color: transparent !important;
+  border-radius: 5px;
+  background: rgba(130, 130, 130, 0.2);
+  background: -webkit-gradient(linear, left top, right top, color-stop(8%, rgba(130, 130, 130, 0.2)), color-stop(18%, rgba(130, 130, 130, 0.3)), color-stop(33%, rgba(130, 130, 130, 0.2)));
+  background: linear-gradient(to right, rgba(130, 130, 130, 0.2) 8%, rgba(130, 130, 130, 0.3) 18%, rgba(130, 130, 130, 0.2) 33%);
+  background-size: 800px 100px;
+  animation: wave-squares 2s infinite ease-out;
+}
+
+ @keyframes wave-squares {
+    0% {
+        background-position: -468px 0;
+    }
+     100% {
+        background-position: 468px 0;
+    }
+}
