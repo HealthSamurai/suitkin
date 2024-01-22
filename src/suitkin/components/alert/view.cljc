@@ -26,7 +26,7 @@
           :background-color "rgba(189, 17, 31, 0.15)"}]]]]))
 
 (defn component
-  [options & content]
+  [options content]
   [:div.fadeInRight
    {:class [(c :relative :font-medium [:rounded 8] {:z-index "999999"} :flex :justify-between :shadow-sm {:max-width "666px"})
             (case (:status options)
