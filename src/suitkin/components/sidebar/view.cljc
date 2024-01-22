@@ -39,7 +39,7 @@
   [node]
   [:ul {:class s/content-items :data-array :items}
    (for [item (:items node)]
-     [:li {:class s/content-item :key (or (:title item) (hash item))}
+     [:li {:class s/content-item :key (or (:id item) (:title item) (hash item))}
       (cond
         (:items item)
         [:details {:ref #(details-constructor % item)}
