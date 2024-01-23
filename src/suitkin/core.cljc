@@ -7,10 +7,14 @@
    [suitkin.components.segment-control.view]
    [suitkin.components.monaco.view]
    [suitkin.components.typography]
-   [suitkin.components.alert.view]))
+   [suitkin.components.alert.view]
+   [suitkin.components.navigation.view]))
+
+;; Navigation
+(def sidebar #'suitkin.components.sidebar.view/component)
+(def tabs #'suitkin.components.navigation.view/tabs)
 
 (def button #'suitkin.components.button/component)
-(def sidebar #'suitkin.components.sidebar.view/component)
 (def input #'suitkin.components.input.view/component)
 (def monaco #'suitkin.components.monaco.view/component)
 (def segment-control #'suitkin.components.segment-control.view/component)
@@ -22,3 +26,4 @@
 (def kv-list #'suitkin.components.typography/kv-list)
 (def assistive-text #'suitkin.components.typography/assistive-text)
 (def alert #'suitkin.components.alert.view/component)
+
