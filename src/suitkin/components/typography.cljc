@@ -18,15 +18,17 @@
   (let [options? (map? (first content))
         options  (when options? (first content))
         elements (if options? (next content) content)]
-    [:label {:class [(c {:font-family "Inter"
-                         :margin-left "1px"
-                         :font-size   "14px"
-                         :font-weight "400"
-                         :line-height "20px"
-                         :margin-bottom "6px"
-                         :color         "#010205"})
-                     (:class options)]}
-     elements]))
+    (into 
+     [:label (merge {:class [(c {:font-family "Inter"
+                                 :margin-left "1px"
+                                 :font-size   "14px"
+                                 :font-weight "400"
+                                 :line-height "20px"
+                                 :margin-bottom "6px"
+                                 :color         "#010205"})
+                             (:class options)]}
+                    (dissoc options :class))]
+     elements)))
 
 (defn span
   [properties & content]
@@ -83,11 +85,12 @@
   (let [options? (map? (first content))
         options  (when options? (first content))
         elements (if options? (next content) content)]
-    [:span (merge {:class [(c {:font-family "Inter"
-                               :font-size   "14px"
-                               :font-weight "400"
-                               :line-height "20px"
-                               :color "#DF351F"})
-                           (:class options)]}
-                  (dissoc options :class))
-     elements]))
+    (into 
+     [:span (merge {:class [(c {:font-family "Inter"
+                                :font-size   "14px"
+                                :font-weight "400"
+                                :line-height "20px"
+                                :color "#DF351F"})
+                            (:class options)]}
+                   (dissoc options :class))]
+     elements)))
