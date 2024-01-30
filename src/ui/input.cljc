@@ -8,30 +8,82 @@
 
 #?(:cljs (data/register-collection! :input {:title "Input"}))
 
-(defscene input
+#?(:cljs (data/register-collection! :dropdown {:title "Dropdown"}))
+
+(defscene input-1
   :collection :input
-  :title "Input"
-  []
-  [:div {:class (c [:p 3] [:space-y 4])}
-   [:p "Input default"]
-   [suitkin.core/input {:placeholder "Placeholder"}]
-   [suitkin.core/input {:placeholder "Placeholder" :required true}]
-   [suitkin.core/input {:placeholder "Placeholder" :disabled true}]
-   [suitkin.core/input {:placeholder "Placeholder" :s/size "narrow"}]
-   [suitkin.core/input {:placeholder "Placeholder" :s/size "narrow" :required true}]
-   [suitkin.core/input {:placeholder "Placeholder" :s/size "narrow" :disabled true}]
-   [:p "Search"]
-   [suitkin.core/input {:placeholder "Placeholder" :s/left [:img {:src (u/public-src "/suitkin/img/icon/ic-search-16.svg")}]}]
-   [suitkin.core/input {:placeholder "Placeholder" :s/left [:img {:src (u/public-src "/suitkin/img/icon/ic-search-16.svg")}] :required true}]
-   [suitkin.core/input {:placeholder "Placeholder" :s/left [:img {:src (u/public-src "/suitkin/img/icon/ic-search-16.svg")}] :disabled true}]
-   [suitkin.core/input {:placeholder "Placeholder" :s/size "narrow" :s/left [:img {:src (u/public-src "/suitkin/img/icon/ic-search-16.svg")}]}]
-   [suitkin.core/input {:placeholder "Placeholder" :s/size "narrow" :s/left [:img {:src (u/public-src "/suitkin/img/icon/ic-search-16.svg")}] :required true}]
-   [suitkin.core/input {:placeholder "Placeholder" :s/size "narrow" :s/left [:img {:src (u/public-src "/suitkin/img/icon/ic-search-16.svg")}] :disabled true}]
-   [:p "Dropdown"]
-   [suitkin.core/input {:placeholder "Placeholder" :s/right [:img {:src (u/public-src "/suitkin/img/icon/ic-chevron-down-16.svg")}]}]
-   [suitkin.core/input {:placeholder "Placeholder" :required true :s/right [:img {:src (u/public-src "/suitkin/img/icon/ic-chevron-down-16.svg")}]}]
-   [suitkin.core/input {:placeholder "Placeholder" :disabled true :s/right [:img {:src (u/public-src "/suitkin/img/icon/ic-chevron-down-16.svg")}]}]
-   [suitkin.core/input {:placeholder "Placeholder" :s/size "narrow" :s/right [:img {:src (u/public-src "/suitkin/img/icon/ic-chevron-down-16.svg")}]}]
-   [suitkin.core/input {:placeholder "Placeholder" :s/size "narrow" :required true :s/right [:img {:src (u/public-src "/suitkin/img/icon/ic-chevron-down-16.svg")}]}]
-   [suitkin.core/input {:placeholder "Placeholder" :s/size "narrow" :disabled true :s/right [:img {:src (u/public-src "/suitkin/img/icon/ic-chevron-down-16.svg")}]}]
-   ])
+  :title "Default"
+  [suitkin.core/input {:placeholder "Placeholder"}])
+
+(defscene input-2
+  :collection :input
+  :title "Default invalid"
+  [suitkin.core/input {:placeholder "Placeholder" :s/invalid? true}])
+
+(defscene input-3
+  :collection :input
+  :title "Default disabled"
+  [suitkin.core/input {:placeholder "Placeholder" :disabled true}])
+
+(defscene input-4
+  :collection :input
+  :title "Default narrow"
+  [suitkin.core/input {:placeholder "Placeholder" :s/size "narrow"}])
+
+(defscene input-5
+  :collection :input
+  :title "Default narrow invalid"
+  [suitkin.core/input {:placeholder "Placeholder" :s/size "narrow" :s/invalid? true}])
+
+(defscene input-6
+  :collection :input
+  :title "Default narrow disabled"
+  [suitkin.core/input {:placeholder "Placeholder" :s/size "narrow" :disabled true}])
+
+(defscene input-7
+  :collection :input
+  :title "Icon"
+  [suitkin.core/input {:placeholder "Search..." :s/left [:img {:src (u/public-src "/suitkin/img/icon/ic-search-16.svg")}]}])
+
+(defscene input-8
+  :collection :input
+  :title "Icon invalid"
+  [suitkin.core/input {:placeholder "Search..." :s/left [:img {:src (u/public-src "/suitkin/img/icon/ic-search-16.svg")}] :s/invalid? true}])
+
+(defscene input-9
+  :collection :input
+  :title "Icon disabled"
+  [suitkin.core/input {:placeholder "Search..." :s/left [:img {:src (u/public-src "/suitkin/img/icon/ic-search-16.svg")}] :disabled true}])
+
+
+(defscene input-10
+  :collection :input
+  :title "Icon narrow"
+  [suitkin.core/input {:placeholder "Search..." :s/left [:img {:src (u/public-src "/suitkin/img/icon/ic-search-16.svg")}]  :s/size "narrow"}])
+
+(defscene input-11
+  :collection :input
+  :title "Icon invalid narrow"
+  [suitkin.core/input {:placeholder "Search..." :s/left [:img {:src (u/public-src "/suitkin/img/icon/ic-search-16.svg")}] :s/invalid? true  :s/size "narrow"}])
+
+(defscene input-12
+  :collection :input
+  :title "Icon disabled narrow"
+  [suitkin.core/input {:placeholder "Search..." :s/left [:img {:src (u/public-src "/suitkin/img/icon/ic-search-16.svg")}] :disabled true  :s/size "narrow"}])
+
+(defscene dropdown-1
+  "The ':search' key support all 'Input' arguments"
+  :collection :dropdown
+  :title "Dropdown empty"
+  [suitkin.core/dropdown {:search {} :menu {:not-found "My not found text"}}])
+
+(defscene dropdown-2
+  "The ':search' key support all 'Input' arguments"
+  :collection :dropdown
+  :title "Dropdown items"
+  [suitkin.core/dropdown {:search {}
+                          :value  {:value "active" :title "Active"}
+                          :menu   {:items [{:value "draft" :title "Draft"}
+                                           {:value "active" :title "Active"}
+                                           {:value "retired" :title "Retired"}
+                                           {:value "unknown" :title "Unknown"}]}}])

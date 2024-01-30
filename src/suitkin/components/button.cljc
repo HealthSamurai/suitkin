@@ -74,7 +74,7 @@
             :disabled (:disabled properties)
             :on-click (:on-click properties)
             :class    [base-button-class
-                       (case [(:use properties) (:theme properties)]
+                       (case [(:s/use properties) (:s/theme properties)]
                          ["primary" "default"]     primary-default
                          ["primary" nil]     primary-default
                          ["primary" "dangerous"]   primary-dangerous
@@ -85,11 +85,12 @@
                          ["tertiary" "default"]    tertiary-default
                          ["tertiary" "dangerous"]  tertiary-dangerous
                          primary-default)
-                       (case (:size properties)
+                       (case (:s/size properties)
                          "narrow" button-size-narrow
                          button-size-default)
                        (:class properties)]
             :title (:title properties)}
-   (when (:icon properties)
-     [icon (:icon properties)])
+   (when (:s/icon properties)
+     [icon (:s/icon properties)])
    body])
+
