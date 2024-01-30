@@ -10,8 +10,10 @@
 
 (defn public-src
   [src]
-  (str #?(:cljs (try js/suitkin_public_prefix
-                     (catch js/Error e ""))
+  (str #?(:cljs (try
+                  (try js/suitkin_public_prefix
+                       (catch js/Error _ ""))
+                  (catch :default _ ""))
           :clj  "") CLASSPATH src))
 
 (defn log
