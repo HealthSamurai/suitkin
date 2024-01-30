@@ -7,17 +7,19 @@
 
 #?(:cljs (data/register-collection! :dropdown {:title "Segment control"}))
 
-(defscene segment-control
+(defscene dropdown-1
+  "The ':search' key support all 'Input' arguments"
   :collection :dropdown
-  :title "Dropdown"
-  []
-  [:div {:class (c [:p 3])}
-   [suitkin.core/dropdown
-    {:items
-     [{:title "Monday"    :value "1"}
-      {:title "Tuesday"   :value "2"}
-      {:title "Wednesday" :value "3"}
-      {:title "Thursday"  :value "4"}
-      {:title "Friday"    :value "5"}
-      {:title "Saturday"  :value "6"}
-      {:title "Sunday"    :value "7"}]}]])
+  :title "Dropdown empty"
+  [suitkin.core/dropdown {:search {} :menu {:not-found "My not found text"}}])
+
+(defscene dropdown-2
+  "The ':search' key support all 'Input' arguments"
+  :collection :dropdown
+  :title "Dropdown items"
+  [suitkin.core/dropdown {:search {}
+                          :value  {:value "active" :title "Active"}
+                          :menu   {:items [{:value "draft" :title "Draft"}
+                                           {:value "active" :title "Active"}
+                                           {:value "retired" :title "Retired"}
+                                           {:value "unknown" :title "Unknown"}]}}])
