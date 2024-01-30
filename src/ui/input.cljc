@@ -8,8 +8,6 @@
 
 #?(:cljs (data/register-collection! :input {:title "Input"}))
 
-#?(:cljs (data/register-collection! :dropdown {:title "Dropdown"}))
-
 (defscene input-1
   :collection :input
   :title "Default"
@@ -70,6 +68,8 @@
   :collection :input
   :title "Icon disabled narrow"
   [suitkin.core/input {:placeholder "Search..." :s/left [:img {:src (u/public-src "/suitkin/img/icon/ic-search-16.svg")}] :disabled true  :s/size "narrow"}])
+
+#?(:cljs (data/register-collection! :dropdown {:title "Dropdown"}))
 
 (defscene dropdown-1
   "The ':search' key support all 'Input' arguments"
