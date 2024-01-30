@@ -1,3 +1,5 @@
+var suitkin_public_prefix;
+
 class Accordion {
   constructor(el) {
     // Store the <details> element
