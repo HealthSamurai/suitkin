@@ -5,7 +5,7 @@
    [portfolio.reagent-18 :refer-macros [defscene]]
    #?(:cljs [portfolio.data :as data])))
 
-#?(:cljs (data/register-collection! :dropdown {:title "Segment control"}))
+#?(:cljs (data/register-collection! :dropdown {:title "Dropdown"}))
 
 (defscene dropdown-1
   "The ':search' key support all 'Input' arguments"
