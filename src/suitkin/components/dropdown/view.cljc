@@ -21,6 +21,11 @@
        (-> (:search properties)
            (assoc :type "search")
            (assoc :s/right [:img {:src (u/public-src "/suitkin/img/icon/ic-chevron-down-16.svg")}])
+           (update :on-focus
+                   (fn [callback]
+                     (fn [event]
+                       (rf/dispatch [::m/open (:id properties)])
+                       (when callback (callback event)))))
            (update :on-click
                    (fn [callback]
                      (fn [event]

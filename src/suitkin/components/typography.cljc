@@ -94,3 +94,10 @@
                             (:class options)]}
                    (dissoc options :class))]
      elements)))
+
+(defn divider-with-text
+  [options text]
+  [:div {:class [(c :flex :justify-center :items-center) (:s/root-class options)]}
+   [:hr {:class (c {:border "1px solid var(--basic-gray-2)"} :w-full)}]
+   [:span {:class (c [:px 3] {:color "var(--basic-gray-5)"})} text]
+   [:hr {:class (c {:border "1px solid var(--basic-gray-2)"} :w-full)}]])

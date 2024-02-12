@@ -45,6 +45,19 @@ input[type="search"]:focus::-webkit-search-cancel-button {
 
 body {margin: 0!important}
 
+.spin-animation {
+  animation: rotation 2s infinite linear;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
 .skeleton {
   color: transparent !important;
   border-radius: 5px;

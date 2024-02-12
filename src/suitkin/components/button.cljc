@@ -59,6 +59,8 @@
   (c [:rounded 4]
      :inline-flex
      :items-center
+     :justify-center
+     :cursor-pointer
      [:disabled {:cursor "not-allowed"}]
      [:focus :outline-none]
      {:font-size "14px" :font-family "Inter" :font-weight "400" :line-height "20px"}))
@@ -70,27 +72,33 @@
 ;; TODO: merge properties
 (defn component
   [properties body]
-  [:button {:id       (:id properties)
-            :disabled (:disabled properties)
-            :on-click (:on-click properties)
-            :class    [base-button-class
-                       (case [(:s/use properties) (:s/theme properties)]
-                         ["primary" "default"]     primary-default
-                         ["primary" nil]     primary-default
-                         ["primary" "dangerous"]   primary-dangerous
-                         ["secondary" nil]   secondary-default
-                         ["secondary" "default"]   secondary-default
-                         ["secondary" "dangerous"] secondary-dangerous
-                         ["tertiary" nil]    tertiary-default
-                         ["tertiary" "default"]    tertiary-default
-                         ["tertiary" "dangerous"]  tertiary-dangerous
-                         primary-default)
-                       (case (:s/size properties)
-                         "narrow" button-size-narrow
-                         button-size-default)
-                       (:class properties)]
-            :title (:title properties)}
-   (when (:s/icon properties)
-     [icon (:s/icon properties)])
+  [(if (:s/label? properties) :label :button)
+   {:id       (:id properties)
+    :disabled (or (:disabled properties)
+                  (:s/loading? properties))
+    :on-click (:on-click properties)
+    :for      (:for properties)
+    :class    [base-button-class
+               (case [(:s/use properties) (:s/theme properties)]
+                 ["primary" "default"]     primary-default
+                 ["primary" nil]     primary-default
+                 ["primary" "dangerous"]   primary-dangerous
+                 ["secondary" nil]   secondary-default
+                 ["secondary" "default"]   secondary-default
+                 ["secondary" "dangerous"] secondary-dangerous
+                 ["tertiary" nil]    tertiary-default
+                 ["tertiary" "default"]    tertiary-default
+                 ["tertiary" "dangerous"]  tertiary-dangerous
+                 primary-default)
+               (case (:s/size properties)
+                 "narrow" button-size-narrow
+                 button-size-default)
+               (:class properties)]
+    :title (:title properties)}
+   (if (:s/loading? properties)
+     [:i.fas.fa-circle-notch.spin-animation
+      {:class (c [:mr "8px"])}]
+     (when (:s/icon properties)
+       [icon (:s/icon properties)]))
    body])
 

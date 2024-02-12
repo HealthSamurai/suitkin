@@ -22,6 +22,7 @@
 (def h1 #'suitkin.components.typography/h1)
 (def label #'suitkin.components.typography/label)
 (def span #'suitkin.components.typography/span)
+(def divider-with-text #'suitkin.components.typography/divider-with-text)
 (def expandeable-text #'suitkin.components.typography/expandeable-text)
 (def kv-list #'suitkin.components.typography/kv-list)
 (def assistive-text #'suitkin.components.typography/assistive-text)
