@@ -57,6 +57,7 @@
 
 (def base-button-class
   (c [:rounded 4]
+     [:hover {:text-decoration "none" :color "inherit"}]
      :block
      :flex
      :items-center
@@ -73,10 +74,15 @@
 ;; TODO: merge properties
 (defn component
   [properties body]
-  [(if (:s/label? properties) :label :button)
+  [(cond
+     (:s/label? properties) :label
+     (:href properties) :a
+     :else :button)
    {:id       (:id properties)
     :disabled (or (:disabled properties)
                   (:s/loading? properties))
+    :href     (:href properties)
+    :target   (:target properties)
     :on-click (:on-click properties)
     :for      (:for properties)
     :class    [base-button-class
