@@ -57,7 +57,8 @@
 
 (def base-button-class
   (c [:rounded 4]
-     :inline-flex
+     :block
+     :flex
      :items-center
      :justify-center
      :cursor-pointer
@@ -67,7 +68,7 @@
 
 (defn icon
   [src]
-  [:img.button-icon {:widht "16px" :height "16px" :class (c [:mr "8px"]) :src (u/public-src src)}])
+  [:img.button-icon {:width "16px" :height "16px" :class (c [:mr "8px"]) :src (u/public-src src)}])
 
 ;; TODO: merge properties
 (defn component
@@ -96,8 +97,8 @@
                (:class properties)]
     :title (:title properties)}
    (if (:s/loading? properties)
-     [:i.fas.fa-circle-notch.spin-animation
-      {:class (c [:mr "8px"])}]
+     [:span {:class (c {:width "16px" :height "16px"} [:mr "8px"] :flex :items-center)}
+      [:i.fas.fa-circle-notch.spin-animation]]
      (when (:s/icon properties)
        [icon (:s/icon properties)]))
    body])
