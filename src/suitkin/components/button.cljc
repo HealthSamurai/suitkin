@@ -68,44 +68,46 @@
      {:font-size "14px" :font-family "Inter" :font-weight "400" :line-height "20px"}))
 
 (defn icon
-  [src]
-  [:img.button-icon {:width "16px" :height "16px" :class (c [:mr "8px"]) :src (u/public-src src)}])
+  [src body]
+  [:img.button-icon {:width "16px" :height "16px" :class (when body (c [:mr "8px"])) :src (u/public-src src)}])
 
 ;; TODO: merge properties
 (defn component
   [properties body]
-  [(cond
-     (:s/label? properties) :label
-     (:href properties) :a
-     :else :button)
-   {:id       (:id properties)
-    :disabled (or (:disabled properties)
-                  (:s/loading? properties))
-    :href     (:href properties)
-    :target   (:target properties)
-    :on-click (:on-click properties)
-    :for      (:for properties)
-    :class    [base-button-class
-               (case [(:s/use properties) (:s/theme properties)]
-                 ["primary" "default"]     primary-default
-                 ["primary" nil]     primary-default
-                 ["primary" "dangerous"]   primary-dangerous
-                 ["secondary" nil]   secondary-default
-                 ["secondary" "default"]   secondary-default
-                 ["secondary" "dangerous"] secondary-dangerous
-                 ["tertiary" nil]    tertiary-default
-                 ["tertiary" "default"]    tertiary-default
-                 ["tertiary" "dangerous"]  tertiary-dangerous
-                 primary-default)
-               (case (:s/size properties)
-                 "narrow" button-size-narrow
-                 button-size-default)
-               (:class properties)]
-    :title (:title properties)}
-   (if (:s/loading? properties)
-     [:span {:class (c {:width "16px" :height "16px"} [:mr "8px"] :flex :items-center)}
-      [:i.fas.fa-circle-notch.spin-animation]]
-     (when (:s/icon properties)
-       [icon (:s/icon properties)]))
-   body])
+  (let [class (:class properties)]
+    [(cond
+       (:s/label? properties) :label
+       (:href properties) :a
+       :else :button)
+     {:id       (:id properties)
+      :disabled (or (:disabled properties)
+                    (:s/loading? properties))
+      :href     (:href properties)
+      :target   (:target properties)
+      :on-click (:on-click properties)
+      :for      (:for properties)
+      :class    (into
+                 [base-button-class
+                  (case [(:s/use properties) (:s/theme properties)]
+                    ["primary" "default"]     primary-default
+                    ["primary" nil]     primary-default
+                    ["primary" "dangerous"]   primary-dangerous
+                    ["secondary" nil]   secondary-default
+                    ["secondary" "default"]   secondary-default
+                    ["secondary" "dangerous"] secondary-dangerous
+                    ["tertiary" nil]    tertiary-default
+                    ["tertiary" "default"]    tertiary-default
+                    ["tertiary" "dangerous"]  tertiary-dangerous
+                    primary-default)
+                  (case (:s/size properties)
+                    "narrow" button-size-narrow
+                    button-size-default)]
+                 (if (vector? class) class [class]))
+      :title (:title properties)}
+     (if (:s/loading? properties)
+       [:span {:class (c {:width "16px" :height "16px"} [:mr "8px"] :flex :items-center)}
+        [:i.fas.fa-circle-notch.spin-animation]]
+       (when (:s/icon properties)
+         [icon (:s/icon properties) body]))
+     body]))
 
