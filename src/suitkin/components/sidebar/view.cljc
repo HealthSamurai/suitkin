@@ -25,7 +25,7 @@
                       (when-not (:title item)
                         (c :flex :justify-center))
                       (:class item)]}
-             (dissoc item :items :img :open :title :class))
+             (dissoc item :items :img :open :active :title :class))
    (when (:img item)
      [:img {:src (u/public-src (:img item)) :width "18"}])
    (when (:active item)
