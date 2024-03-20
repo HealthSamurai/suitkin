@@ -101,11 +101,14 @@
                     primary-default)
                   (case (:s/size properties)
                     "narrow" button-size-narrow
-                    button-size-default)]
+                    button-size-default)
+                  (when (:s/loading? properties)
+                    (c {:pointer-events "none"}))]
                  (if (vector? class) class [class]))
       :title (:title properties)}
      (if (:s/loading? properties)
-       [:span {:class (c {:width "16px" :height "16px"} [:mr "8px"] :flex :items-center)}
+       [:span {:class [(c {:width "16px" :height "16px"} :flex :items-center)
+                       (when body (c [:mr "8px"]))]}
         [:i.fas.fa-circle-notch.spin-animation]]
        (when (:s/icon properties)
          [icon (:s/icon properties) body]))
