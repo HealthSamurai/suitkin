@@ -33,6 +33,11 @@
   #?(:cljs (js/localStorage.removeItem keyname)
      :clj  nil))
 
+(defn prevent-default
+  [event]
+  #?(:cljs (.preventDefault event)
+     :clj  nil))
+
 (defn ratom
   [value]
   #?(:cljs (reagent.core/atom value)
