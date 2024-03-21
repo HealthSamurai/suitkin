@@ -24,22 +24,24 @@
      (-> 
       {:theme    (:theme properties "suitkin-theme")
        :language "json"
-       :options  {:minimap              {:enabled false}
-                  :fontSize             "14px"
-                  :fontStyle            "normal"
-                  :lineHeight           "1.5"
-                  :letterSpacing        "0.2em"
-                  :fontWeight           "300"
-                  :fontFamily           "JetBrains Mono"
-                  :overviewRulerLanes   0
-                  :lineNumbers          "off"
-                  :glyphMargin          false
-                  :renderLineHighlight  "none"
-                  :folding              false
-                  :renderIndentGuides   false
-                  :lineDecorationsWidth 0
-                  :tabSize              2
-                  :lineNumbersMinChars  0}
+       :options  (merge {:minimap              {:enabled false}
+                         :fontSize             "14px"
+                         :fontStyle            "normal"
+                         :lineHeight           "1.5"
+                         :letterSpacing        "0.2em"
+                         :fontWeight           "300"
+                         :fontFamily           "JetBrains Mono"
+                         :overviewRulerLanes   0
+                         ;; :lineNumbers          "off"
+                         :glyphMargin          false
+                         :renderLineHighlight  "none"
+                         :folding              false
+                         :renderIndentGuides   false
+                         :lineDecorationsWidth 15
+                         :tabSize              2
+                         ;; :lineNumbersMinChars  0
+                         }
+                        (:options properties))
        :beforeMount
        (fn [insance]
          (when (:schemas properties)
@@ -54,8 +56,10 @@
                                               {:token "string" :foreground "#405CBF"}
                                               {:token "number" :foreground "#00A984"}]
                                     :colors  {"editor.background" "#F8FAFC"
+                                              "editorLineNumber.foreground" "#616471"
+                                              "editorLineNumber.activeForeground" "#616471"
                                               "scrollbar.shadow"  "#ffffff00"
                                               "widget.shadow"     "#ffffff00"}}))
             :clj nil)
          insance)}
-      (merge properties))]))
+      (merge (dissoc properties :options)))]))
