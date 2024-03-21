@@ -31,13 +31,18 @@
      elements)))
 
 (defn span
-  [properties & content]
-  [:span {:class [(c {:font-family "Inter"
-                      :display "inline-block"
-                      :font-size "14px"
-                      :font-weight "400"})
-                  (:class properties)]}
-   content])
+  [& content]
+  (let [properties? (map? (first content))
+        properties (when properties? (first content))
+        content    (if properties? (next content) content)]
+    [:span {:class (into [(c {:font-family "Inter"
+                              :display "inline-block"
+                              :font-size "14px"
+                              :font-weight "400"})]
+                         (if (vector? (:class properties))
+                           (:class properties)
+                           [(:class properties)]))}
+     content]))
 
 (defn kv-list
   [properties entries]
@@ -54,7 +59,10 @@
   (let [open? (u/ratom false)]
     (fn [properties content]
       (if (:expandeable? properties)
-        [:div {:class (c {:font-family "Inter" :line-height "20px"})}  
+        [:div {:class (into [(c {:font-family "Inter" :line-height "20px"})]
+                            (if (vector? (:class properties))
+                              (:class properties)
+                              [(:class properties)]))}  
          [:span {:style (when-not @open?
                           {:-webkit-line-clamp (:max-lines properties 3)
                            :-webkit-box-orient "vertical"

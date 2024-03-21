@@ -9,7 +9,7 @@
       :font-size     "14px"
       :font-family   "Inter"
       :line-height   "20px"
-      :font-weight   "500"
+      :font-weight   "400"
       :width         "100%"
       :display       "block"
       :border-radius "4px"}
