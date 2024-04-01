@@ -107,7 +107,7 @@
                  (if (vector? class) class [class]))
       :title (:title properties)}
      (if (:s/loading? properties)
-       [:span {:class [(c {:width "16px" :height "16px"} :flex :items-center)
+       [:span {:class [(c {:width "16px" :height "16px"} :flex :items-center :justify-center)
                        (when body (c [:mr "8px"]))]}
         [:i.fas.fa-circle-notch.spin-animation]]
        (when (:s/icon properties)
