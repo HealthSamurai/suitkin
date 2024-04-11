@@ -1,9 +1,10 @@
 (ns suitkin.components.sidebar.view
   (:require
-   [suitkin.components.sidebar.model  :as m]
-   [suitkin.components.sidebar.styles :as s]
+   [re-frame.core :as rf]
    [stylo.core :refer [c]]
-   [suitkin.utils                     :as u]))
+   [suitkin.components.sidebar.model :as m]
+   [suitkin.components.sidebar.styles :as s]
+   [suitkin.utils :as u]))
 
 (defn details-constructor
   [element item]
@@ -36,28 +37,46 @@
      [:img.chevron {:src (u/public-src "/suitkin/img/icon/ic-chevron-right-16.svg")}])])
 
 (defn menu-items
-  [node]
+  [node reset-inside-items-event]
   [:ul {:class s/content-items :data-array :items}
    (for [item (:items node)]
      [:li {:class s/content-item :key (or (:id item) (:title item) (hash item))}
       (cond
         (:items item)
-        [:details {:ref #(details-constructor % item)}
-         [:summary
-          (when (or (:open item) (m/open-before? item))
-            [:data {:hidden true :data-key :open} (:open item)])
-          [menu-item item]]
-         [:div.content [menu-items item]]]
+        (do
+          (when (:open item)
+            (rf/dispatch [reset-inside-items-event (:items item)]))
+          [menu-item
+           (assoc
+             item
+             :on-click
+             (fn [_]
+               (rf/dispatch [reset-inside-items-event (:items item)])))])
+
         (:divider item)
         [:hr {:class s/divider}]
+
         (:space item)
         [:hr {:class (c [:pb "4px"])}]
-        :else [menu-item item])])])
+
+        :else
+        [menu-item
+         (assoc
+           item
+           :on-click
+           (fn [_]
+             (rf/dispatch [reset-inside-items-event nil])))])])])
 
 (defn component
-  [properties]
-  [:aside {:data-object ::component :class [s/root (:class properties)]}
-   [:div {:class [s/header (:class-header properties)]}  (:logo properties)]
-   [:div {:data-object :menu :class s/content} [menu-items (:menu properties)]]
-   (when (:submenu properties)
-     [:div {:class s/submenu :data-object :submenu} [menu-items (:submenu properties)]])])
+  [properties inside-menu reset-inside-menu-event]
+    [:<>
+     [:aside {:data-object ::component :class [s/root (:class properties)]}
+      [:div {:class [s/header (:class-header properties)]} (:logo properties)]
+      [:div {:data-object :menu :class s/content}
+       [menu-items (:menu properties) reset-inside-menu-event]]
+      (when (:submenu properties)
+        [:div {:class s/submenu :data-object :submenu}
+         [menu-items (:submenu properties) reset-inside-menu-event]])]
+     (when (some? inside-menu)
+       [:aside {:class [s/root (:class properties) (c {:margin-right "20px"})]}
+        [menu-items {:items inside-menu} reset-inside-menu-event]])])
