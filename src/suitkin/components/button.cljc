@@ -57,7 +57,7 @@
 
 (def base-button-class
   (c [:rounded 4]
-     [:hover {:text-decoration "none" :color "inherit"}]
+     [:hover {:text-decoration "none"}]
      :block
      :flex
      :items-center
