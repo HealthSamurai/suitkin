@@ -75,3 +75,8 @@
                     (prn "error" ::json-string->edn)
                     {}))
        :clj (cheshire.core/parse-string json-string keyword ))))
+
+(defn get-element-by-id
+  [id]
+  #?(:cljs (js/document.getElementById id)
+     :clj  nil))
