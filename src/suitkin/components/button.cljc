@@ -69,7 +69,9 @@
 
 (defn icon
   [src body]
-  [:img.button-icon {:width "16px" :height "16px" :class (when body (c [:mr "8px"])) :src (u/public-src src)}])
+  [:figure {:class [(c {:width "max-content"})
+                    (when body (c [:mr "8px"]))]} 
+   [:img.button-icon {:height "16" :width "16" :src (u/public-src src)}]])
 
 ;; TODO: merge properties
 (defn component
