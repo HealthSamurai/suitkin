@@ -25,14 +25,14 @@
                       (when-not (:title item)
                         (c :flex :justify-center))
                       (:class item)]}
-             (dissoc item :items :img :open :active :title :class))
+             (dissoc item :items :img :open :active :title :class :has-chevron))
    (when (:img item)
      [:img {:src (u/public-src (:img item)) :width "18"}])
    (when (:active item)
      [:data {:hidden true :data-key :active} (:active item)])
    (when (:title item)
      [:span {:data-key :label :class (c :w-full :truncate {:color "var(--basic-gray-7)"})} (:title item)])
-   (when (:items item)
+   (when (or (:has-chevron item) (:items item))
      [:img.chevron {:src (u/public-src "/suitkin/img/icon/ic-chevron-right-16.svg")}])])
 
 (defn menu-items
