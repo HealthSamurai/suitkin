@@ -75,7 +75,7 @@
 
 ;; TODO: merge properties
 (defn component
-  [properties body]
+  [properties & [body]]
   (let [class (:class properties)]
     [(cond
        (:s/label? properties) :label
