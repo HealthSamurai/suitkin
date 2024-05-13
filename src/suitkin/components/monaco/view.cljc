@@ -35,7 +35,7 @@
                          ;; :lineNumbers          "off"
                          :glyphMargin          false
                          :renderLineHighlight  "none"
-                         :folding              false
+                         :folding              true
                          :renderIndentGuides   false
                          :lineDecorationsWidth 15
                          :tabSize              2
