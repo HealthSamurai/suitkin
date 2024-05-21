@@ -5,13 +5,14 @@
 
 (defn h1
   [options & content]
-  [:h1 (merge {:class [(c {:font-family "Inter"
-                           :font-size   "28px"
-                           :font-weight "700"
-                           :color       "#212636"})
-                       (:class options)]}
-              (dissoc options :class))
-   content])
+  (into 
+   [:h1 (merge {:class [(c {:font-family "Inter"
+                            :font-size   "28px"
+                            :font-weight "700"
+                            :color       "#212636"})
+                        (:class options)]}
+               (dissoc options :class))]
+   content))
 
 (defn label
   [& content]

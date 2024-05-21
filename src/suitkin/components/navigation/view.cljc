@@ -11,8 +11,9 @@
                             :color "var(--basic-gray-6, #434959)"})
                         (:class options)]}
                (dissoc options :class :items))
-   (for [item (:items options)] ^{:key (:title item)}
+   (for [item (:items options)]
      (if (:header item)
+       ^{:key (:title item)}
        [(if (:href item) :a :div)
         (merge {:class [(c {:display "flex"
                             :margin-bottom "2px"
@@ -23,6 +24,7 @@
                         (:class item)]}
                (dissoc item :class :title))
         (:header item)]
+       ^{:key (:title item)}
        [(if (:href item) :a :div)
         (merge {:class [(if (:active item)
                           (c {:color "var(--basic-gray-8, #010205)"
