@@ -36,14 +36,15 @@
   (let [properties? (map? (first content))
         properties (when properties? (first content))
         content    (if properties? (next content) content)]
-    [:span {:class (into [(c {:font-family "Inter"
-                              :display "inline-block"
-                              :font-size "14px"
-                              :font-weight "400"})]
-                         (if (vector? (:class properties))
-                           (:class properties)
-                           [(:class properties)]))}
-     content]))
+    (into
+     [:span {:class (into [(c {:font-family "Inter"
+                               :display "inline-block"
+                               :font-size "14px"
+                               :font-weight "400"})]
+                          (if (vector? (:class properties))
+                            (:class properties)
+                            [(:class properties)]))}]
+     content)))
 
 (defn kv-list
   [properties entries]
