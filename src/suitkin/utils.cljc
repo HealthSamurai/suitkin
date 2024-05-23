@@ -43,6 +43,11 @@
   #?(:cljs (reagent.core/atom value)
      :clj  (atom value)))
 
+(defn get-event-target
+  [event]
+  #?(:cljs (.. event -target)
+     :clj  (-> @event :target)))
+
 (defn target-value
   [event]
   #?(:cljs (.. event -target -value)
@@ -76,7 +81,55 @@
                     {}))
        :clj (cheshire.core/parse-string json-string keyword ))))
 
+(defn stop-propagation
+  [event]
+  #?(:cljs (.stopPropagation event)
+     :clj  nil))
+
 (defn get-element-by-id
   [id]
   #?(:cljs (js/document.getElementById id)
      :clj  nil))
+
+(defn show-modal
+  [id]
+  #?(:cljs (.showModal (get-element-by-id id))
+     :clj  nil))
+
+(defn close-modal
+  [id]
+  #?(:cljs (.close (get-element-by-id id))
+     :clj  nil))
+
+(defn get-component-properties
+  [nodes]
+  (when-let [arg1 (first nodes)]
+    (when (map? arg1) arg1)))
+
+(defn get-component-children
+  [properties nodes]
+  (if properties (next nodes) nodes))
+
+(defn merge-class-property
+  [class-a class-b]
+  (cond
+    (and (vector? class-a)
+         (vector? class-b))
+    (into class-a class-b)
+
+    (vector? class-a)
+    (conj class-a class-b)
+
+    (vector? class-b)
+    (cons class-a class-b)
+
+    :else [class-a class-b]))
+
+(defn merge-component-properties
+  [properties user-properties]
+  (merge
+   properties
+   user-properties
+   {:class (merge-class-property
+            (:class properties)
+            (:class user-properties))}))

@@ -8,7 +8,8 @@
    [suitkin.components.monaco.view]
    [suitkin.components.typography]
    [suitkin.components.alert.view]
-   [suitkin.components.navigation.view]))
+   [suitkin.components.navigation.view]
+   [suitkin.components.dialog.view]))
 
 ;; Navigation
 (def sidebar #'suitkin.components.sidebar.view/component)
@@ -27,4 +28,8 @@
 (def kv-list #'suitkin.components.typography/kv-list)
 (def assistive-text #'suitkin.components.typography/assistive-text)
 (def alert #'suitkin.components.alert.view/component)
+
+;; Dialogs
+(def dialog suitkin.components.dialog.view/component)
+(def dialog-dangerous suitkin.components.dialog.view/dangerous)
 
