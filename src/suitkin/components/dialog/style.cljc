@@ -6,7 +6,10 @@
      [:inset 0]
      [:rounded :lg]
      [:p 0]
-     [:backdrop {:background-color "rgb(107 114 128)"} [:opacity 75]]))
+     [:pseudo "[open]" {:animation "modal-open-scale 0.25s ease-out"}]
+     [:backdrop {:background-color "rgb(107 114 128)"
+                 :opacity   "0.75"
+                 :animation "modal-opacity 0.25s ease-out"}]))
 
 (def dangerous-root-class
   (c [:w-max "32rem"] [:p "1.5rem"]))
