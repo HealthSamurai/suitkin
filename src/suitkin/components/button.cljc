@@ -65,7 +65,7 @@
      :cursor-pointer
      [:disabled {:cursor "not-allowed"}]
      [:focus :outline-none]
-     {:font-size "14px" :font-family "Inter" :font-weight "400" :line-height "20px"}))
+     {:font-size "14px" :font-family "Inter" :font-weight "600" :line-height "20px"}))
 
 (defn icon
   [src body]
