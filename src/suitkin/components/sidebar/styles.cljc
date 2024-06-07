@@ -61,7 +61,8 @@
      :cursor-pointer
      [[:.chevron {:transition ".15s transform ease"
                   :filter "invert(44%) sepia(8%) saturate(656%) hue-rotate(191deg) brightness(85%) contrast(88%)"}]
-      ["details[open]" [:.chevron {:transform "rotate(90deg)"}]]]))
+      ["details[open]" [:.chevron {:transform "rotate(90deg)"}]
+       ["details:not([open])" [:.chevron {:transform "rotate(0deg) !important"}]]]]))
 
 (def content
   (c :flex
