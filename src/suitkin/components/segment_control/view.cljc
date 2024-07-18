@@ -9,4 +9,5 @@
       (:title item)
       [:input {:type           "radio"
                :name           (:id properties)
-               :defaultChecked (:active item)}]])])
+               :defaultChecked (:active item)
+               :on-change (:on-change item)}]])])
