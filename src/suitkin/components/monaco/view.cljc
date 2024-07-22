@@ -22,7 +22,8 @@
                                       ((:onChange properties)
                                        (suitkin.utils/target-value event)))}])
      (-> 
-      {:theme    (:theme properties "suitkin-theme")
+      {:key (:id properties)
+       :theme    (:theme properties "suitkin-theme")
        :language "json"
        :options  (merge {:minimap              {:enabled false}
                          :fontSize             "14px"
