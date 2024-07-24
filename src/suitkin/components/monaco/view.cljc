@@ -24,6 +24,7 @@
      (-> 
       {:key (:id properties)
        :theme    (:theme properties "suitkin-theme")
+       :defaultValue (:defaultValue properties)
        :language "json"
        :options  (merge {:minimap              {:enabled false}
                          :fontSize             "14px"
