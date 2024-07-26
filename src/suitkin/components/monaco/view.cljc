@@ -44,6 +44,10 @@
                          ;; :lineNumbersMinChars  0
                          }
                         (:options properties))
+       :onMount
+       (fn [editor instance]
+         (when-let [on-mount-fn (:on-mount-fn properties)]
+           (on-mount-fn editor instance)))
        :beforeMount
        (fn [insance]
          (when (:schemas properties)
