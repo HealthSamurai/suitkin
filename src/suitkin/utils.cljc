@@ -77,8 +77,7 @@
     #?(:cljs (try (js->clj (js/JSON.parse json-string)
                            :keywordize-keys true)
                   (catch js/Error e
-                    (prn "error" ::json-string->edn)
-                    {}))
+                    (prn "error" ::json-string->edn)))
        :clj (cheshire.core/parse-string json-string keyword ))))
 
 (defn stop-propagation
