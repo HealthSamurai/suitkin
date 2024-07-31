@@ -3,13 +3,14 @@
      :clj  (:require [suitkin.utils])))
 
 (defn set-json-defaults
-  [monaco-instance urls]
+  [monaco-instance urls & [default-path]]
   #?(:cljs
-     (.setDiagnosticsOptions (.-jsonDefaults (.-json (.-languages ^js/Object monaco-instance)))
-                             (clj->js {:validate true
-                                       :enableSchemaRequest true
-                                       :schemas (mapv (fn [url] {:uri url :fileMatch ["*"]})
-                                                      urls)}))
+     (when urls
+       (.setDiagnosticsOptions (.-jsonDefaults (.-json (.-languages ^js/Object monaco-instance)))
+                               (clj->js {:validate true
+                                         :enableSchemaRequest true
+                                         :schemas (mapv (fn [url] {:uri url :fileMatch [(or default-path "*")]})
+                                                        urls)})))
      :clj nil))
 
 (defn component
@@ -24,6 +25,7 @@
      (-> 
       {:key (:id properties)
        :theme    (:theme properties "suitkin-theme")
+       :defaultPath (:defaultPath properties)
        :defaultValue (:defaultValue properties)
        :language "json"
        :options  (merge {:minimap              {:enabled false}
@@ -51,7 +53,7 @@
        :beforeMount
        (fn [insance]
          (when (:schemas properties)
-           (set-json-defaults insance (:schemas properties)))
+           (set-json-defaults insance (:schemas properties) (:defaultPath properties)))
          #?(:cljs 
             (.defineTheme (.-editor ^js/Object insance)
                           "suitkin-theme"
