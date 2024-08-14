@@ -3,14 +3,16 @@
 
 (defn tabs
   [options]
-  [:div (merge {:class [(c :flex [:space-x "16px"]
+  [:div (merge {:class [(c :flex
                            {:border-bottom "1px solid var(--basic-gray-2,#BFC1C7)"
                             :font-size "14px"
                             :font-weight "500"
                             :font-family "Inter"
                             :color "var(--basic-gray-6, #434959)"})
+                        (or (:space-x-class options)
+                            (c [:space-x "16px"]))
                         (:class options)]}
-               (dissoc options :class :items))
+               (dissoc options :class :items :space-x-class))
    (for [item (:items options)]
      (if (:header item)
        ^{:key (:title item)}
