@@ -8,6 +8,7 @@
      (when urls
        (.setDiagnosticsOptions (.-jsonDefaults (.-json (.-languages ^js/Object monaco-instance)))
                                (clj->js {:validate true
+                                         :allowComments true
                                          :enableSchemaRequest true
                                          :schemas (mapv (fn [url] {:uri url :fileMatch [(or default-path "*")]})
                                                         urls)})))
