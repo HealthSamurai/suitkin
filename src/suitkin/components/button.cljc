@@ -21,8 +21,8 @@
      [[:.button-icon {:filter "invert(12%) sepia(21%) saturate(974%) hue-rotate(187deg) brightness(93%) contrast(91%)"}]]))
 
 (def tertiary-default
-  (c {:background-color "inherit" :color "var(--basic-gray-7)"}
-     [:hover {:background-color "var(--basic-gray-1)"}]
+  (c {:background-color "inherit" :color "#83868E"}
+     [:hover {:color "#212636!important"}]
      [:active {:background-color "var(--basic-gray-2)"}]
      [:disabled {:background-color "inherit" :color "var(--basic-gray-3)"}
       [[:.button-icon {:filter "invert(96%) sepia(2%) saturate(881%) hue-rotate(190deg) brightness(84%) contrast(83%)"}]]]
@@ -56,7 +56,7 @@
 (def button-size-default (c [:px "20px"] [:py "10px"]))
 
 (def base-button-class
-  (c [:rounded 4]
+  (c {:border-radius "6px"}
      [:hover {:text-decoration "none"}]
      :block
      :flex
