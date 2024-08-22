@@ -29,9 +29,15 @@
        :defaultPath (:defaultPath properties)
        :defaultValue (:defaultValue properties)
        :language "json"
+       :automaticLayout true
        :options  (merge {:minimap              {:enabled false}
+                         "bracketPairColorization.enabled" false
                          :fontSize             "14px"
+                         :automaticLayout true
                          :fontStyle            "normal"
+                         :scrollbar {:verticalScrollbarSize 6
+                                     :horizontalScrollbarSize 6}
+                         :padding {:top 16}
                          :lineHeight           "1.5"
                          :letterSpacing        "0.2em"
                          :fontWeight           "300"
@@ -42,7 +48,7 @@
                          :renderLineHighlight  "none"
                          :folding              true
                          :renderIndentGuides   false
-                         :lineDecorationsWidth 15
+                         :lineDecorationsWidth 0
                          :tabSize              2
                          ;; :lineNumbersMinChars  0
                          }
@@ -63,11 +69,15 @@
                                     :rules   [{:token "string.key.json" :foreground "#EA4A35"}
                                               {:token "string.value.json" :foreground "#405CBF"}
                                               {:token "string" :foreground "#405CBF"}
-                                              {:token "number" :foreground "#00A984"}]
-                                    :colors  {"editor.background" "#F8FAFC"
+                                              {:token "number" :foreground "#00A984"}
+                                              {:token "key.json" :foreground "#00A984"}]
+                                    :colors  {"editor.background" "#F5F8FB"
                                               "editorLineNumber.foreground" "#616471"
                                               "editorLineNumber.activeForeground" "#616471"
                                               "scrollbar.shadow"  "#ffffff00"
+                                              "scrollbarSlider.background" "#83868E"
+                                              "scrollbarSlider.activeBackground" "#212636"
+                                              "scrollbarSlider.hoverBackground" "#212636"
                                               "widget.shadow"     "#ffffff00"}}))
             :clj nil)
          insance)}
