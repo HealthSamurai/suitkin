@@ -21,6 +21,9 @@
      :w-full
      [:space-y "2px"]))
 
+(def menu-items-scroll
+  (c :overflow-y-auto))
+
 (def menu-item
   (c {:padding "6px 15px"
       :border-radius "4px"

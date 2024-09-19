@@ -38,7 +38,7 @@
                        (when callback (callback event)))))))]
      (when open?
        (let [menu (:menu properties)]
-         [:div {:class s/menu-items}
+         [:div {:class [s/menu-items (:class menu) (when (:scrollable? menu) s/menu-items-scroll)]}
           (if-let [items (seq (:items menu))]
             (for [item items] ^{:key (:value item)}
               [:div {:id    (:id item)
