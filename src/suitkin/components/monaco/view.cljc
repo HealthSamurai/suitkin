@@ -58,11 +58,13 @@
          (when-let [on-mount-fn (:on-mount-fn properties)]
            (on-mount-fn editor instance)))
        :beforeMount
-       (fn [insance]
+       (fn [instance]
+         (when-let [before-mount-fn (:before-mount-fn properties)]
+           (before-mount-fn instance))
          (when (:schemas properties)
-           (set-json-defaults insance (:schemas properties) (:defaultPath properties)))
+           (set-json-defaults instance (:schemas properties) (:defaultPath properties)))
          #?(:cljs 
-            (.defineTheme (.-editor ^js/Object insance)
+            (.defineTheme (.-editor ^js/Object instance)
                           "suitkin-theme"
                           (clj->js {:base    "vs"
                                     :inherit true
@@ -71,7 +73,7 @@
                                               {:token "string" :foreground "#405CBF"}
                                               {:token "number" :foreground "#00A984"}
                                               {:token "key.json" :foreground "#00A984"}]
-                                    :colors  {"editor.background" "#F5F8FB"
+                                    :colors  {"editor.background" "#F9F9F9"
                                               "editorLineNumber.foreground" "#616471"
                                               "editorLineNumber.activeForeground" "#616471"
                                               "scrollbar.shadow"  "#ffffff00"
@@ -80,5 +82,5 @@
                                               "scrollbarSlider.hoverBackground" "#212636"
                                               "widget.shadow"     "#ffffff00"}}))
             :clj nil)
-         insance)}
+         instance)}
       (merge (dissoc properties :options)))]))
