@@ -71,6 +71,18 @@
   #?(:cljs (js/JSON.stringify (clj->js edn) nil 2)
      :clj  (cheshire.core/generate-string edn {:pretty true})))
 
+(defn edn->json-pretty-with-order
+  "Format json. Place start key on the start, other in alphabet"
+  [m start-ks]
+  (if (map? m)
+    (let [ks (distinct (concat start-ks (sort (keys m))))
+          sm (reduce
+              (fn [acc k] (assoc acc k (get m k)))
+              (array-map)
+              ks)]
+      (edn->json-pretty sm))
+    (edn->json-pretty m)))
+
 (defn json-string->edn
   [json-string]
   (when (seq json-string)
